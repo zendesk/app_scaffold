@@ -5,16 +5,26 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     eslint: {
-      target: ['./src/**/*.js']
+      target: ['./src/javascripts/**/*.js']
+    },
+    sass: {
+      options: {
+        sourceMap: true
+      },
+      dist: {
+        files: {
+          './dist/assets/main.css': './src/stylesheets/**/*.scss'
+        }
+      }
     },
     webpack: {
       build: {
         progress: true,
         entry: {
-          app: './src/index.js'
+          app: './src/javascripts/index.js'
         },
         output: {
-          path: './app/assets',
+          path: './dist/assets',
           filename: 'bundle.js'
         },
         module: {
@@ -32,7 +42,7 @@ module.exports = function(grunt) {
     handlebars: {
       compile: {
         files: {
-          'app/assets/templates.js': 'src/templates/**/*.hbs'
+          'dist/assets/templates.js': 'src/templates/**/*.hbs'
         },
         options: {
           namespace: 'Templates',
@@ -43,18 +53,24 @@ module.exports = function(grunt) {
     uglify: {
       options: {
         sourceMap: true,
-        sourceMapName: './app/assets/bundle.map'
+        sourceMapName: './dist/assets/bundle.map'
       },
       build: {
         files: {
-          './app/assets/bundle.min.js': './app/assets/bundle.js'
+          './dist/assets/bundle.min.js': './dist/assets/bundle.js'
         }
       }
     },
     watch: {
+      css: {
+        files: [
+          './src/stylesheets/**/*.scss',
+        ],
+        tasks: ['sass']
+      },
       js: {
         files: [
-          './src/**/*.js',
+          './src/javascripts/**/*.js',
         ],
         tasks: ['eslint', 'webpack', 'uglify']
       },

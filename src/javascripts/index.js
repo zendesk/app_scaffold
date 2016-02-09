@@ -1,4 +1,4 @@
-import TicketSidebarApp from './lib/ticket_sidebar';
+import TicketSidebarApp from './ticket_sidebar';
 
 var client = window.ZAFClient.init();
 
