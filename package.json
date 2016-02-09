@@ -1,0 +1,31 @@
+{
+  "name": "iframe_app_template",
+  "version": "0.0.1",
+  "description": "A template for developers to build iframe only apps",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zendesk/iframe_app_template.git"
+  },
+  "license": "Apache 2.0",
+  "author": "Zendesk",
+  "keywords": [
+    "zendesk",
+    "app",
+    "framework"
+  ],
+  "bugs": {
+    "url": "https://github.com/zendesk/iframe_app_template/issues"
+  },
+  "devDependencies": {
+    "babel-core": "^4.0.1",
+    "babel-loader": "^4.0.0",
+    "grunt": "~0.4.5",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-webpack": "^1.0.8",
+    "webpack": "^1.5.3",
+    "webpack-dev-server": "^1.7.0",
+    "load-grunt-tasks": "~3.4.0",
+    "grunt-contrib-handlebars": "~0.11.0"
+  }
+}

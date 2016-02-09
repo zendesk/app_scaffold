@@ -1,0 +1,5 @@
+node_modules
+app/assets/bundle.js
+app/assets/bundle.map
+app/assets/bundle.min.js
+app/assets/templates.js
