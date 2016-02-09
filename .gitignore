@@ -5,4 +5,4 @@ dist/assets/bundle.map
 dist/assets/bundle.min.js
 dist/assets/templates.js
 dist/assets/main.css
-dist/assets/main.map
+dist/assets/main.css.map
