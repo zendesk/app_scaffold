@@ -4,6 +4,9 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
+    eslint: {
+      target: ['./src/**/*.js']
+    },
     webpack: {
       build: {
         progress: true,
@@ -53,7 +56,7 @@ module.exports = function(grunt) {
         files: [
           './src/**/*.js',
         ],
-        tasks: ['webpack', 'uglify']
+        tasks: ['eslint', 'webpack', 'uglify']
       },
       hbs: {
         files: [
