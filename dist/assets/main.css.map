@@ -1,9 +1,0 @@
-{
-	"version": 3,
-	"file": "main.css",
-	"sources": [
-		"../../src/stylesheets/ticket_sidebar.scss"
-	],
-	"mappings": "AAAA,OAAO,CAAA,AAAA,SAAC,AAAA,EACN,EAAE,CAAC;EACD,UAAU,EAAE,GAAI,GACjB",
-	"names": []
-}
