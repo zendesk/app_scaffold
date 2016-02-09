@@ -1,5 +1,8 @@
 node_modules
-app/assets/bundle.js
-app/assets/bundle.map
-app/assets/bundle.min.js
-app/assets/templates.js
+bower_components
+dist/assets/bundle.js
+dist/assets/bundle.map
+dist/assets/bundle.min.js
+dist/assets/templates.js
+dist/assets/main.css
+dist/assets/main.map
