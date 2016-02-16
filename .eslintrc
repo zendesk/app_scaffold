@@ -9,6 +9,7 @@
     "$": true,
     "jQuery": true,
     "Handlebars": true,
-    "_": true
+    "_": true,
+    "moment": true
   }
 }
