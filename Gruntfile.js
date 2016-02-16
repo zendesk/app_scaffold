@@ -1,6 +1,8 @@
 /* eslint-env node */
 'use strict';
 
+var webpack = require('webpack');
+
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
@@ -26,7 +28,8 @@ module.exports = function(grunt) {
         },
         output: {
           path: './dist/assets',
-          filename: 'bundle.js'
+          filename: 'bundle.js',
+          sourceMapFilename: '[file].map'
         },
         module: {
           loaders: [{
@@ -40,7 +43,15 @@ module.exports = function(grunt) {
         },
         resolve: {
           extenstions: ['', '.js']
-        }
+        },
+        devtool: '#source-map',
+        plugins: [
+          new webpack.optimize.UglifyJsPlugin({
+            compress: {
+              warnings: false
+            }
+          })
+        ]
       }
     },
     handlebars: {
@@ -51,17 +62,6 @@ module.exports = function(grunt) {
         options: {
           namespace: 'Templates',
           partialsUseNamespace: true
-        }
-      }
-    },
-    uglify: {
-      options: {
-        sourceMap: true,
-        sourceMapName: './dist/assets/bundle.map'
-      },
-      build: {
-        files: {
-          './dist/assets/bundle.min.js': './dist/assets/bundle.js'
         }
       }
     },
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
         files: [
           './src/javascripts/**/*.js'
         ],
-        tasks: ['eslint', 'webpack', 'uglify']
+        tasks: ['eslint', 'webpack']
       },
       hbs: {
         files: [
@@ -87,6 +87,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('build', ['sass', 'handlebars', 'eslint', 'webpack', 'uglify']);
+  grunt.registerTask('build', ['sass', 'handlebars', 'eslint', 'webpack']);
   grunt.registerTask('default', ['build']);
 };
