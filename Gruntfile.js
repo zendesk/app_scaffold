@@ -32,17 +32,33 @@ module.exports = function(grunt) {
           sourceMapFilename: '[file].map'
         },
         module: {
-          loaders: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
-            query: {
-              presets: ['es2015']
+          loaders: [
+            {
+              test: /\.js$/,
+              exclude: /node_modules/,
+              loader: 'babel-loader',
+              query: {
+                presets: ['es2015']
+              }
+            },
+            {
+              test: /\.(handlebars|hd?bs)$/,
+              loader: 'handlebars-loader',
+              query: {
+                extensions: ['handlebars', 'hdbs', 'hbs'],
+                runtime: 'handlebars'
+              }
             }
-          }]
+          ]
         },
         resolve: {
           extensions: ['', '.js']
+        },
+        externals: {
+          handlebars: 'Handlebars',
+          jquery: 'jQuery',
+          lodash: '_',
+          moment: 'moment'
         },
         devtool: '#source-map',
         plugins: [
@@ -52,17 +68,6 @@ module.exports = function(grunt) {
             }
           })
         ]
-      }
-    },
-    handlebars: {
-      compile: {
-        files: {
-          'dist/assets/templates.js': 'src/templates/**/*.hbs'
-        },
-        options: {
-          namespace: 'Templates',
-          partialsUseNamespace: true
-        }
       }
     },
     watch: {
@@ -84,11 +89,11 @@ module.exports = function(grunt) {
           './src/templates/**/*.hdbs',
           './src/templates/**/*.handlebars'
         ],
-        tasks: ['handlebars']
+        tasks: ['webpack']
       }
     }
   });
 
-  grunt.registerTask('build', ['sass', 'handlebars', 'eslint', 'webpack']);
+  grunt.registerTask('build', ['sass', 'eslint', 'webpack']);
   grunt.registerTask('default', ['build']);
 };
