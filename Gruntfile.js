@@ -42,7 +42,7 @@ module.exports = function(grunt) {
           }]
         },
         resolve: {
-          extenstions: ['', '.js']
+          extensions: ['', '.js']
         },
         devtool: '#source-map',
         plugins: [
