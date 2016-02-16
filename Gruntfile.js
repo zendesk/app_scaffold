@@ -68,24 +68,25 @@ module.exports = function(grunt) {
     watch: {
       css: {
         files: [
-          './src/stylesheets/**/*.scss',
+          './src/stylesheets/**/*.scss'
         ],
         tasks: ['sass']
       },
       js: {
         files: [
-          './src/javascripts/**/*.js',
+          './src/javascripts/**/*.js'
         ],
         tasks: ['eslint', 'webpack', 'uglify']
       },
       hbs: {
         files: [
-          './src/templates/**/*.hbs',
+          './src/templates/**/*.hbs'
         ],
         tasks: ['handlebars']
       }
     }
   });
 
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('build', ['sass', 'handlebars', 'eslint', 'webpack', 'uglify']);
+  grunt.registerTask('default', ['build']);
 };
