@@ -5,6 +5,10 @@
     "browser": true
   },
   "globals": {
-    "Templates": true
+    "Templates": true,
+    "$": true,
+    "jQuery": true,
+    "Handlebars": true,
+    "_": true
   }
 }
