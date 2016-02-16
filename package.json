@@ -30,7 +30,6 @@
     "grunt-webpack": "^1.0.11",
     "load-grunt-tasks": "^3.4.0",
     "lodash": "^4.3.0",
-    "webpack": "^1.12.13",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^1.12.13"
   }
 }
