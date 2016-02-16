@@ -80,7 +80,9 @@ module.exports = function(grunt) {
       },
       hbs: {
         files: [
-          './src/templates/**/*.hbs'
+          './src/templates/**/*.hbs',
+          './src/templates/**/*.hdbs',
+          './src/templates/**/*.handlebars'
         ],
         tasks: ['handlebars']
       }
