@@ -28,7 +28,7 @@ module.exports = function(grunt) {
         },
         output: {
           path: './dist/assets',
-          filename: 'bundle.js',
+          filename: 'main.js',
           sourceMapFilename: '[file].map'
         },
         module: {
