@@ -1,3 +1,4 @@
+/* eslint-env node */
 'use strict';
 
 module.exports = function(grunt) {
@@ -31,7 +32,10 @@ module.exports = function(grunt) {
           loaders: [{
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            query: {
+              presets: ['es2015']
+            }
           }]
         },
         resolve: {
