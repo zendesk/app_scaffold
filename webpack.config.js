@@ -25,7 +25,7 @@ module.exports = {
     loaders: [
       {
         test: /\.scss$/,
-        loader: extractStyles.extract("style", "css?sourceMap", "sass?sourceMap")
+        loader: extractStyles.extract("style", ["css?sourceMap", "sass?sourceMap"])
       },
       {
         test: /\.js$/,
