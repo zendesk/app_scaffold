@@ -1,10 +1,6 @@
-import TicketSidebarApp from './ticket_sidebar';
+import LegacyApp from './app';
+import MigrationHelper from './migration_helper';
 import ZAFClient from 'zendesk_app_framework_sdk';
 
 var client = ZAFClient.init();
-
-client.on('app.registered', function(context) {
-  if (context.location === 'ticket_sidebar') {
-    new TicketSidebarApp(client, context);
-  }
-});
+new MigrationHelper(client, LegacyApp);
