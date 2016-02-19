@@ -4,7 +4,7 @@ class TicketSidebarApp extends BaseApp {
   constructor() {
     super();
 
-    this.render('main', { user: 'world' });
+    this.switchTo('main', { user: 'world' });
   }
 }
 
