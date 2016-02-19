@@ -52,7 +52,8 @@ module.exports = {
     handlebars: 'Handlebars',
     jquery: 'jQuery',
     lodash: '_',
-    moment: 'moment'
+    moment: 'moment',
+    zendesk_app_framework_sdk: 'ZAFClient'
   },
   devtool: '#source-map',
   plugins: [
