@@ -1,7 +1,20 @@
+import $ from 'jquery';
+
 class BaseApp {
-  render(name, data) {
-    var template = Templates['src/templates/' + name + '.hbs'];
-    $('section[data-main]').html(template(data));
+  // These are public APIs of the framework that we are shimming to make it
+  // easier to migrate existing apps
+
+  renderTemplate(name, data) {
+    var template = require(`../templates/${name}.hbs`);
+    return template(data);
+  }
+
+  switchTo(name, data) {
+    this.$('section[data-main]').html(this.renderTemplate(name, data));
+  }
+
+  $() {
+    return $.apply($, arguments);
   }
 }
 

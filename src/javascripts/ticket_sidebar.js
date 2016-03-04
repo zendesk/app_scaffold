@@ -1,8 +1,10 @@
-import BaseApp from './base_app'
+import BaseApp from './base_app';
 
 class TicketSidebarApp extends BaseApp {
   constructor() {
-    this.render('main', { user: 'world' });
+    super();
+
+    this.switchTo('main', { user: 'world' });
   }
 }
 

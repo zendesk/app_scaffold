@@ -1,8 +1,6 @@
 node_modules
 bower_components
-dist/assets/bundle.js
-dist/assets/bundle.map
-dist/assets/bundle.min.js
-dist/assets/templates.js
 dist/assets/main.css
 dist/assets/main.css.map
+dist/assets/main.js
+dist/assets/main.js.map

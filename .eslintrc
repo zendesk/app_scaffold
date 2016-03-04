@@ -1,6 +1,17 @@
 {
   "parser": "babel-eslint",
-  "rules": {
-    "strict": 0
+  "extends": "eslint:recommended",
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "globals": {
+    "Templates": true,
+    "$": true,
+    "jQuery": true,
+    "Handlebars": true,
+    "_": true,
+    "moment": true
   }
 }
