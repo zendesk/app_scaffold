@@ -1,18 +1,35 @@
 import $ from 'jquery';
 
+function noop() {}
+
+function resolveHandler(app, name) {
+  var handler = app.events[name];
+  if (!handler) { return noop; }
+  return _.isFunction(handler) ? handler.bind(app) : app[handler].bind(app);
+}
+
+function bindEvents(app) {
+  _.each(app.events, function(fn, key) {
+    var splittedKey = key.split(' '),
+        event = splittedKey[0],
+        element = splittedKey[1],
+        isDomEvent = !!element,
+        func = resolveHandler(app, key);
+
+    if (isDomEvent) {
+      $(document).on(event, element, func);
+    } else {
+      app.zafClient.on(event, func);
+    }
+  }.bind(app));
+}
+
 function BaseApp(zafClient) {
   this.zafClient = zafClient;
   this.bindEvents();
 
-  var onCreated = this.events['app.created'];
-  if (onCreated) {
-    (_.isFunction(onCreated) ? onCreated : this[onCreated]).call(this);
-  }
-}
-
-function resolveHandler(app, name) {
-  var handler = app.events[name];
-  return handler ? (_.isFunction(handler) ? handler.bind(app) : app[handler].bind(app)) : function() {};
+  var onCreated = resolveHandler(this, 'app.created');
+  onCreated();
 }
 
 BaseApp.prototype = {
@@ -22,20 +39,7 @@ BaseApp.prototype = {
   requests: {},
 
   bindEvents: function() {
-    _.each(this.events, function(func, key) {
-      var splitted_key = key.split(' '),
-          event = splitted_key[0],
-          element = splitted_key[1],
-          isDomEvent = !!element;
-
-      func = resolveHandler(this, key);
-
-      if (isDomEvent) {
-        this.$(document).on(event, element, func);
-      } else {
-        this.zafClient.on(event, func);
-      }
-    }.bind(this));
+    bindEvents(this);
   },
 
   ajax: function(name) {
@@ -60,6 +64,8 @@ BaseApp.prototype = {
   },
 
   $: function() {
+    var args = Array.prototype.slice.call(arguments, 0);
+    if (!args.length) return $('body');
     return $.apply($, arguments);
   }
 }
