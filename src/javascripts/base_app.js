@@ -28,8 +28,7 @@ function BaseApp(zafClient) {
   this.zafClient = zafClient;
   bindEvents(this);
 
-  var onCreated = resolveHandler(this, 'app.created');
-  onCreated();
+  resolveHandler(this, 'app.created')();
 }
 
 BaseApp.prototype = {
