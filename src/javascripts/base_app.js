@@ -26,7 +26,7 @@ function bindEvents(app) {
 
 function BaseApp(zafClient) {
   this.zafClient = zafClient;
-  this.bindEvents();
+  bindEvents(this);
 
   var onCreated = resolveHandler(this, 'app.created');
   onCreated();
@@ -37,10 +37,6 @@ BaseApp.prototype = {
   // easier to migrate existing apps
   events: {},
   requests: {},
-
-  bindEvents: function() {
-    bindEvents(this);
-  },
 
   ajax: function(name) {
     var req = this.requests[name],
