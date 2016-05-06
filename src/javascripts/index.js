@@ -5,6 +5,6 @@ var client = ZAFClient.init();
 
 client.on('app.registered', function(data) {
   if (data.context.location === 'ticket_sidebar') {
-    new TicketSidebarApp(client, data.context);
+    new TicketSidebarApp(client, data);
   }
 });

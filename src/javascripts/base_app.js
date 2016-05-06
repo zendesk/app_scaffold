@@ -24,11 +24,17 @@ function bindEvents(app) {
   }.bind(app));
 }
 
-function BaseApp(zafClient) {
+function BaseApp(zafClient, data) {
   this.zafClient = zafClient;
   bindEvents(this);
-
+  var evt = { firstLoad: true };
+  this._metadata = data.metadata;
+  this._context = data.context;
+  if (this.defaultState) {
+    this.switchTo(this.defaultState);
+  }
   resolveHandler(this, 'app.created')();
+  resolveHandler(this, 'app.activated')(evt, evt);
 }
 
 BaseApp.prototype = {
@@ -36,6 +42,22 @@ BaseApp.prototype = {
   // easier to migrate existing apps
   events: {},
   requests: {},
+
+  id: function() {
+    return this._metadata.appId;
+  },
+
+  installationId: function() {
+    return this._metadata.installationId;
+  },
+
+  guid: function() {
+    return this._context.instanceGuid;
+  },
+
+  currentLocation: function() {
+    return this._context.location;
+  },
 
   ajax: function(name) {
     var req = this.requests[name],
@@ -62,6 +84,23 @@ BaseApp.prototype = {
     var args = Array.prototype.slice.call(arguments, 0);
     if (!args.length) return $('body');
     return $.apply($, arguments);
+  },
+
+  setting: function(name) {
+    return this._metadata.settings[name];
+  },
+
+  store: function(keyOrObject, value) {
+    if (typeof keyOrObject === 'string') {
+      if (arguments.length === 1) {
+        return JSON.parse(localStorage.getItem(keyOrObject));
+      }
+      localStorage.setItem(keyOrObject, JSON.stringify(value));
+    } else if (typeof keyOrObject === 'object') {
+      Object.keys(keyOrObject).forEach(function(key) {
+        localStorage.setItem(key, JSON.stringify(keyOrObject[key]));
+      });
+    }
   }
 }
 

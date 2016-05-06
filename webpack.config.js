@@ -60,7 +60,7 @@ module.exports = {
     extractStyles,
     new webpack.optimize.UglifyJsPlugin({
       compress: {
-        drop_debugger: true,
+        drop_debugger: false,
         warnings: false
       }
     })
