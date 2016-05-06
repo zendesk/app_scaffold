@@ -65,4 +65,14 @@ BaseApp.prototype = {
   }
 }
 
+BaseApp.extend = function(appPrototype) {
+  var App = function(client, data) {
+    BaseApp.call(this, client, data);
+  };
+
+  App.prototype = _.extend({}, BaseApp.prototype, appPrototype);
+
+  return App;
+};
+
 export default BaseApp;

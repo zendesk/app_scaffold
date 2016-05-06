@@ -1,11 +1,13 @@
 import BaseApp from './base_app';
 
-class TicketSidebarApp extends BaseApp {
-  constructor() {
-    super();
+var App = {
+  events: {
+    'app.created': 'init'
+  },
 
+  init: function() {
     this.switchTo('main', { user: 'world' });
   }
 }
 
-export default TicketSidebarApp;
+export default BaseApp.extend(App);
