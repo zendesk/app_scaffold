@@ -2,6 +2,10 @@ import $ from 'jquery';
 
 function noop() {}
 
+function notImplementedWarning(methodName) {
+  console.warn && console.warn('[BaseApp] `' + methodName + '` shim hasn\'t been implemented yet!');
+}
+
 function resolveHandler(app, name) {
   var handler = app.events[name];
   if (!handler) { return noop; }
@@ -24,8 +28,21 @@ function bindEvents(app) {
   }.bind(app));
 }
 
+function registerHelpers(app) {
+  ['setting', 'store'].forEach(function(api) {
+    Handlebars.registerHelper(api, function(key) {
+      return app[api](key);
+    });
+  });
+
+  Handlebars.registerHelper('t', function(key) {
+    return app.I18n.t(key);
+  });
+}
+
 function BaseApp(zafClient, data) {
   this.zafClient = zafClient;
+  registerHelpers(this);
   bindEvents(this);
   var evt = { firstLoad: true };
   this._metadata = data.metadata;
@@ -101,6 +118,10 @@ BaseApp.prototype = {
         localStorage.setItem(key, JSON.stringify(keyOrObject[key]));
       });
     }
+  },
+
+  I18n: {
+    t: notImplementedWarning.bind(null, 'I18n.t')
   }
 }
 

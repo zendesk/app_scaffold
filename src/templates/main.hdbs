@@ -1,2 +1,2 @@
-<h3>Iframe App Template</h3>
+<h3>{{setting "title"}}</h3>
 <p>Hello {{name}}!</p>
