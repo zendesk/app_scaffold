@@ -55,11 +55,12 @@ module.exports = {
     moment: 'moment',
     zendesk_app_framework_sdk: 'ZAFClient'
   },
-  devtool: '#source-map',
+  devtool: '#eval',
   plugins: [
     extractStyles,
     new webpack.optimize.UglifyJsPlugin({
       compress: {
+        drop_debugger: false,
         warnings: false
       }
     })

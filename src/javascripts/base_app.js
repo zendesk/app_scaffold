@@ -2,6 +2,10 @@ import $ from 'jquery';
 
 function noop() {}
 
+function notImplementedWarning(methodName) {
+  console.warn && console.warn(`[BaseApp] ${methodName} shim hasn\'t been implemented yet!`);
+}
+
 function resolveHandler(app, name) {
   var handler = app.events[name];
   if (!handler) { return noop; }
@@ -24,11 +28,30 @@ function bindEvents(app) {
   }.bind(app));
 }
 
-function BaseApp(zafClient) {
-  this.zafClient = zafClient;
-  bindEvents(this);
+function registerHelpers(app) {
+  ['setting', 'store'].forEach(function(api) {
+    Handlebars.registerHelper(api, function(key) {
+      return app[api](key);
+    });
+  });
 
+  Handlebars.registerHelper('t', function(key) {
+    return app.I18n.t(key);
+  });
+}
+
+function BaseApp(zafClient, data) {
+  this.zafClient = zafClient;
+  registerHelpers(this);
+  bindEvents(this);
+  var evt = { firstLoad: true };
+  this._metadata = data.metadata;
+  this._context = data.context;
+  if (this.defaultState) {
+    this.switchTo(this.defaultState);
+  }
   resolveHandler(this, 'app.created')();
+  resolveHandler(this, 'app.activated')(evt, evt);
 }
 
 BaseApp.prototype = {
@@ -36,6 +59,22 @@ BaseApp.prototype = {
   // easier to migrate existing apps
   events: {},
   requests: {},
+
+  id: function() {
+    return this._metadata.appId;
+  },
+
+  installationId: function() {
+    return this._metadata.installationId;
+  },
+
+  guid: function() {
+    return this._context.instanceGuid;
+  },
+
+  currentLocation: function() {
+    return this._context.location;
+  },
 
   ajax: function(name) {
     var req = this.requests[name],
@@ -62,7 +101,38 @@ BaseApp.prototype = {
     var args = Array.prototype.slice.call(arguments, 0);
     if (!args.length) return $('body');
     return $.apply($, arguments);
+  },
+
+  setting: function(name) {
+    return this._metadata.settings[name];
+  },
+
+  store: function(keyOrObject, value) {
+    if (typeof keyOrObject === 'string') {
+      if (arguments.length === 1) {
+        return JSON.parse(localStorage.getItem(keyOrObject));
+      }
+      localStorage.setItem(keyOrObject, JSON.stringify(value));
+    } else if (typeof keyOrObject === 'object') {
+      Object.keys(keyOrObject).forEach(function(key) {
+        localStorage.setItem(key, JSON.stringify(keyOrObject[key]));
+      });
+    }
+  },
+
+  I18n: {
+    t: notImplementedWarning.bind(null, 'I18n.t')
   }
 }
+
+BaseApp.extend = function(appPrototype) {
+  var App = function(client, data) {
+    BaseApp.call(this, client, data);
+  };
+
+  App.prototype = _.extend({}, BaseApp.prototype, appPrototype);
+
+  return App;
+};
 
 export default BaseApp;
