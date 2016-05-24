@@ -11,14 +11,13 @@ The project is maintained by the Quokka / Vegemite team, ping us with [@zendesk/
 ## Getting Started
 
 ### Setup
-1. Clone of fork this repo
+1. Clone or fork this repo
 2. Run `npm install`
 
 ### Running locally
-In order to run your app within Zendesk you will need the [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools). Once you've installed ZAT you will need two separate terminal tabs, one to watch and build this project and another serve it using ZAT:
+To run your app locally in Zendesk, you need the [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools).
 
-- `webpack --watch`
-- `zat server --path=./dist`
+After installing ZAT, you typically need two separate command-line interface tabs to develop an app locally. Use the first tab to run the `zat server --path=./dist` command to start the local web server. Use the second tab to run the `webpack --watch` command to build the project whenever you change the files.
 
 ## Testing
 WIP
