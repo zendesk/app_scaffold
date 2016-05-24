@@ -3,7 +3,7 @@ import $ from 'jquery';
 function noop() {}
 
 function notImplementedWarning(methodName) {
-  console.warn && console.warn('[BaseApp] `' + methodName + '` shim hasn\'t been implemented yet!');
+  console.warn && console.warn(`[BaseApp] ${methodName} shim hasn\'t been implemented yet!`);
 }
 
 function resolveHandler(app, name) {
