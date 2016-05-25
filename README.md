@@ -26,6 +26,8 @@ npm install --global webpack
 npm install --global foreman
 ```
 
+Note: Foreman was originally created as a Ruby tool. If you prefer, you can install it by `gem install foreman` instead.
+
 ### Running locally
 
 Foreman allows you to easily run multiple processes in one tab. One process is `zat server`, which serves the app in a way that can be consumed by the host (eg Zendesk). The second is `webpack --watch` to rebuild the project whenever you save changes to a source file.
@@ -37,6 +39,8 @@ nf start
 ```
 
 or run the individual commands from the Procfile in separate terminals.
+
+Note: if you installed the Ruby version of foreman, you'll need to use `foreman start`.
 
 ## Testing
 WIP
