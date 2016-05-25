@@ -1,5 +1,7 @@
 import $ from 'jquery';
 
+var maxHeight = 375;
+
 function noop() {}
 
 function notImplementedWarning(methodName) {
@@ -95,6 +97,8 @@ BaseApp.prototype = {
 
   switchTo: function(name, data) {
     this.$('[data-main]').html(this.renderTemplate(name, data));
+    var newHeight = Math.min($('html').height(), maxHeight);
+    this.zafClient.invoke('resize', { height: newHeight, width: '100%' });
   },
 
   $: function() {
