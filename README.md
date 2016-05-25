@@ -14,10 +14,29 @@ The project is maintained by the Quokka / Vegemite team, ping us with [@zendesk/
 1. Clone or fork this repo
 2. Run `npm install`
 
-### Running locally
 To run your app locally in Zendesk, you need the [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools).
 
-After installing ZAT, you typically need two separate command-line interface tabs to develop an app locally. Use the first tab to run the `zat server --path=./dist` command to start the local web server. Use the second tab to run the `webpack --watch` command to build the project whenever you change the files.
+You'll also need to run a couple of command-line Node.js-based tools that are installed using `npm`. For a node module to be available from the command-line, it must be installed globally.
+
+To setup these and other dependencies, run these commands:
+
+```
+gem install zendesk_apps_tools
+npm install --global webpack
+npm install --global foreman
+```
+
+### Running locally
+
+Foreman allows you to easily run multiple processes in one tab. One process is `zat server`, which serves the app in a way that can be consumed by the host (eg Zendesk). The second is `webpack --watch` to rebuild the project whenever you save changes to a source file.
+
+To run these processes, run
+
+```
+nf start
+```
+
+or run the individual commands from the Procfile in separate terminals.
 
 ## Testing
 WIP
