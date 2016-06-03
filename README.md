@@ -1,9 +1,9 @@
 *Use of this software is subject to important terms and conditions as set forth in the License file*
 
-# Iframe App Template
+# https://github.com/zendesk/app_scaffold
 
 ## Description
-This repo contains a template to help developers build Iframe apps for Zendesk products.
+This repo contains a scaffold to help developers build Iframe apps for Zendesk products.
 
 ## Owners
 The project is maintained by the Quokka / Vegemite team, ping us with [@zendesk/vegemite on GitHub](https://github.com/orgs/zendesk/teams/vegemite).
@@ -50,7 +50,7 @@ WIP
 * CC and get a +1 from @zendesk/vegemite.
 
 ## Bugs
-Submit Issues via [GitHub](https://github.com/zendesk/iframe_app_template/issues/new) or email vegemite@zendesk.com.
+Submit Issues via [GitHub](https://github.com/zendesk/app_scaffold/issues/new) or email vegemite@zendesk.com.
 
 ## Useful Links
 Links to maintaining team, confluence pages, Datadog dashboard, Kibana logs, etc
