@@ -1,6 +1,6 @@
 *Use of this software is subject to important terms and conditions as set forth in the License file*
 
-# https://github.com/zendesk/app_scaffold
+# App Scaffold
 
 ## Description
 This repo contains a scaffold to help developers build Iframe apps for Zendesk products.
