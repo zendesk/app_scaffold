@@ -1,10 +1,10 @@
 {
-  "name": "iframe_app_template",
+  "name": "app_scaffold",
   "version": "0.0.1",
-  "description": "A template for developers to build iframe only apps",
+  "description": "A scaffold for developers to build ZAF v2 apps",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zendesk/iframe_app_template.git"
+    "url": "https://github.com/zendesk/app_scaffold.git"
   },
   "scripts": {
     "build": "webpack -p",
@@ -18,7 +18,7 @@
     "framework"
   ],
   "bugs": {
-    "url": "https://github.com/zendesk/iframe_app_template/issues"
+    "url": "https://github.com/zendesk/app_scaffold/issues"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
