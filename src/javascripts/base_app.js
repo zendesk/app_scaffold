@@ -112,14 +112,16 @@ BaseApp.prototype = {
   },
 
   store: function(keyOrObject, value) {
+    var installationId = this._metadata.installationId;
     if (typeof keyOrObject === 'string') {
+      var key = `${installationId}:${keyOrObject}`;
       if (arguments.length === 1) {
-        return JSON.parse(localStorage.getItem(keyOrObject));
+        return JSON.parse(localStorage.getItem(key));
       }
-      localStorage.setItem(keyOrObject, JSON.stringify(value));
+      localStorage.setItem(key, JSON.stringify(value));
     } else if (typeof keyOrObject === 'object') {
       Object.keys(keyOrObject).forEach(function(key) {
-        localStorage.setItem(key, JSON.stringify(keyOrObject[key]));
+        localStorage.setItem(`${installationId}:${key}`, JSON.stringify(keyOrObject[key]));
       });
     }
   },
