@@ -1,6 +1,6 @@
 import $ from 'jquery';
 
-var maxHeight = 375;
+let maxHeight = 375;
 
 function noop() {}
 
@@ -9,14 +9,14 @@ function notImplementedWarning(methodName) {
 }
 
 function resolveHandler(app, name) {
-  var handler = app.events[name];
+  let handler = app.events[name];
   if (!handler) { return noop; }
   return _.isFunction(handler) ? handler.bind(app) : app[handler].bind(app);
 }
 
 function bindEvents(app) {
   _.each(app.events, function(fn, key) {
-    var splittedKey = key.split(' '),
+    let splittedKey = key.split(' '),
         event = splittedKey[0],
         element = splittedKey[1],
         isDomEvent = !!element,
@@ -46,7 +46,7 @@ function BaseApp(zafClient, data) {
   this.zafClient = zafClient;
   registerHelpers(this);
   bindEvents(this);
-  var evt = { firstLoad: true };
+  let evt = { firstLoad: true };
   this._metadata = data.metadata;
   this._context = data.context;
   if (this.defaultState) {
@@ -79,7 +79,7 @@ BaseApp.prototype = {
   },
 
   ajax: function(name) {
-    var req = this.requests[name],
+    let req = this.requests[name],
         doneCallback = resolveHandler(this, name + '.done'),
         failCallback = resolveHandler(this, name + '.fail'),
         alwaysCallback = resolveHandler(this, name + '.always'),
@@ -91,18 +91,18 @@ BaseApp.prototype = {
   },
 
   renderTemplate: function(name, data) {
-    var template = require(`../templates/${name}.hdbs`);
+    let template = require(`../templates/${name}.hdbs`);
     return template(data);
   },
 
   switchTo: function(name, data) {
     this.$('[data-main]').html(this.renderTemplate(name, data));
-    var newHeight = Math.min($('html').height(), maxHeight);
+    let newHeight = Math.min($('html').height(), maxHeight);
     this.zafClient.invoke('resize', { height: newHeight, width: '100%' });
   },
 
   $: function() {
-    var args = Array.prototype.slice.call(arguments, 0);
+    let args = Array.prototype.slice.call(arguments, 0);
     if (!args.length) return $('body');
     return $.apply($, arguments);
   },
@@ -112,9 +112,9 @@ BaseApp.prototype = {
   },
 
   store: function(keyOrObject, value) {
-    var installationId = this._metadata.installationId;
+    let installationId = this._metadata.installationId;
     if (typeof keyOrObject === 'string') {
-      var key = `${installationId}:${keyOrObject}`;
+      let key = `${installationId}:${keyOrObject}`;
       if (arguments.length === 1) {
         return JSON.parse(localStorage.getItem(key));
       }
@@ -132,7 +132,7 @@ BaseApp.prototype = {
 }
 
 BaseApp.extend = function(appPrototype) {
-  var App = function(client, data) {
+  let App = function(client, data) {
     BaseApp.call(this, client, data);
   };
 
