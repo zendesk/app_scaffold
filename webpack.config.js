@@ -1,5 +1,5 @@
 /* eslint-env node */
-
+var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractStyles = new ExtractTextPlugin('main.css');
@@ -28,6 +28,14 @@ module.exports = {
         loader: extractStyles.extract("style", ["css?sourceMap", "sass?sourceMap"])
       },
       {
+        test: /\.json$/,
+        loader: 'json-loader'
+      },
+      {
+        test: /src\/translations\/.*\.json/,
+        loader: 'translations-loader'
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
@@ -44,6 +52,11 @@ module.exports = {
         }
       }
     ]
+  },
+  resolveLoader: {
+    alias: {
+      'translations-loader': path.join(__dirname, './loaders/translations-loader')
+    }
   },
   resolve: {
     extensions: ['', '.js']

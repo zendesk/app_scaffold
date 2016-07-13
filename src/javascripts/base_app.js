@@ -1,12 +1,9 @@
 import $ from 'jquery';
+import I18n from './i18n';
 
 var maxHeight = 375;
 
 function noop() {}
-
-function notImplementedWarning(methodName) {
-  console.warn && console.warn(`[BaseApp] ${methodName} shim hasn\'t been implemented yet!`);
-}
 
 function resolveHandler(app, name) {
   var handler = app.events[name];
@@ -37,13 +34,19 @@ function registerHelpers(app) {
     });
   });
 
-  Handlebars.registerHelper('t', function(key) {
-    return app.I18n.t(key);
+  Handlebars.registerHelper('t', function(key, context) {
+    try {
+      return app.I18n.t(key, context.hash);
+    } catch(e) {
+      console.error(e);
+      return e.message;
+    }
   });
 }
 
 function BaseApp(zafClient, data) {
   this.zafClient = zafClient;
+  this.I18n = { t: I18n.t.bind(null, this) };
   registerHelpers(this);
   bindEvents(this);
   var evt = { firstLoad: true };
@@ -52,8 +55,11 @@ function BaseApp(zafClient, data) {
   if (this.defaultState) {
     this.switchTo(this.defaultState);
   }
-  resolveHandler(this, 'app.created')();
-  resolveHandler(this, 'app.activated')(evt, evt);
+  zafClient.get('currentUser.locale').then(function(data) {
+    I18n.loadTranslations(this, data['currentUser.locale']);
+    resolveHandler(this, 'app.created')();
+    resolveHandler(this, 'app.activated')(evt, evt);
+  }.bind(this));
 }
 
 BaseApp.prototype = {
@@ -122,10 +128,6 @@ BaseApp.prototype = {
         localStorage.setItem(key, JSON.stringify(keyOrObject[key]));
       });
     }
-  },
-
-  I18n: {
-    t: notImplementedWarning.bind(null, 'I18n.t')
   }
 }
 

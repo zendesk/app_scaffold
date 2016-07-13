@@ -1,0 +1,19 @@
+{
+  "app": {
+    "description": "add your app description here",
+    "name": "add your app name here"
+  },
+
+  "hello": "Hello {{name}}!",
+
+  "save": {
+    "button": "Bookmark ticket #{{id}}",
+    "success": "Bookmarked ticket #{{id}}",
+    "error": "Sorry, something went wrong."
+  },
+
+  "learn_more": {
+    "message": "To learn more, {{link}}",
+    "link_text": "see the Zendesk forums"
+  }
+}

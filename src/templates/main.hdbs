@@ -1,1 +1,1 @@
-<p>Hello {{name}}!</p>
+<p>{{t "hello" name=name}}</p>
