@@ -29,6 +29,7 @@ module.exports = {
       },
       {
         test: /\.json$/,
+        exclude: /src\/translations\/.*\.json/,
         loader: 'json-loader'
       },
       {
@@ -60,7 +61,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'manifest': 'dist/manifest.json'
+      'manifest': path.join(__dirname, './dist/manifest.json')
     },
     extensions: ['', '.js']
   },
