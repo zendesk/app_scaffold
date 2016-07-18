@@ -97,7 +97,7 @@ BaseApp.prototype = {
   },
 
   renderTemplate: function(name, data) {
-    var template = require(`../templates/${name}.hdbs`);
+    var template = require(`../../templates/${name}.hdbs`);
     return template(data);
   },
 

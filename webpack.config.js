@@ -59,6 +59,9 @@ module.exports = {
     }
   },
   resolve: {
+    alias: {
+      'manifest': 'dist/manifest.json'
+    },
     extensions: ['', '.js']
   },
   externals: {

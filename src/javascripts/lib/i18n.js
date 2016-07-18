@@ -1,9 +1,9 @@
-import manifest from '../../dist/manifest.json';
+import manifest from 'manifest';
 const defaultLocale = manifest.defaultLocale || 'en';
 
 function tryRequire(locale) {
   try {
-    return require(`../translations/${locale}.json`);
+    return require(`../../translations/${locale}.json`);
   } catch(e) {
     return null;
   }
