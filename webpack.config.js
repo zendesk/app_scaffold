@@ -55,13 +55,12 @@ module.exports = {
     ]
   },
   resolveLoader: {
-    alias: {
-      'translations-loader': path.join(__dirname, './loaders/translations-loader')
-    }
+    modulesDirectories: [ './lib/loaders', 'node_modules' ]
   },
   resolve: {
+    modulesDirectories: [ 'node_modules', './lib/javascripts' ],
     alias: {
-      'manifest': path.join(__dirname, './dist/manifest.json')
+      'app_manifest': path.join(__dirname, './dist/manifest.json')
     },
     extensions: ['', '.js']
   },
