@@ -1,4 +1,4 @@
-import BaseApp from './base_app';
+import BaseApp from 'base_app';
 
 var App = {
 
