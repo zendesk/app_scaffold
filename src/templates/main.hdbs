@@ -1,1 +1,3 @@
 <p>{{t "hello" name=name}}</p>
+<p>{{t "string"}}</p>
+

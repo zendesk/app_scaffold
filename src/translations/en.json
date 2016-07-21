@@ -15,5 +15,7 @@
   "learn_more": {
     "message": "To learn more, {{link}}",
     "link_text": "see the Zendesk forums"
-  }
+  },
+
+  "string": "just a string"
 }
