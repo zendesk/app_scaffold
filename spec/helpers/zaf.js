@@ -12,6 +12,7 @@ function appendParams(url, params) {
   return urlWithParams;
 }
 
+// Mock url params required by ZAF SDK
 if (history.pushState) {
   let url = window.location.href;
   let origin = encodeURIComponent(window.top.location.origin);
