@@ -1,4 +1,4 @@
-import BaseApp from 'base_app';
+import BaseApp from '../../lib/javascripts/base_app';
 
 // remove these if not needed
 import Base64 from 'base64';
