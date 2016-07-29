@@ -1,8 +1,8 @@
 import BaseApp from 'base_app';
 
-// remove these if not needed
-import Base64 from 'base64';
-import helpers from 'helpers';
+// add these if needed
+// import Base64 from 'base64';
+// import helpers from 'helpers';
 
 var App = {
 
