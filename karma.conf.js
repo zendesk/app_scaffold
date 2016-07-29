@@ -79,17 +79,13 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantonJS_without_security'],
+    browsers: ['PhantomJS'],
 
     customLaunchers: {
       // CRUFT: needed to load zaf_sdk with crossorigin=anonymous
       Chrome_without_security: {
         base: 'Chrome',
         flags: ['--disable-web-security']
-      },
-      PhantonJS_without_security: {
-        base: 'PhantomJS',
-        flags: ['--web-security=false']
       }
     },
 
