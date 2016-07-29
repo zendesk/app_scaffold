@@ -7,12 +7,17 @@ describe('LegacyApp', () => {
   beforeEach(() => {
     let client = ZAFClient.init();
     app = new LegacyApp(client, {});
-    spyOn(app, 'switchTo');
   });
 
-  it('bar', () => {
-    var data = { user: 'Mikkel' };
-    app.renderMain(data);
-    expect(app.switchTo).toHaveBeenCalledWith('main', data.user);
+  describe('#renderMain', () => {
+    beforeEach(() => {
+      spyOn(app, 'switchTo');
+    });
+
+    it('switches to the main template', () => {
+      var data = { user: 'Mikkel' };
+      app.renderMain(data);
+      expect(app.switchTo).toHaveBeenCalledWith('main', data.user);
+    });
   });
 });
