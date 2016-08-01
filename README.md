@@ -43,7 +43,13 @@ or run the individual commands from the Procfile in separate terminals.
 Note: if you installed the Ruby version of foreman, you'll need to use `foreman start`.
 
 ## Testing
-WIP
+The App Scaffold is currently setup for testing with [Jasmine](http://jasmine.github.io/) (testing framework) and [Karma](https://karma-runner.github.io) (test runner). To run specs, run
+
+```
+karma start
+```
+
+Specs live under the `spec` directory and can be configured by editing the `karma.conf.js` file.
 
 ## Contribute
 * Put up a PR into the master branch.
