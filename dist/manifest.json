@@ -9,7 +9,7 @@
   "private": true,
   "location": {
     "zendesk": {
-      "ticket_sidebar": "assets/iframe.html"
+      "ticket_sidebar": "assets/index.html"
     }
   },
   "version": "1.0",
