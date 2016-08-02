@@ -3,6 +3,17 @@ var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var extractStyles = new ExtractTextPlugin('main.css');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
+var externalAssets = {
+  css: [
+    'https://cdn.jsdelivr.net/bootstrap/3.3.7/css/bootstrap.min.css'
+  ],
+  js: [
+    'https://cdn.jsdelivr.net/g/lodash@4.14.0,handlebarsjs@4.0.5,jquery@3.1.0,bootstrap@3.3.7,momentjs@2.14.1',
+    'http://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js'
+  ]
+}
 
 module.exports = {
   progress: true,
@@ -64,6 +75,7 @@ module.exports = {
     },
     extensions: ['', '.js']
   },
+  externalAssets: externalAssets,
   externals: {
     handlebars: 'Handlebars',
     jquery: 'jQuery',
@@ -74,6 +86,12 @@ module.exports = {
   devtool: '#eval',
   plugins: [
     extractStyles,
+    new HtmlWebpackPlugin({
+      warning: 'AUTOMATICALLY GENERATED FROM ./lib/templates/layout.hdbs - DO NOT MODIFY THIS FILE DIRECTLY',
+      vendorCss: externalAssets.css,
+      vendorJs: externalAssets.js,
+      template: './lib/templates/layout.hdbs'
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         drop_debugger: false,
