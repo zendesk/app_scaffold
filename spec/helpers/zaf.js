@@ -2,7 +2,7 @@ function appendParams(url, params) {
   let hashIndex = url.indexOf('#'),
       urlBeforeHash = hashIndex > 0 ? url.substring(0, hashIndex) : url,
       hasParams = urlBeforeHash.indexOf('?') > 0,
-      divider = hasParams > 0 ? '&' : '?',
+      divider = hasParams ? '&' : '?',
       urlWithParams = urlBeforeHash + divider + params;
 
   if (hashIndex > 0) {
