@@ -22,8 +22,7 @@ To setup these and other dependencies, run these commands:
 
 ```
 gem install zendesk_apps_tools
-npm install --global webpack
-npm install --global foreman
+npm install --global webpack foreman karma-cli
 ```
 
 Note: Foreman was originally created as a Ruby tool. If you prefer, you can install it by `gem install foreman` instead.
