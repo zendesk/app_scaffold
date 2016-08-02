@@ -22,8 +22,7 @@ To setup these and other dependencies, run these commands:
 
 ```
 gem install zendesk_apps_tools
-npm install --global webpack
-npm install --global foreman
+npm install --global webpack foreman karma-cli
 ```
 
 Note: Foreman was originally created as a Ruby tool. If you prefer, you can install it by `gem install foreman` instead.
@@ -43,7 +42,16 @@ or run the individual commands from the Procfile in separate terminals.
 Note: if you installed the Ruby version of foreman, you'll need to use `foreman start`.
 
 ## Testing
-WIP
+The App Scaffold is currently setup for testing with [Jasmine](http://jasmine.github.io/) (testing framework) and [Karma](https://karma-runner.github.io) (test runner). To run specs, run
+
+```
+karma start
+```
+
+Specs live under the `spec` directory and can be configured by editing the `karma.conf.js` file.
+
+## External Dependencies
+External dependencies are defined in the  [`webpack.config.js`](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js) as `externalAssets`. This ensures these dependencies are included on your app's `index.html` as well as the test suite.
 
 ## Contribute
 * Put up a PR into the master branch.

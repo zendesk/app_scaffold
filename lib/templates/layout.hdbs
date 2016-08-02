@@ -1,0 +1,16 @@
+<!-- {{htmlWebpackPlugin.options.warning}} -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    {{#each htmlWebpackPlugin.options.vendorCss}}
+      <link href="{{this}}" rel="stylesheet">
+    {{/each}}
+  </head>
+  <body>
+    <section data-main></section>
+    {{#each htmlWebpackPlugin.options.vendorJs}}
+      <script type="text/javascript" src="{{this}}"></script>
+    {{/each}}
+  </body>
+</html>
