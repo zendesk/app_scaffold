@@ -63,7 +63,7 @@ karma start
 Specs live under the `spec` directory and can be configured by editing the `karma.conf.js` file.
 
 ## External Dependencies
-External dependencies are defined in the  [`webpack.config.js`](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js) as `externalAssets`. This ensures these dependencies are included on your app's `index.html` as well as the test suite.
+External dependencies are defined in the  [`webpack.config.js`](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js) as `externalAssets`. This ensures these dependencies are included on your app's `index.html` as well as in the test suite.
 
 ## Contribute
 * Put up a PR into the master branch.
