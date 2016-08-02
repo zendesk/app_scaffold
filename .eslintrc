@@ -8,8 +8,7 @@
   "env": {
     "browser": true,
     "commonjs": true,
-    "es6": true,
-    "jasmine": true
+    "es6": true
   },
   "parserOptions": {
     "ecmaVersion": 6,
