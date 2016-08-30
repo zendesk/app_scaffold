@@ -8,6 +8,7 @@
     {{/each}}
   </head>
   <body>
+    <h1 class="u-alpha u-mb-sm">App Scaffold</h1>
     <section data-main></section>
     {{#each htmlWebpackPlugin.options.vendorJs}}
       <script type="text/javascript" src="{{this}}"></script>

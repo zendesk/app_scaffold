@@ -1,1 +1,39 @@
-<p>{{t "hello" name=name}}</p>
+
+<h2 class="u-gamma u-mb-sm">Hello</h2>
+<div class="l-grid l-grid-sm u-mb-sm">
+  <p class="l-grid__item u-2/2">Was this app made by {{t "hello" name=name}}?</p>
+</div>
+<div class="l-btn-group u-mb">
+   <button class="c-btn c-btn--primary">Yes</button>
+   <button class="c-btn">No</button>
+   <button class="c-btn c-btn--accent">Maybe</button>
+</div>
+<fieldset class="c-txt u-mb-sm">
+    <label class="c-txt__label l-grid__item u-1/3" for="txt-4">Label One</label><input class="c-txt__input l-grid__item u-2/3" id="txt-4" placeholder="Email" type="email">
+  </fieldset>
+  <fieldset class="c-txt u-mb-sm">
+    <label class="c-txt__label l-grid__item u-1/3" for="txt-5">Label Two</label><input class="c-txt__input l-grid__item u-2/3" id="txt-5" placeholder="Password" type="password">
+  </fieldset>
+
+  <div class="l-grid l-grid-sm u-mb-sm">
+    <div class="l-grid__item u-2/2">
+      <fieldset class="c-chk c-chk--radio">
+        <input class="c-chk__input" id="rdo-1" name="level" type="radio">
+        <label class="c-chk__label" for="rdo-1">Beginner</label>
+      </fieldset>
+      <fieldset class="c-chk c-chk--radio">
+        <input class="c-chk__input" id="rdo-2" name="level" type="radio">
+        <label class="c-chk__label" for="rdo-2">Intermediate</label>
+      </fieldset>
+      <fieldset class="c-chk c-chk--radio">
+        <input class="c-chk__input" id="rdo-3" name="level" type="radio">
+        <label class="c-chk__label" for="rdo-3">Advanced</label>
+      </fieldset>
+    </div>
+  </div>
+
+  <div class="l-grid l-grid-sm u-mb-sm">
+    <p class="l-grid__item u-2/2">
+      <button class="c-btn c-btn--pill c-btn--accent c-btn--full">Take the green pill</button>
+    </p>
+</div>
