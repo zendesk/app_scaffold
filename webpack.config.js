@@ -11,7 +11,7 @@ var externalAssets = {
   ],
   js: [
     'https://cdn.jsdelivr.net/g/lodash@4.14.0,handlebarsjs@4.0.5,jquery@3.1.0,bootstrap@3.3.7,momentjs@2.14.1',
-    'http://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js'
+    'https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js'
   ]
 }
 
@@ -66,10 +66,10 @@ module.exports = {
     ]
   },
   resolveLoader: {
-    modulesDirectories: [ './lib/loaders', 'node_modules' ]
+    modulesDirectories: ['./lib/loaders', 'node_modules']
   },
   resolve: {
-    modulesDirectories: [ 'node_modules', './lib/javascripts' ],
+    modulesDirectories: ['node_modules', './lib/javascripts'],
     alias: {
       'app_manifest': path.join(__dirname, './dist/manifest.json')
     },
