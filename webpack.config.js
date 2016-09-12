@@ -93,7 +93,7 @@ module.exports = {
       warning: 'AUTOMATICALLY GENERATED FROM ./lib/templates/layout.hdbs - DO NOT MODIFY THIS FILE DIRECTLY',
       vendorCss: externalAssets.css,
       vendorJs: externalAssets.js,
-      template: './lib/templates/layout.hdbs'
+      template: '!!handlebars!./lib/templates/layout.hdbs'
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
