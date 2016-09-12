@@ -1,5 +1,6 @@
 node_modules
 bower_components
+dist/assets/index.html
 dist/assets/main.css
 dist/assets/main.css.map
 dist/assets/main.js
