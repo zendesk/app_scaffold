@@ -45,7 +45,10 @@ module.exports = {
       },
       {
         test: /src\/translations\/.*\.json/,
-        loader: 'translations-loader'
+        loader: 'translations-loader',
+        query: {
+          runtime: 'handlebars'
+        }
       },
       {
         test: /\.js$/,
