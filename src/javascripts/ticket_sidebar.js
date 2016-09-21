@@ -10,7 +10,7 @@ class TicketSidebar {
     this._context = data.context;
 
     this.storage = new Storage(this._metadata.installationId);
-    this.view = new View({ onRender: () => {
+    this.view = new View({ afterRender: () => {
       let newHeight = Math.min($('html').height(), MAX_HEIGHT);
       this.client.invoke('resize', { height: newHeight, width: '100%' });
     }});
