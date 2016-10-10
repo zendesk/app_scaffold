@@ -1,1 +1,2 @@
 <p>{{t "hello" name=name}}</p>
+<button class="js-modalButton">Open Modal</button>
