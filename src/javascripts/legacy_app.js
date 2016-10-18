@@ -19,7 +19,7 @@ var App = {
     'getMe.done': 'renderMain',
     'click .js-modalButton': 'showModal',
     'modal.close': 'logClosedModal',
-    'app.willDestroy': 'storeClosedAt'
+    'app.willDestroy': 'logClosedApp'
   },
 
   init: function() {
@@ -44,10 +44,8 @@ var App = {
     console.log('Closed a modal.');
   },
 
-  storeClosedAt: function() {
-    var closedAt = new Date();
-    console.log('CLOSING', closedAt);
-    this.store('lastClosedAt', closedAt);
+  logClosedApp: function() {
+    console.log('About to close the app.');
   }
 }
 

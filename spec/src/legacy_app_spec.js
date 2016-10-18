@@ -6,7 +6,7 @@ describe('LegacyApp', () => {
 
   beforeEach(() => {
     let client = ZAFClient.init();
-    app = new LegacyApp(client, {});
+    app = new LegacyApp(client, { metadata: {}, context: {} });
   });
 
   describe('#renderMain', () => {
@@ -18,6 +18,14 @@ describe('LegacyApp', () => {
       var data = { user: 'Mikkel' };
       app.renderMain(data);
       expect(app.switchTo).toHaveBeenCalledWith('main', data.user);
+    });
+  });
+
+  describe('#logClosedApp', () => {
+    it('is called when the app is exiting', function() {
+      spyOn(app, 'logClosedApp');
+      $(window).trigger('unload');
+      expect(app.logClosedApp).toHaveBeenCalled();
     });
   });
 });
