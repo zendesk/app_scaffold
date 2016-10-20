@@ -20,12 +20,4 @@ describe('LegacyApp', () => {
       expect(app.switchTo).toHaveBeenCalledWith('main', data.user);
     });
   });
-
-  describe('#logClosedApp', () => {
-    it('is called when the app is exiting', function() {
-      spyOn(app, 'logClosedApp');
-      $(window).trigger('unload');
-      expect(app.logClosedApp).toHaveBeenCalled();
-    });
-  });
 });
