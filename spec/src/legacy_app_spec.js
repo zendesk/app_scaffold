@@ -6,7 +6,7 @@ describe('LegacyApp', () => {
 
   beforeEach(() => {
     let client = ZAFClient.init();
-    app = new LegacyApp(client, {});
+    app = new LegacyApp(client, { metadata: {}, context: {} });
   });
 
   describe('#renderMain', () => {

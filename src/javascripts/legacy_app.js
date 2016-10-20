@@ -18,7 +18,8 @@ var App = {
     'app.created': 'init',
     'getMe.done': 'renderMain',
     'click .js-modalButton': 'showModal',
-    'modal.close': 'logClosedModal'
+    'modal.close': 'logClosedModal',
+    'app.willDestroy': 'logClosedApp'
   },
 
   init: function() {
@@ -41,6 +42,10 @@ var App = {
 
   logClosedModal: function() {
     console.log('Closed a modal.');
+  },
+
+  logClosedApp: function() {
+    console.log('About to close the app.');
   }
 }
 
