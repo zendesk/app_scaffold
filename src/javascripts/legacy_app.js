@@ -15,7 +15,7 @@ var App = {
   },
 
   events: {
-    'app.created': 'init',
+    'app.registered': 'init',
     'getMe.done': 'renderMain',
     'app.willDestroy': 'logClosedApp'
   },
