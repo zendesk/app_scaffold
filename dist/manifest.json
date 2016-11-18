@@ -8,7 +8,7 @@
   "defaultLocale": "en",
   "private": true,
   "location": {
-    "zendesk": {
+    "support": {
       "ticket_sidebar": "assets/index.html"
     }
   },
