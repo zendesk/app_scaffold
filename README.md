@@ -54,6 +54,7 @@ or run the individual commands from the Procfile in separate terminals.
 Note: if you installed the Ruby version of foreman, you'll need to use `foreman start`.
 
 ## Testing
+
 The App Scaffold is currently setup for testing with [Jasmine](http://jasmine.github.io/) (testing framework) and [Karma](https://karma-runner.github.io) (test runner). To run specs, run
 
 ```
@@ -61,6 +62,36 @@ karma start
 ```
 
 Specs live under the `spec` directory and can be configured by editing the `karma.conf.js` file.
+
+## Deploying
+
+To check that your app will pass the server-side validation check, run
+
+```
+zat validate --path=./dist
+```
+
+If validation is successful, you can upload the app into your Zendesk account by running
+
+```
+zat create --path=dist
+```
+
+To update your app after it has been created in your account, run
+
+```
+zat update --path=dist
+```
+
+Or, to create a zip archive for manual upload, run
+
+```
+zat package --path=dist
+```
+
+taking note of the created filename.
+
+For more information on the Zendesk Apps Tools please see the [documentation](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools).
 
 ## External Dependencies
 External dependencies are defined in the  [`webpack.config.js`](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js) as `externalAssets`. This ensures these dependencies are included on your app's `index.html` as well as in the test suite.
