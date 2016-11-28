@@ -53,6 +53,32 @@ or run the individual commands from the Procfile in separate terminals.
 
 Note: if you installed the Ruby version of foreman, you'll need to use `foreman start`.
 
+#### Parameters and Settings
+
+If you need to test your app with a `parameters` section in `dist/manifest.json`, foreman might crash with a message like:
+
+> Would have prompted for a value interactively, but zat is not listening to keyboard input.
+
+To resolve this problem, set default values for parameters or create a `settings.yml` file in the root directory of your app scaffold-based project, and populate it with your parameter names and test values. For example, using a parameters section like:
+
+```json
+{
+  "parameters": [
+    {
+      "name": "myParameter"
+    }
+  ]
+}
+```
+
+create a `settings.yml` containing:
+
+```yaml
+myParameter: 'some value!'
+```
+
+If you prefer to manually input settings every time you run foreman, edit the Procfile to remove the `--unattended` option from the server command.
+
 ## Testing
 
 The App Scaffold is currently setup for testing with [Jasmine](http://jasmine.github.io/) (testing framework) and [Karma](https://karma-runner.github.io) (test runner). To run specs, run
@@ -101,7 +127,7 @@ External dependencies are defined in the  [`webpack.config.js`](https://github.c
 * CC and get a +1 from @zendesk/vegemite.
 
 ## Bugs
-Submit Issues via [GitHub](https://github.com/zendesk/app_scaffold/issues/new) or email vegemite@zendesk.com.
+Submit Issues via [GitHub](https://github.com/zendesk/app_scaffold/issues/new) or email support@zendesk.com.
 
 ## Useful Links
 Links to maintaining team, confluence pages, Datadog dashboard, Kibana logs, etc
