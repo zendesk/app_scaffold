@@ -2,6 +2,8 @@
 
 # App Scaffold
 
+_Note: the App Scaffold currently depends on zat v1.35.12 or greater._
+
 ## Description
 This repo contains a scaffold to help developers build Iframe apps for Zendesk products.
 
