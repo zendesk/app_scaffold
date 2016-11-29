@@ -47,7 +47,7 @@ Name             | Description
 [`webpack.config.js`](#webpackconfigjs) | Configuration file that webpack uses to build your app
 
 #### dist
-The dist directory is the folder you will need to package when submitting your app to the marketplace. It is also the folder you will have to serve when using ZAT. It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
+The dist directory is the folder you will need to package when submitting your app to the marketplace. It is also the folder you will have to serve when using [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools). It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
 
 #### lib
 The lib directory is where the source code for the app shims and compatibility methods live. While you may modify or remove this code as required for your app, doing so is not recommended for beginners.
@@ -56,13 +56,13 @@ The lib directory is where the source code for the app shims and compatibility m
 The spec directory is where all your tests and test helpers live. Tests are not required to submit/upload your app to Zendesk and your test files are not included in your app's package, however it is good practice to write tests to document functionality and prevent bugs.
 
 #### src
-The src directory is where your raw source code lives. The App Scaffold includes different directories for JavaScript, stylesheets, templates and translations.
+The src directory is where your raw source code lives. The App Scaffold includes different directories for JavaScript, stylesheets, templates and translations. This is where most of your additions will be (and spec, of course!).
 
 #### .eslintrc
-eslintrc is a configuration file for [ESLint](http://eslint.org). ESLint is a linting utility for JavaScript. For more information on how to configure ESLint see [Configuring ESLint](http://eslint.org/docs/user-guide/configuring).
+.eslintrc is a configuration file for [ESLint](http://eslint.org). ESLint is a linting utility for JavaScript. For more information on how to configure ESLint see [Configuring ESLint](http://eslint.org/docs/user-guide/configuring).
 
 #### karma.conf.js
-karma.conf.js is a configuration file for [Karma](http://karma-runner.github.io). Karma is a JavaScript test runner. This file defines where your source and test files live. For more information on how to configure this file see [Karma - Configuration File](http://karma-runner.github.io/1.0/config/configuration-file.html).
+karma.conf.js is a configuration file for [Karma](http://karma-runner.github.io). Karma is a JavaScript test runner. This file defines where your source and test files live. For more information on how to use this file see [Karma - Configuration File](http://karma-runner.github.io/1.0/config/configuration-file.html).
 
 #### package.json
 package.json is a configuration file for [NPM](https://www.npmjs.com). NPM is a package manager for JavaScript. This file includes information about your project and its dependencies. For more information on how to configure this file see [package.json](https://docs.npmjs.com/files/package.json).
@@ -183,9 +183,6 @@ For more information on the Zendesk Apps Tools please see the [documentation](ht
 
 ## External Dependencies
 External dependencies are defined in the  [`webpack.config.js`](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js) as `externalAssets`. This ensures these dependencies are included on your app's `index.html` as well as in the test suite.
-
-## Owners
-The project is maintained by the Quokka / Vegemite team, ping us with [@zendesk/vegemite on GitHub](https://github.com/orgs/zendesk/teams/vegemite).
 
 ## Contribute
 * Put up a PR into the master branch.
