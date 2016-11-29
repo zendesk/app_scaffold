@@ -3,31 +3,31 @@
 # App Scaffold
 
 ## Description
-This repo contains a scaffold to help developers build apps for Zendesk products. The App Scaffold includes many features to help you maintain and scale your app. Some of the features provided by the App Scaffold are listed below, however you don't need prior experience in any of these to be able to use the scaffold successfully.
+This repo contains a scaffold to help developers build [apps for Zendesk](https://developer.zendesk.com/apps/docs/apps-v2/getting_started) products. The App Scaffold includes many features to help you maintain and scale your app. Some of the features provided by the App Scaffold are listed below, however you don't need prior experience in any of these to be able to use the scaffold successfully.
 
 - [ES6 (ES2015)](https://babeljs.io/docs/learn-es2015/)
 
-ECMAScript 6, also known as ECMAScript 2015, is the latest version of the ECMAScript standard. ES6 is a significant update to the language, and the first update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is underway now.
+_ECMAScript 6, also known as ECMAScript 2015, is the latest version of the ECMAScript standard. ES6 is a significant update to the language, and the first update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is [underway now](http://kangax.github.io/compat-table/es6/)._
 
 - [Handlebars](http://handlebarsjs.com/) templates
 
-Handlebars.js is an extension to the Mustache templating language created by Chris Wanstrath. Handlebars.js and Mustache are both logicless templating languages that keep the view and the code separated like we all know they should be.
+_Handlebars.js is an extension to the Mustache templating language created by Chris Wanstrath. Handlebars.js and Mustache are both logicless templating languages that keep the view and the code separated like we all know they should be._
 
 - [SASS](http://sass-lang.com/) stylesheets
 
-Sass is an extension of CSS that adds power and elegance to the basic language. It allows you to use variables, nested rules, mixins, inline imports, and more, all with a fully CSS-compatible syntax.
+_Sass is an extension of CSS that adds power and elegance to the basic language. It allows you to use variables, nested rules, mixins, inline imports, and more, all with a fully CSS-compatible syntax._
 
 - [Webpack](https://webpack.github.io/) module bundler
 
-Webpack is a module bundler. It packs CommonJs/AMD modules i. e. for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand.
+_Webpack is a module bundler. It packs CommonJs/AMD modules i. e. for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand._
 
 - [Karma](http://karma-runner.github.io/) test runner
 
-The main goal for Karma is to bring a productive testing environment to developers. The environment being one where they don't have to set up loads of configurations, but rather a place where developers can just write the code and get instant feedback from their tests. Because getting quick feedback is what makes you productive and creative.
+_The main goal for Karma is to bring a productive testing environment to developers. The environment being one where they don't have to set up loads of configurations, but rather a place where developers can just write the code and get instant feedback from their tests. Because getting quick feedback is what makes you productive and creative._
 
 - [Jasmine](https://jasmine.github.io/) testing framework
 
-Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests.
+_Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests._
 
 ## Owners
 The project is maintained by the Quokka / Vegemite team, ping us with [@zendesk/vegemite on GitHub](https://github.com/orgs/zendesk/teams/vegemite).
