@@ -56,7 +56,7 @@ The lib directory is where the source code for the app shims and compatibility m
 The spec directory is where all your tests and test helpers live. Tests are not required to submit/upload your app to Zendesk and your test files are not included in your app's package, however it is good practice to write tests to document functionality and prevent bugs.
 
 #### src
-The src directory is where your raw source code lives. The App Scaffold includes different directories for JavaScript, stylesheets, templates and translations. This is where most of your additions will be (and spec, of course!).
+The src directory is where your raw source code lives. The App Scaffold includes different directories for JavaScript, stylesheets, templates and translations. Most of your additions will be in here (and spec, of course!).
 
 #### .eslintrc
 .eslintrc is a configuration file for [ESLint](http://eslint.org). ESLint is a linting utility for JavaScript. For more information on how to configure ESLint see [Configuring ESLint](http://eslint.org/docs/user-guide/configuring).
