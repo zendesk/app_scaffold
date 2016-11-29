@@ -29,10 +29,38 @@ _The main goal for Karma is to bring a productive testing environment to develop
 
 _Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests._
 
-## Owners
-The project is maintained by the Quokka / Vegemite team, ping us with [@zendesk/vegemite on GitHub](https://github.com/orgs/zendesk/teams/vegemite).
-
 ## Getting Started
+
+### Folder structure
+
+The folder and file structure of the App Scaffold is as follows:
+
+Name             | Description
+---------------- | -----------
+[`dist/`](#dist) | The folder in which webpack packages the built version of your app
+[`src/`](#src)   | The folder in which all of your source JavaScript, CSS, templates and translation files live
+[`lib/`](#lib)   | The folder in which the shims and files that make the scaffold work live
+[`.eslintrc`](#eslintrc) | Configuration file for JavaScript linting
+[`package.json`](#packagejson) | Configuration file for build dependencies
+[`webpack.config.js`](#webpackconfigjs) | Configuration file that webpack uses to build your app
+
+#### dist
+The dist directory is the folder you will need to package when submitting your app to the marketplace. It is also the folder you will have to serve when using ZAT. It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
+
+#### src
+The src directory is where your raw source code lives. The App Scaffold includes different directories for JavaScript, stylesheets, templates and translations.
+
+#### lib
+The lib directory is where the source code for the app shims and compatibility methods live. While you may modify or remove this code as required for your app, doing so is not recommended for beginners.
+
+#### .eslintrc
+eslintrc is a configuration file for [ESLint](http://eslint.org). ESLint is a linting utility for JavaScript. For more information on how to configure ESLint see [Configuring ESLint](http://eslint.org/docs/user-guide/configuring).
+
+#### package.json
+package.json is a configuration file for [NPM](https://www.npmjs.com). NPM is a package manager for JavaScript. This file includes information about your project and its dependencies. For more information on how to configure this file see [package.json](https://docs.npmjs.com/files/package.json).
+
+#### webpack.config.js
+webpack.config.js is a configuration file for [webpack](https://webpack.github.io/). Webpack is a JavaScript module bundler. For more information about webpack and how to configure it see [What is webpack](http://webpack.github.io/docs/what-is-webpack.html).
 
 ### Setup
 1. Clone or fork this repo
@@ -147,6 +175,9 @@ For more information on the Zendesk Apps Tools please see the [documentation](ht
 
 ## External Dependencies
 External dependencies are defined in the  [`webpack.config.js`](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js) as `externalAssets`. This ensures these dependencies are included on your app's `index.html` as well as in the test suite.
+
+## Owners
+The project is maintained by the Quokka / Vegemite team, ping us with [@zendesk/vegemite on GitHub](https://github.com/orgs/zendesk/teams/vegemite).
 
 ## Contribute
 * Put up a PR into the master branch.
