@@ -103,7 +103,7 @@ The from-scratch branch uses up-to-date versions of the libraries included with 
 
 _Note: the App Scaffold currently depends on zat v1.35.12 or greater._
 
-Foreman allows you to easily run multiple processes in one tab. One process is `zat server`, which serves the app in a way that can be consumed by the host (eg Zendesk). The second is `webpack --watch` to rebuild the project whenever you save changes to a source file.
+Foreman allows you to easily run multiple processes in one tab. One process is `zat server --path=./dist`, which serves the app in a way that can be run in a supported Zendesk product. The second is `webpack --watch` to rebuild the project whenever you save changes to a source file.
 
 To run these processes, run
 
