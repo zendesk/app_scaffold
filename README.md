@@ -7,27 +7,27 @@ This repo contains a scaffold to help developers build [apps for Zendesk product
 
 - [ES6 (ES2015)](https://babeljs.io/docs/learn-es2015/)
 
-_ECMAScript 6, also known as ECMAScript 2015, is the latest version of the ECMAScript standard. ES6 is a significant update to the language, and the first update to the language since ES5 was standardized in 2009. Implementation of these features in major JavaScript engines is [underway now](http://kangax.github.io/compat-table/es6/)._
+ECMAScript 6, also known as ECMAScript 2015, is the latest version of the ECMAScript standard. The App Scaffold includes the [Babel compiler](https://babeljs.io/) to transpile your code to ES5. This allows you to use ES6 features, such as classes, arrow functions and template strings even in browsers that haven't fully implemented these features.
 
 - [Handlebars](http://handlebarsjs.com/) templates
 
-_Handlebars.js is an extension to the Mustache templating language created by Chris Wanstrath. Handlebars.js and Mustache are both logicless templating languages that keep the view and the code separated like we all know they should be._
+Handlebars is a powerful templating library that lets you build semantic templates for your app with minimal logic.
 
 - [SASS](http://sass-lang.com/) stylesheets
 
-_Sass is an extension of CSS that adds power and elegance to the basic language. It allows you to use variables, nested rules, mixins, inline imports, and more, all with a fully CSS-compatible syntax._
+Sass is an extension of CSS that adds power and elegance to the basic language. It allows you to use variables, nested rules, mixins, inline imports, and more.
 
 - [Webpack](https://webpack.github.io/) module bundler
 
-_Webpack is a module bundler. It packs CommonJs/AMD modules i. e. for the browser. Allows to split your codebase into multiple bundles, which can be loaded on demand._
+Webpack compiles web browser applications. It allows splitting your source code into modules and re-use them with require and import statements. It also allows splitting your compiled project into separate files that are loaded on demand.
 
 - [Karma](http://karma-runner.github.io/) test runner
 
-_The main goal for Karma is to bring a productive testing environment to developers. The environment being one where they don't have to set up loads of configurations, but rather a place where developers can just write the code and get instant feedback from their tests. Because getting quick feedback is what makes you productive and creative._
+The main goal for Karma is to bring a productive testing environment to developers with minimal configuration.
 
 - [Jasmine](https://jasmine.github.io/) testing framework
 
-_Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests._
+Jasmine is a behavior-driven development framework for testing JavaScript code with a clean syntax.
 
 ## Getting Started
 
@@ -35,16 +35,16 @@ _Jasmine is a behavior-driven development framework for testing JavaScript code.
 
 The folder and file structure of the App Scaffold is as follows:
 
-Name             | Description
----------------- | -----------
-[`dist/`](#dist) | The folder in which webpack packages the built version of your app
-[`lib/`](#lib)   | The folder in which the shims and files that make the scaffold work live
-[`spec/`](#spec) | The folder in which all of your test files live
-[`src/`](#src)   | The folder in which all of your source JavaScript, CSS, templates and translation files live
-[`.eslintrc`](#eslintrc) | Configuration file for JavaScript linting
-[`karma.conf.js`](#karmaconfjs) | Configuration file for the test runner
-[`package.json`](#packagejson) | Configuration file for build dependencies
-[`webpack.config.js`](#webpackconfigjs) | Configuration file that webpack uses to build your app
+| Name                                    | Description                                                                                  |
+|:----------------------------------------|:---------------------------------------------------------------------------------------------|
+| [`dist/`](#dist)                        | The folder in which webpack packages the built version of your app                           |
+| [`lib/`](#lib)                          | The folder in which the shims and files that make the scaffold work live                     |
+| [`spec/`](#spec)                        | The folder in which all of your test files live                                              |
+| [`src/`](#src)                          | The folder in which all of your source JavaScript, CSS, templates and translation files live |
+| [`.eslintrc`](#eslintrc)                | Configuration file for JavaScript linting                                                    |
+| [`karma.conf.js`](#karmaconfjs)         | Configuration file for the test runner                                                       |
+| [`package.json`](#packagejson)          | Configuration file for build dependencies                                                    |
+| [`webpack.config.js`](#webpackconfigjs) | Configuration file that webpack uses to build your app                                       |
 
 #### dist
 The dist directory is the folder you will need to package when submitting your app to the marketplace. It is also the folder you will have to serve when using [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools). It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
