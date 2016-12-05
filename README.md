@@ -3,7 +3,7 @@
 # App Scaffold
 
 ## Description
-This repo contains a scaffold to help developers build [apps for Zendesk](https://developer.zendesk.com/apps/docs/apps-v2/getting_started) products. The App Scaffold includes many features to help you maintain and scale your app. Some of the features provided by the App Scaffold are listed below, however you don't need prior experience in any of these to be able to use the scaffold successfully.
+This repo contains a scaffold to help developers build [apps for Zendesk products](https://developer.zendesk.com/apps/docs/apps-v2/getting_started). The App Scaffold includes many features to help you maintain and scale your app. Some of the features provided by the App Scaffold are listed below, however you don't need prior experience in any of these to be able to use the scaffold successfully.
 
 - [ES6 (ES2015)](https://babeljs.io/docs/learn-es2015/)
 
