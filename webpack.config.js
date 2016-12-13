@@ -7,10 +7,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var externalAssets = {
   css: [
-    'https://cdn.jsdelivr.net/bootstrap/3.3.7/css/bootstrap.min.css'
+    'https://assets.zd-staging.com/apps/sdk-assets/css/0/zendesk_garden.css'
   ],
   js: [
-    'https://cdn.jsdelivr.net/g/lodash@4.14.0,handlebarsjs@4.0.5,jquery@3.1.0,bootstrap@3.3.7,momentjs@2.14.1',
+    'https://cdn.jsdelivr.net/g/lodash@4.14.0,handlebarsjs@4.0.5,jquery@3.1.0',
     'https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js'
   ]
 }
