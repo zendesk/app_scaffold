@@ -1,2 +1,2 @@
 reload: webpack --watch
-server: zat server --path=./dist
+server: zat server --path=./dist --unattended
