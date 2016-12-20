@@ -40,11 +40,12 @@ module.exports = {
       },
       {
         test: /\.json$/,
-        exclude: /src\/translations\/.*\.json/,
+        exclude: path.resolve(__dirname, './src/translations'),
         loader: 'json-loader'
       },
       {
-        test: /src\/translations\/.*\.json/,
+        test: /\.json$/,
+        include: path.resolve(__dirname, './src/translations'),
         loader: 'translations-loader',
         query: {
           runtime: 'handlebars'
