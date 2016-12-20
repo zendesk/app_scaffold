@@ -1,1 +1,21 @@
-<p>{{t "hello" name=name}}</p>
+<h2 class="u-gamma u-mb-sm">{{t "hello" name=currentUser.name}}</h2>
+{{#each collaborators}}
+<div class="l-flag u-m-sm">
+  <div class="l-flag__figure">
+    <figure class="c-avatar">
+      <img alt="user" src="{{avatarUrl}}" />
+    </figure>
+  </div>
+  <div class="l-flag__body">
+    <span class="u-delta u-ml-xs">{{name}}</span>
+  </div>
+</div>
+{{/each}}
+
+<form class="u-mb-sm">
+  <fieldset class="c-txt c-txt--inline u-mb-sm">
+    <label class="c-txt__label" for="email-address">{{t "email.label"}}</label>
+    <input class="c-txt__input u-ml" id="email-address" placeholder="{{t "email.placeholder"}}" type="email">
+  </fieldset>
+  <button class="c-btn c-btn--medium c-btn--primary" id="add-cc">{{t "add_cc"}}</button>
+</form>

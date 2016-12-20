@@ -4,16 +4,17 @@
     "name": "add your app name here"
   },
 
-  "hello": "Hello {{name}}!",
-
-  "save": {
-    "button": "Bookmark ticket #{{id}}",
-    "success": "Bookmarked ticket #{{id}}",
-    "error": "Sorry, something went wrong."
-  },
+  "hello": "Hello there {{name}}! These people are notified on this ticket:",
 
   "learn_more": {
     "message": "To learn more, {{link}}",
     "link_text": "see the Zendesk forums"
-  }
+  },
+
+  "email": {
+    "label": "Email",
+    "placeholder": "Email address"
+  },
+
+  "add_cc": "Add CC"
 }

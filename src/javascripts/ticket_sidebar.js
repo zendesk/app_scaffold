@@ -11,21 +11,47 @@ class TicketSidebar {
 
     this.storage = new Storage(this._metadata.installationId);
     this.view = new View({ afterRender: () => {
-      let newHeight = Math.min($('html').height(), MAX_HEIGHT);
+      const newHeight = Math.min($('html').height(), MAX_HEIGHT);
       this.client.invoke('resize', { height: newHeight, width: '100%' });
     }});
 
-    this.getCurrentUser().then(this.renderMain.bind(this));
-
+    this.client.on('ticket.collaborators.changed', this.loadCollaborators.bind(this));
     this.view.switchTo('loading');
+
+    this.loadCollaborators();
   }
 
-  getCurrentUser() {
-    return this.client.request({ url: '/api/v2/users/me.json' });
+  loadCollaborators() {
+    this.client.get('ticket.collaborators').then(this.renderMain.bind(this));
+  }
+
+  loadCurrentUser() {
+    if (this.currentUser) {
+      return Promise.resolve(this.currentUser);
+    } else {
+      return this.client.request('/api/v2/users/me.json').then((data) => {
+        this.currentUser = data.user;
+        return this.currentUser;
+      });
+    }
   }
 
   renderMain(data) {
-    this.view.switchTo('main', data.user);
+    this.loadCurrentUser().then((currentUser) => {
+      console.log(currentUser);
+      const collaborators = data['ticket.collaborators'];
+      this.view.switchTo('main', {
+        ticketId: this._context.ticketId,
+        collaborators,
+        currentUser: currentUser
+      });
+
+      $('#add-cc').on('click', (e) => {
+        e.preventDefault();
+        const email = $('#email-address').val();
+        this.client.invoke('ticket.collaborators.add', { email });
+      });
+    })
   }
 }
 
