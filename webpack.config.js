@@ -35,8 +35,12 @@ module.exports = {
     ],
     loaders: [
       {
+        test: /\.(gif|jpe?g|png|svg|woff2?|ttf|eot)$/,
+        loader: 'url-loader?limit=10000&name=[name].[ext]'
+      },
+      {
         test: /\.scss$/,
-        loader: extractStyles.extract("style", ["css?sourceMap", "sass?sourceMap"])
+        loader: extractStyles.extract("style", ["css?sourceMap&root=" + path.resolve('./dist/assets'), "sass?sourceMap"])
       },
       {
         test: /\.json$/,
