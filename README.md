@@ -29,9 +29,7 @@ The main goal for Karma is to bring a productive testing environment to develope
 
 Jasmine is a behavior-driven development framework for testing JavaScript code with a clean syntax.
 
-## Getting Started
-
-### Folder structure
+## Folder structure
 
 The folder and file structure of the App Scaffold is as follows:
 
@@ -70,6 +68,12 @@ package.json is a configuration file for [NPM](https://www.npmjs.com). NPM is a 
 #### webpack.config.js
 webpack.config.js is a configuration file for [webpack](https://webpack.github.io/). Webpack is a JavaScript module bundler. For more information about webpack and how to configure it see [What is webpack](http://webpack.github.io/docs/what-is-webpack.html).
 
+## Getting Started
+
+### Dependencies
+- [Node.js](https://nodejs.org/en/) >= 6.3.x
+- [Ruby](https://www.ruby-lang.org/) >= 2.0.x
+
 ### Setup
 1. Clone or fork this repo
 2. Run `npm install`
@@ -94,7 +98,8 @@ The master branch of this repo contains modules and sample code to help you migr
 If you're starting a v2 app from scratch you will need to check out the [from-scratch](https://github.com/zendesk/app_scaffold/tree/from-scratch) branch:
 
 ```
-git checkout from-scratch && npm install
+git checkout from-scratch
+npm install
 ```
 
 The from-scratch branch uses up-to-date versions of the libraries included with the App Scaffold and also removes the shims needed when migrating from v1. It also includes sample code to help you get started on v2. If you want to see the exact differences between the master and from-scratch branches click [here](https://github.com/zendesk/app_scaffold/compare/from-scratch).
