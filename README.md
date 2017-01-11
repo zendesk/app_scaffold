@@ -3,7 +3,49 @@
 # App Scaffold
 
 ## Description
-This repo contains a scaffold to help developers build [apps for Zendesk products](https://developer.zendesk.com/apps/docs/apps-v2/getting_started). The App Scaffold includes many features to help you maintain and scale your app. Some of the features provided by the App Scaffold are listed below, however you don't need prior experience in any of these to be able to use the scaffold successfully.
+This repo contains a scaffold to help developers build [apps for Zendesk products](https://developer.zendesk.com/apps/docs/apps-v2/getting_started).
+
+## Getting Started
+
+### Dependencies
+- [Node.js](https://nodejs.org/en/) >= 6.3.x
+- [Ruby](https://www.ruby-lang.org/) >= 2.0.x
+
+### Setup
+1. Clone or fork this repo
+2. Run `npm install`
+
+To run your app locally in Zendesk, you need the [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools).
+
+You'll also need to run a couple of command-line Node.js-based tools that are installed using `npm`. For a node module to be available from the command-line, it must be installed globally.
+
+To setup these and other dependencies, run these commands:
+
+```
+gem install zendesk_apps_tools
+npm install --global webpack foreman karma-cli
+```
+
+Note: Foreman was originally created as a Ruby tool. If you prefer, you can install it by `gem install foreman` instead.
+
+## Running locally
+
+_Note: the App Scaffold currently depends on zat v1.35.12 or greater._
+
+Foreman allows you to easily run multiple processes in one tab. One process is `zat server --path=./dist`, which serves the app in a way that can be run in a supported Zendesk product. The second is `webpack --watch` to rebuild the project whenever you save changes to a source file.
+
+To run these processes, run
+
+```
+nf start
+```
+
+or run the individual commands from the Procfile in separate terminals.
+
+Note: if you installed the Ruby version of foreman, you'll need to use `foreman start`.
+
+## But why?
+The App Scaffold includes many features to help you maintain and scale your app. Some of the features provided by the App Scaffold are listed below, however you don't need prior experience in any of these to be able to use the scaffold successfully.
 
 - [ES6 (ES2015)](https://babeljs.io/docs/learn-es2015/)
 
@@ -72,7 +114,6 @@ webpack.config.js is a configuration file for [webpack](https://webpack.github.i
 The App Scaffold's initialization code lives in [`src/index.js`](https://github.com/zendesk/app_scaffold/blob/master/src/javascripts/index.js). For more information see [inline documentation](https://github.com/zendesk/app_scaffold/blob/master/src/javascripts/index.js).
 
 ## API Reference
-
 The App Scaffold provides some classes under `/lib` to help building apps.
 
 ### I18n
@@ -84,33 +125,10 @@ The Storage module provides helper methods to interact with `localStorage`. For 
 ### View
 The View module provides methods to simplify rendering Handlebars templates located under the templates folder. For more information see [Using the View module](https://github.com/zendesk/app_scaffold/blob/master/doc/view.md).
 
-## Getting Started
-
-### Dependencies
-- [Node.js](https://nodejs.org/en/) >= 6.3.x
-- [Ruby](https://www.ruby-lang.org/) >= 2.0.x
-
-### Setup
-1. Clone or fork this repo
-2. Run `npm install`
-
-To run your app locally in Zendesk, you need the [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools).
-
-You'll also need to run a couple of command-line Node.js-based tools that are installed using `npm`. For a node module to be available from the command-line, it must be installed globally.
-
-To setup these and other dependencies, run these commands:
-
-```
-gem install zendesk_apps_tools
-npm install --global webpack foreman karma-cli
-```
-
-Note: Foreman was originally created as a Ruby tool. If you prefer, you can install it by `gem install foreman` instead.
-
-### Migrating from v1
+## Migrating from v1
 The master branch of this repo contains modules and sample code to help you migrate from a v1 app. For detailed documentation on how to migrate from a v1 app see our [Migrating to v2](https://developer.zendesk.com/apps/docs/apps-v2/migrating) guide on the Zendesk Developer Portal.
 
-### Starting from scratch
+## Starting from scratch
 If you're starting a v2 app from scratch you will need to check out the [from-scratch](https://github.com/zendesk/app_scaffold/tree/from-scratch) branch:
 
 ```
@@ -124,23 +142,7 @@ Another addition, present only in the from-scratch branch, is the [Zendesk Garde
 
 If you want to see the exact differences between the master and from-scratch branches click [here](https://github.com/zendesk/app_scaffold/compare/from-scratch).
 
-### Running locally
-
-_Note: the App Scaffold currently depends on zat v1.35.12 or greater._
-
-Foreman allows you to easily run multiple processes in one tab. One process is `zat server --path=./dist`, which serves the app in a way that can be run in a supported Zendesk product. The second is `webpack --watch` to rebuild the project whenever you save changes to a source file.
-
-To run these processes, run
-
-```
-nf start
-```
-
-or run the individual commands from the Procfile in separate terminals.
-
-Note: if you installed the Ruby version of foreman, you'll need to use `foreman start`.
-
-#### Parameters and Settings
+## Parameters and Settings
 
 If you need to test your app with a `parameters` section in `dist/manifest.json`, foreman might crash with a message like:
 

@@ -12,7 +12,7 @@ The View module provides methods to simplify rendering Handlebars templates loca
 #### Arguments
 
 * `options`: Options object to configure the view. Supported options:
-  - `afterRender`: Callback that is invoked whenever `switchTo` is called.
+  - `afterRender` (optional): Callback that is invoked whenever `switchTo` is called.
 
 ```javascript
 import View from 'view';
@@ -27,7 +27,7 @@ const MAX_HEIGHT = 375;
 const client = ZAFClient.init();
 
 // automatically resize the iframe based on document height whenever switching the template
-const view = new View({ afterRender: () => {
+const view = new View({ afterRender() {
   let newHeight = Math.min($('html').height(), MAX_HEIGHT);
   client.invoke('resize', { height: newHeight, width: '100%' });
 }});
@@ -53,7 +53,7 @@ view.renderTemplate('user_template', { name: 'Mikkel' }); // "<p>Hello, Mikkel!<
 ```
 
 ### view.switchTo(name, data)
-Updates the contents of the [section element within your app's layout](https://github.com/zendesk/app_scaffold/blob/master/lib/templates/layout.hdbs#L11) with the rendered template.
+Updates the contents of the [section element within your app's layout](https://github.com/zendesk/app_scaffold/blob/b991264bdf5973da22be4d58708987817f97af43/lib/templates/layout.hdbs#L11) with the rendered template.
 
 #### Arguments
 

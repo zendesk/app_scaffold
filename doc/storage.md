@@ -3,7 +3,7 @@
 **This document does not apply to apps that are migrated from v1 of the Zendesk
 App Framework.**
 
-The Storage module provides helper methods to interact with `localStorage`. It is important to note that different installations of the same app have the same url, therefore they will share `localStorage` on the same browser even across different accounts. The storage module scopes `localStorage` keys using the key passed to its constructor. You can pass the installation id to the storage constructor to prevent conflicts between different installations.
+The Storage module provides helper methods to interact with `localStorage`. It is important to note that different installations of the same app may have the same url, in which case they will share `localStorage` on the same browser even across different accounts. The storage module scopes `localStorage` keys using the key passed to its constructor. You can pass the installation id to the storage constructor to prevent conflicts between different installations.
 
 ## Reference
 
