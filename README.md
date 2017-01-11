@@ -118,7 +118,11 @@ git checkout from-scratch
 npm install
 ```
 
-The from-scratch branch uses up-to-date versions of the libraries included with the App Scaffold and also removes the shims needed when migrating from v1. It also includes sample code to help you get started on v2. If you want to see the exact differences between the master and from-scratch branches click [here](https://github.com/zendesk/app_scaffold/compare/from-scratch).
+The from-scratch branch uses up-to-date versions of the libraries included with the App Scaffold and also removes the shims needed when migrating from v1. It also includes sample code to help you get started on v2.
+
+Another addition, present only in the from-scratch branch, is the [Zendesk Garden](http://garden.zendesk.com/) stylesheet. Zendesk Garden is designed to be a common baseline of styles and components between all Zendesk products. For more information see [Using the Zendesk Garden styles](https://developer.zendesk.com/apps/docs/apps-v2/setup#using-the-zendesk-garden-styles) in the Zendesk Developer Portal.
+
+If you want to see the exact differences between the master and from-scratch branches click [here](https://github.com/zendesk/app_scaffold/compare/from-scratch).
 
 ### Running locally
 
