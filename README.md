@@ -68,6 +68,9 @@ package.json is a configuration file for [NPM](https://www.npmjs.com). NPM is a 
 #### webpack.config.js
 webpack.config.js is a configuration file for [webpack](https://webpack.github.io/). Webpack is a JavaScript module bundler. For more information about webpack and how to configure it see [What is webpack](http://webpack.github.io/docs/what-is-webpack.html).
 
+## Initialization
+The App Scaffold's initialization code lives in [`src/index.js`](https://github.com/zendesk/app_scaffold/blob/master/src/javascripts/index.js). For more information see [inline documentation](https://github.com/zendesk/app_scaffold/blob/master/src/javascripts/index.js).
+
 ## API Reference
 
 The App Scaffold provides some classes under `/lib` to help building apps.
