@@ -68,6 +68,19 @@ package.json is a configuration file for [NPM](https://www.npmjs.com). NPM is a 
 #### webpack.config.js
 webpack.config.js is a configuration file for [webpack](https://webpack.github.io/). Webpack is a JavaScript module bundler. For more information about webpack and how to configure it see [What is webpack](http://webpack.github.io/docs/what-is-webpack.html).
 
+## API Reference
+
+The App Scaffold provides some classes under `/lib` to help building apps.
+
+### I18n
+The I18n (internationalization) module provides a `t` method and Handlebars helper to look up translations based on a key. For more information see [Using the I18n module](https://github.com/zendesk/app_scaffold/blob/master/doc/i18n.md).
+
+### Storage
+The Storage module provides helper methods to interact with `localStorage`. For more information see [Using the Storage module](https://github.com/zendesk/app_scaffold/blob/master/doc/storage.md).
+
+### View
+The View module provides methods to simplify rendering Handlebars templates located under the templates folder. For more information see [Using the View module](https://github.com/zendesk/app_scaffold/blob/master/doc/view.md).
+
 ## Getting Started
 
 ### Dependencies
