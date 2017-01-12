@@ -35,16 +35,21 @@ module.exports = {
     ],
     loaders: [
       {
+        test: /\.(gif|jpe?g|png|svg|woff2?|ttf|eot)$/,
+        loader: 'url-loader?limit=10000&name=[name].[ext]'
+      },
+      {
         test: /\.scss$/,
-        loader: extractStyles.extract("style", ["css?sourceMap", "sass?sourceMap"])
+        loader: extractStyles.extract("style", ["css?sourceMap&root=" + path.resolve('./dist/assets'), "sass?sourceMap"])
       },
       {
         test: /\.json$/,
-        exclude: /src\/translations\/.*\.json/,
+        exclude: path.resolve(__dirname, './src/translations'),
         loader: 'json-loader'
       },
       {
-        test: /src\/translations\/.*\.json/,
+        test: /\.json$/,
+        include: path.resolve(__dirname, './src/translations'),
         loader: 'translations-loader',
         query: {
           runtime: 'handlebars'
