@@ -28,7 +28,7 @@ npm install --global webpack foreman karma-cli
 
 Note: Foreman was originally created as a Ruby tool. If you prefer, you can install it by `gem install foreman` instead.
 
-## Running locally
+### Running locally
 
 _Note: The App Scaffold currently depends on zat v1.35.12 or greater._
 
