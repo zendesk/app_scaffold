@@ -68,7 +68,8 @@ module.exports = {
         loader: 'handlebars-loader',
         query: {
           extensions: ['handlebars', 'hdbs', 'hbs'],
-          runtime: 'handlebars'
+          runtime: 'handlebars',
+          inlineRequires: '\/images\/'
         }
       }
     ]
