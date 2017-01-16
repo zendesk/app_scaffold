@@ -75,10 +75,10 @@ module.exports = {
     ]
   },
   resolveLoader: {
-    modulesDirectories: [ './lib/loaders', 'node_modules' ]
+    modulesDirectories: ['./lib/loaders', 'node_modules']
   },
   resolve: {
-    modulesDirectories: [ 'node_modules', './lib/javascripts' ],
+    modulesDirectories: ['node_modules', './lib/javascripts'],
     alias: {
       'app_manifest': path.join(__dirname, './dist/manifest.json')
     },
