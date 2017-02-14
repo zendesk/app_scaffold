@@ -4,16 +4,17 @@
     "name": "add your app name here"
   },
 
-  "hello": "Hello {{name}}!",
+  "hello": "Hello, {{name}}!",
+
+  "learn_more": {
+    "message": "To learn more, {{link}}",
+    "link_text": "see the Zendesk forums"
+  },
 
   "save": {
     "button": "Bookmark ticket #{{id}}",
     "success": "Bookmarked ticket #{{id}}",
     "error": "Sorry, something went wrong."
   },
-
-  "learn_more": {
-    "message": "To learn more, {{link}}",
-    "link_text": "see the Zendesk forums"
-  }
+  "message": "You're using the Scaffold!"
 }
