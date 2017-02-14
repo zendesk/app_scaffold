@@ -14,7 +14,7 @@ class TicketSidebar {
     // Get user function
     const getUser = this.getCurrentUser();
     
-    // Translate function
+    // Resize function
     const resizeApp = function (appHeight, appWidth) {
       client.invoke('resize', { height: appHeight, width: appWidth });
     };
