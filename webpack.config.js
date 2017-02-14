@@ -80,7 +80,8 @@ module.exports = {
   resolve: {
     modulesDirectories: ['node_modules', './lib/javascripts'],
     alias: {
-      'app_manifest': path.join(__dirname, './dist/manifest.json')
+      'app_manifest': path.join(__dirname, './dist/manifest.json'),
+      handlebars: 'handlebars/dist/handlebars.min.js'
     },
     extensions: ['', '.js']
   },
