@@ -13,7 +13,8 @@ This repo contains a scaffold to help developers build [apps for Zendesk product
 
 ### Setup
 1. Clone or fork this repo
-2. Run `npm install`
+2. Change (`cd`) into the `app_scaffold` directory
+3. Run `npm install`
 
 To run your app locally in Zendesk, you need the [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools).
 
