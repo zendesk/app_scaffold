@@ -15,14 +15,10 @@ class TicketSidebar {
     const getUser = this.getCurrentUser();
     
     // Resize function
-    const resizeApp = function (appHeight, appWidth) {
-      client.invoke('resize', { height: appHeight, width: appWidth });
-    };
+    const resizeApp = (appHeight, appWidth) => client.invoke('resize', { height: appHeight, width: appWidth });
 
     // Translate function
-    const translate = function (keyword) {
-      return I18n.t(keyword);
-    };
+    const translate = (keyword) => I18n.t(keyword);
 
     this.view = new View({ afterRender: () => {
 
