@@ -13,17 +13,17 @@ class TicketSidebar {
 
     // Get user function
     const getUser = this.getCurrentUser();
-    
+
     // Resize function
     const resizeApp = (appHeight, appWidth) => client.invoke('resize', { height: appHeight, width: appWidth });
 
     // Translate function
-    const translate = (keyword) => I18n.t(keyword);
+    const translate = keyword => I18n.t(keyword);
+
+    // Translate message
+    const translatedMessage = translate('message');
 
     this.view = new View({ afterRender: () => {
-
-      // Translate message
-      const translatedMessage = translate('message');
 
       // Cache jQuery lookup
       const $message = $('.message');
