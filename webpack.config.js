@@ -89,7 +89,6 @@ module.exports = {
     handlebars: 'Handlebars',
     jquery: 'jQuery',
     lodash: '_',
-    moment: 'moment',
     zendesk_app_framework_sdk: 'ZAFClient'
   },
   devtool: '#eval',
