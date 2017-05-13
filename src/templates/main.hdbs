@@ -1,1 +1,2 @@
 <p>{{t "hello" name=name}}</p>
+<p class="message"></p>
