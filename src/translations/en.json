@@ -1,7 +1,9 @@
 {
   "app": {
-    "description": "add your app description here",
-    "name": "add your app name here"
+    "short_description": "add your app short description here. max 80 characters",
+    "name": "add your app name here",
+    "long_description": "add your app long description here. max 3000 characters",
+    "installation_instructions": "add your app installation instructions here. max 3000 characters" 
   },
 
   "hello": "Hello {{name}}!",
