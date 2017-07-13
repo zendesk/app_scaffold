@@ -1,1 +1,12 @@
-<p>{{t "hello" name=name}}</p>
+<table>
+  <tbody>
+    <tr>
+      <td>Requester</td>
+      <td>{{'requester-locale'}}</td>
+    </tr>
+    <tr>
+      <td>Ticket</td>
+      <td>{{'ticket-language'}}</td>
+    </tr>
+  </tbody>
+</table>

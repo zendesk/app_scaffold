@@ -1,19 +1,20 @@
 *Use of this software is subject to important terms and conditions as set forth in the License file*
 
-# App Scaffold
+# Language Detector
 
 ## Description
-This repo contains a scaffold to help developers build [apps for Zendesk products](https://developer.zendesk.com/apps/docs/apps-v2/getting_started).
+This is a ticket sidebar app that uses the franc library to predict the language of the ticket description field in a ticket.  The ticket requester's language is also shown.  A custom field for language can be set by the agent with a click of a button.
 
 ## Getting Started
 
 ### Dependencies
 - [Node.js](https://nodejs.org/en/) >= 6.3.x
 - [Ruby](https://www.ruby-lang.org/) >= 2.0.x
+- [Frac](https://github.com/wooorm/franc) >= 3.1.x
 
 ### Setup
 1. Clone or fork this repo
-2. Change (`cd`) into the `app_scaffold` directory
+2. Change (`cd`) into the `language_detector` directory
 3. Run `npm install`
 
 To run your app locally in Zendesk, you need the [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools).
