@@ -1,9 +1,9 @@
 {
   "app": {
-    "short_description": "add your app short description here. max 80 characters",
-    "name": "add your app name here",
-    "long_description": "add your app long description here. max 3000 characters",
-    "installation_instructions": "add your app installation instructions here. max 3000 characters" 
+    "short_description": "Language detection to help triage tickets.",
+    "name": "Language Detector",
+    "long_description": "Helps agents determine the language of the ticket content and the ticket requester.",
+    "installation_instructions": "requires a custom field name 'Language' with language selection max 3000 characters"
   },
 
   "hello": "Hello {{name}}!",
