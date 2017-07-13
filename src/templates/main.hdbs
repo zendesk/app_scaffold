@@ -2,7 +2,7 @@
   <tbody>
     <tr>
       <td>Requester</td>
-      <td class="language">{{'ticket.requester.locale'}}</td>
+      <td class="language">{{'ticket.requester.language'}}</td>
     </tr>
     <tr>
       <td>Ticket</td>

@@ -1,6 +1,7 @@
 import Franc from 'franc';
 import View from 'view';
 import Storage from 'storage';
+import I18n from 'i18n';
 
 const MAX_HEIGHT = 375;
 
@@ -23,7 +24,8 @@ class TicketSidebar {
 
   getLanguages() {
     return this.client.get(['ticket.requester.locale', 'ticket.description']).then(function(data) {
-      data["ticket.description.language"] = Franc(data["ticket.description"]);
+      data["ticket.description.language"] = I18n.t(Franc(data["ticket.description"]));
+      data["ticket.requester.language"] = I18n.t(data["ticket.requester.locale"]);
       return data
     });
   }
