@@ -16,55 +16,16 @@ class TicketSidebar {
       this.client.invoke('resize', { height: newHeight, width: '100%' });
     }});
 
-    this.getLanguages();
+    this.getLanguages().then(this.renderMain.bind(this));
 
     this.view.switchTo('loading');
   }
 
-  getCurrentUser() {
-    return this.client.request({ url: '/api/v2/users/me.json' });
-  }
-
   getLanguages() {
-    this.getTicketDescriptionLanguage().then(
-      language => this.setTicketLanguage(language)
-    );
-    this.getTicketRequesterLocale().then(
-      locale => {
-        this.setRequesterLocale(locale);
-        this.parseLanguages();
-      }
-    );
-  }
-
-  getTicketRequesterLocale() {
-    return this.client.get('ticket.requester').then(requester => {
-      const locale = requester['ticket.requester'].locale;
-      return locale;
+    return this.client.get(['ticket.requester.locale', 'ticket.description']).then(function(data) {
+      data["ticket.description.language"] = Franc(data["ticket.description"]);
+      return data
     });
-  }
-
-  getTicketDescriptionLanguage() {
-    return this.client.get('ticket.description').then(description => {
-      const language = Franc(description['ticket.description']);
-      return language;
-    })
-  }
-
-  setRequesterLocale(locale) {
-    this.requesterLocale = locale;
-  }
-
-  setTicketLanguage(language) {
-    this.ticketLanguage = language;
-  }
-
-  parseLanguages() {
-    var languages = {
-      "ticket-language": this.ticketLanguage,
-      "requester-locale": this.requesterLocale
-    }
-    this.renderMain(languages);
   }
 
   renderMain(data) {
