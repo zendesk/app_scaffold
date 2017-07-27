@@ -8,6 +8,10 @@
       <td>Ticket</td>
       <td class="language">{{'ticket.description.language'}}</td>
     </tr>
+    <tr>
+      <td>Probability</td>
+      <td class="language">{{'ticket.language.probability'}}</td>
+    </tr>
   </tbody>
 </table>
 
