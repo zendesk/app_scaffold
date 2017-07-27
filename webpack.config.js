@@ -7,10 +7,10 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var externalAssets = {
   css: [
-    'https://cdn.jsdelivr.net/bootstrap/2.3.2/css/bootstrap.min.css'
+    'https://assets.zendesk.com/apps/sdk-assets/css/1/zendesk_garden.css'
   ],
   js: [
-    'https://cdn.jsdelivr.net/g/lodash@2.4.2(lodash.underscore.min.js),handlebarsjs@1.3.0,jquery@2.2.4,momentjs@2.9.0,bootstrap@2.3.2',
+    'https://cdn.jsdelivr.net/g/lodash@4.14.0,handlebarsjs@4.0.5,jquery@3.1.0',
     'https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js'
   ]
 }
@@ -89,7 +89,6 @@ module.exports = {
     handlebars: 'Handlebars',
     jquery: 'jQuery',
     lodash: '_',
-    moment: 'moment',
     zendesk_app_framework_sdk: 'ZAFClient'
   },
   devtool: '#eval',

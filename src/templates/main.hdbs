@@ -1,1 +1,18 @@
-<p>{{t "hello" name=name}}</p>
+<table>
+  <tbody>
+    <tr>
+      <td>Requester</td>
+      <td class="language">{{'ticket.requester.language'}}</td>
+    </tr>
+    <tr>
+      <td>Ticket</td>
+      <td class="language">{{'ticket.description.language'}}</td>
+    </tr>
+    <tr>
+      <td>Probability</td>
+      <td class="language">{{'ticket.language.probability'}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button>Set Language</button>
