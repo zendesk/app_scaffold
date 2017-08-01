@@ -25,4 +25,18 @@ describe('BaseApp', () => {
       });
     });
   });
+
+  describe('#when', () => {
+    it('works with both jQuery and native promises', (done) => {
+      const promise = Promise.resolve(123)
+      const dfd = $.Deferred();
+      _.defer(() => dfd.resolve(456));
+
+      app.when(promise, dfd.promise()).then((nativePromise, jQPromise) => {
+        expect(nativePromise).toEqual(123);
+        expect(jQPromise).toEqual(456);
+        done();
+      });
+    });
+  });
 });
