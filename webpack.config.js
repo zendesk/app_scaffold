@@ -18,7 +18,11 @@ var externalAssets = {
 module.exports = {
   progress: true,
   entry: {
-    app: ['./src/javascripts/index.js', './src/stylesheets/app.scss']
+    app: [
+      'babel-polyfill',
+      './src/javascripts/index.js',
+      './src/stylesheets/app.scss'
+    ]
   },
   output: {
     path: './dist/assets',
