@@ -12,7 +12,8 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: webpackConfig.externalAssets.js.concat([
       'spec/helpers/**/*.js',
-      'spec/**/*_spec.js'
+      'spec/**/*_spec.js',
+      'node_modules/babel-polyfill/dist/polyfill.js'
     ]),
 
     // list of files to exclude
