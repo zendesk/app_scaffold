@@ -12,11 +12,7 @@
   },
   "license": "Apache-2.0",
   "author": "Zendesk",
-  "keywords": [
-    "zendesk",
-    "app",
-    "framework"
-  ],
+  "keywords": ["zendesk", "app", "framework"],
   "bugs": {
     "url": "https://github.com/zendesk/app_scaffold/issues"
   },
@@ -26,7 +22,7 @@
     "babel-loader": "^7.1.1",
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
     "css-loader": "^0.28.4",
     "eslint": "^4.3.0",
     "eslint-loader": "^1.9.0",
