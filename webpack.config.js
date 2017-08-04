@@ -1,17 +1,10 @@
 /* eslint-env node */
-var path = require("path");
-var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var extractStyles = new ExtractTextPlugin("main.css");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-
-var externalAssets = {
-  css: ["https://cdn.jsdelivr.net/bootstrap/2.3.2/css/bootstrap.min.css"],
-  js: [
-    "https://cdn.jsdelivr.net/g/lodash@2.4.2(lodash.underscore.min.js),handlebarsjs@1.3.0,jquery@2.2.4,momentjs@2.9.0,bootstrap@2.3.2",
-    "https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js"
-  ]
-};
+const path = require("path");
+const webpack = require("webpack");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const extractStyles = new ExtractTextPlugin("main.css");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const externalAssets = require("./lib/javascripts/external_assets");
 
 module.exports = {
   entry: {
