@@ -210,7 +210,7 @@ taking note of the created filename.
 For more information on the Zendesk Apps Tools please see the [documentation](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools).
 
 ## External Dependencies
-External dependencies are defined in the  [`webpack.config.js`](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js) as `externalAssets`. This ensures these dependencies are included on your app's `index.html` as well as in the test suite.
+External dependencies are defined in a module, [`lib/external_assets.js`](https://github.com/zendesk/app_scaffold/blob/master/lib/external_assets.js). The export of the module is imported into [`webpack.config.js`](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js) at build-time. This ensures these dependencies are included on your app's `index.html` as well as in the test suite.
 
 ## Contribute
 * Put up a PR into the master branch.
