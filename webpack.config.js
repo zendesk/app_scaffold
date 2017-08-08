@@ -60,6 +60,7 @@ module.exports = {
         loader: "handlebars-loader",
         options: {
           extensions: ["handlebars", "hdbs", "hbs"],
+          runtime: "handlebars",
           inlineRequires: "/images/"
         }
       }
