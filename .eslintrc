@@ -20,6 +20,8 @@
     "jQuery": true,
     "Handlebars": true,
     "_": true,
-    "moment": true
+    "moment": true,
+    "helpers": true,
+    "Base64": true
   }
 }

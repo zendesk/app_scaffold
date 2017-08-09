@@ -1,30 +1,30 @@
-var webpackConfig = require('./webpack.config.js');
+const webpackConfig = require("./webpack.config");
+const externalAssets = require("./lib/javascripts/external_assets");
 
 module.exports = function(config) {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: "",
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ["jasmine"],
 
     // list of files / patterns to load in the browser
-    files: webpackConfig.externalAssets.js.concat([
-      'spec/helpers/**/*.js',
-      'spec/**/*_spec.js',
-      'node_modules/babel-polyfill/dist/polyfill.js'
+    files: externalAssets.js.concat([
+      "spec/helpers/**/*.js",
+      "spec/**/*_spec.js",
+      "node_modules/babel-polyfill/dist/polyfill.js"
     ]),
 
     // list of files to exclude
-    exclude: [
-    ],
+    exclude: [],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'spec/helpers/**/*.js': ['webpack'],
-      'spec/**/*_spec.js': ['webpack']
+      "spec/helpers/**/*.js": ["webpack"],
+      "spec/**/*_spec.js": ["webpack"]
     },
 
     webpack: {
@@ -46,7 +46,7 @@ module.exports = function(config) {
     webpackMiddleware: {
       // webpack-dev-middleware configuration
       // i. e.
-      stats: 'errors-only'
+      stats: "errors-only"
     },
 
     plugins: [
@@ -59,7 +59,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots'],
+    reporters: ["dots"],
 
     // web server port
     port: 9876,
@@ -76,13 +76,13 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    browsers: ["PhantomJS"],
 
     customLaunchers: {
       // CRUFT: needed to load zaf_sdk with crossorigin=anonymous
       Chrome_without_security: {
-        base: 'Chrome',
-        flags: ['--disable-web-security']
+        base: "Chrome",
+        flags: ["--disable-web-security"]
       }
     },
 
@@ -93,5 +93,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};
