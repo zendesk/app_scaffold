@@ -1,36 +1,35 @@
-import BaseApp from 'base_app';
+import BaseApp from "base_app";
 
 // add these if needed
 // import Base64 from 'base64';
 // import helpers from 'helpers';
 
 var App = {
-
-  defaultState: 'loading',
+  defaultState: "loading",
 
   requests: {
     getMe: {
-      url: '/api/v2/users/me.json'
+      url: "/api/v2/users/me.json"
     }
   },
 
   events: {
-    'app.created': 'init',
-    'getMe.done': 'renderMain',
-    'app.willDestroy': 'logClosedApp'
+    "app.created": "init",
+    "app.willDestroy": "logClosedApp"
   },
 
-  init: function() {
-    this.ajax('getMe');
+  async init() {
+    const data = await this.ajax("getMe");
+    this.renderMain(data);
   },
 
-  renderMain: function(data) {
-    this.switchTo('main', data.user);
+  renderMain({ user }) {
+    this.switchTo("main", user);
   },
 
-  logClosedApp: function() {
-    console.log('About to close the app.');
+  logClosedApp() {
+    console.log("About to close the app.");
   }
-}
+};
 
 export default BaseApp.extend(App);
