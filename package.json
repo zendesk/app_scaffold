@@ -1,6 +1,6 @@
 {
   "name": "app_scaffold",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A scaffold for developers to build ZAF v2 apps",
   "repository": {
     "type": "git",
@@ -12,7 +12,11 @@
   },
   "license": "Apache-2.0",
   "author": "Zendesk",
-  "keywords": ["zendesk", "app", "framework"],
+  "keywords": [
+    "zendesk",
+    "app",
+    "framework"
+  ],
   "bugs": {
     "url": "https://github.com/zendesk/app_scaffold/issues"
   },
@@ -24,7 +28,7 @@
     "babel-polyfill": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "css-loader": "^0.28.4",
-    "eslint": "^4.3.0",
+    "eslint": "^4.4.1",
     "eslint-loader": "^1.9.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
@@ -43,6 +47,6 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
-    "webpack": "^3.4.1"
+    "webpack": "^3.5.1"
   }
 }
