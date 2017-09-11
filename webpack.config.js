@@ -59,7 +59,7 @@ module.exports = {
         test: /\.(handlebars|hd?bs)$/,
         loader: "handlebars-loader",
         options: {
-          extensions: ["handlebars", "hdbs", "hbs"],
+          extensions: [".handlebars", ".hdbs", ".hbs"],
           runtime: "handlebars",
           inlineRequires: "/images/"
         }
