@@ -18,13 +18,15 @@ var App = {
     "app.willDestroy": "logClosedApp"
   },
 
-  async init() {
-    const data = await this.ajax("getMe");
-    this.renderMain(data);
+   init() {
+    this.zafClient.get(['instances']).then((data) => {
+      this.renderMain(data);
+    });
   },
 
-  renderMain({ user }) {
-    this.switchTo("main", user);
+  renderMain({ instances }) {
+    const someGuid = Object.keys(instances)[0];
+    this.switchTo("main", { guid: someGuid });
   },
 
   logClosedApp() {

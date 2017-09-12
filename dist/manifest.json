@@ -9,7 +9,8 @@
   "private": true,
   "location": {
     "support": {
-      "ticket_sidebar": "assets/index.html"
+      "ticket_sidebar": "assets/index.html",
+      "new_ticket_sidebar": "assets/index.html"
     }
   },
   "version": "1.0",
