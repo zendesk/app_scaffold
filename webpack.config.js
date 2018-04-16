@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var externalAssets = {
   css: [
-    'https://assets.zendesk.com/apps/sdk-assets/css/2/zendesk_garden.css'
+    'https://cdn.jsdelivr.net/combine/npm/@zendeskgarden/css-bedrock@6,npm/@zendeskgarden/css-arrows@2,npm/@zendeskgarden/css-avatars@2,npm/@zendeskgarden/css-buttons@5,npm/@zendeskgarden/css-callouts@2,npm/@zendeskgarden/css-chrome@2,npm/@zendeskgarden/css-forms@5,npm/@zendeskgarden/css-menus@6,npm/@zendeskgarden/css-modals@5,npm/@zendeskgarden/css-pagination@2,npm/@zendeskgarden/css-tables@2,npm/@zendeskgarden/css-tabs@4,npm/@zendeskgarden/css-tags@3,npm/@zendeskgarden/css-tooltips@3,npm/@zendeskgarden/css-utilities@2'
   ],
   js: [
     'https://cdn.jsdelivr.net/g/lodash@4.14.0,handlebarsjs@4.0.5,jquery@3.1.0',
