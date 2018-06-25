@@ -1,102 +1,80 @@
-/* eslint-env node */
-const path = require("path");
-const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractStyles = new ExtractTextPlugin("main.css");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const externalAssets = require("./lib/javascripts/external_assets");
+const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TranslationsPlugin = require('./webpack/translations-plugin')
+const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: {
     app: [
-      "babel-polyfill",
-      "./src/javascripts/index.js",
-      "./src/stylesheets/app.scss"
+      'babel-polyfill',
+      './src/javascript/index.js'
     ]
   },
   output: {
-    path: path.resolve(__dirname, "./dist/assets"),
-    filename: "main.js",
-    sourceMapFilename: "[file].map"
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist/assets')
   },
+
+  // list of which loaders to use for which files
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        enforce: "pre",
-        loader: "eslint-loader"
+        use: { loader: 'babel-loader' }
       },
+      // {
+      //   test: /\.json$/,
+      //   exclude: path.resolve(__dirname, './src/translations'),
+      //   use: 'json-loader'
+      // },
+      // {
+      //   test: /\.json$/,
+      //   include: path.resolve(__dirname, './src/translations'),
+      //   use: './webpack/translations-loader'
+      // },
       {
-        test: /\.(gif|jpe?g|png|svg|woff2?|ttf|eot)$/,
-        loader: "url-loader?limit=10000&name=[name].[ext]"
-      },
-      {
-        test: /\.scss$/,
-        use: extractStyles.extract({
-          fallback: "style-loader",
-          use: [
-            "css-loader?sourceMap&root=" +
-              path.resolve(__dirname, "./dist/assets"),
-            "sass-loader?sourceMap"
-          ]
-        })
-      },
-      {
-        test: /\.json$/,
-        include: path.resolve(__dirname, "./src/translations"),
-        loader: "translations-loader",
-        options: {
-          runtime: "handlebars"
-        }
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
-      },
-      {
-        test: /\.(handlebars|hd?bs)$/,
-        loader: "handlebars-loader",
-        options: {
-          extensions: [".handlebars", ".hdbs", ".hbs"],
-          runtime: "handlebars",
-          inlineRequires: "/images/"
-        }
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
+        ]
       }
+      // },
+      // {
+      //   test: /\.css$/,
+      //   use: ['style-loader', 'css-loader', 'postcss-loader']
+      // }
+      // },
+      // {
+      //   test: /\.(gif|jpe?g|png|svg|woff2?|ttf|eot)$/,
+      //   use: { loader: 'url-loader', options: { limit: 10000 } }
+      // }
     ]
   },
-  resolveLoader: {
-    modules: ["node_modules", path.resolve(__dirname, "./lib/loaders")]
-  },
-  resolve: {
-    modules: ["node_modules", path.resolve(__dirname, "./lib/javascripts")],
-    alias: {
-      app_manifest: path.resolve(__dirname, "./dist/manifest.json")
-    }
-  },
-  externals: {
-    handlebars: "Handlebars",
-    jquery: "jQuery",
-    lodash: "_",
-    moment: "moment",
-    zendesk_app_framework_sdk: "ZAFClient"
-  },
-  devtool: "#eval",
+
   plugins: [
-    extractStyles,
-    new HtmlWebpackPlugin({
-      warning:
-        "AUTOMATICALLY GENERATED FROM ./lib/templates/layout.hdbs - DO NOT MODIFY THIS FILE DIRECTLY",
-      vendorCss: externalAssets.css,
-      vendorJs: externalAssets.js,
-      template: "!!handlebars-loader!./lib/templates/layout.hdbs"
+    // Empties the dist folder
+    new CleanWebpackPlugin(['dist/*']),
+
+    // Copy over some files
+    new CopyWebpackPlugin([
+      { from: 'src/manifest.json', to: '../', flatten: true },
+      { from: 'src/images/dot.gif', to: '.', flatten: true },
+      { from: 'src/images/logo.png', to: '.', flatten: true },
+      { from: 'src/images/logo-small.png', to: '.', flatten: true },
+      { from: 'src/templates/iframe.html', to: '.', flatten: true }
+    ]),
+
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        drop_debugger: false,
-        warnings: false
-      }
+
+    new TranslationsPlugin({
+      path: path.resolve(__dirname, './src/translations')
     })
   ]
-};
+}

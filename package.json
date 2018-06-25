@@ -1,52 +1,39 @@
 {
-  "name": "app_scaffold",
-  "version": "0.1.0",
-  "description": "A scaffold for developers to build ZAF v2 apps",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/zendesk/app_scaffold.git"
-  },
+  "name": "development",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "scripts": {
-    "build": "webpack -p",
-    "watch": "webpack --watch"
-  },
-  "license": "Apache-2.0",
-  "author": "Zendesk",
-  "keywords": [
-    "zendesk",
-    "app",
-    "framework"
-  ],
-  "bugs": {
-    "url": "https://github.com/zendesk/app_scaffold/issues"
+    "test": "jest",
+    "watch": "cross-env NODE_ENV='development' webpack --watch --mode=development",
+    "build:dev": "cross-env NODE_ENV='development' webpack",
+    "build": "cross-env NODE_ENV='production' webpack -p",
+    "lint": "standard"
   },
   "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "css-loader": "^0.28.4",
-    "eslint": "^4.4.1",
-    "eslint-loader": "^1.9.0",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^0.11.2",
-    "handlebars": "^1.3.0",
-    "handlebars-loader": "^1.5.0",
-    "html-webpack-plugin": "^2.30.1",
-    "jasmine-core": "^2.7.0",
-    "json-loader": "^0.5.7",
-    "karma": "^1.7.0",
-    "karma-chrome-launcher": "^2.2.0",
-    "karma-jasmine": "^1.1.0",
-    "karma-phantomjs-launcher": "^1.0.4",
-    "karma-webpack": "^2.0.4",
-    "loader-utils": "^1.1.0",
-    "node-sass": "^4.5.3",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.18.2",
-    "url-loader": "^0.5.9",
-    "webpack": "^3.5.1"
+    "standard": "^11.0.1",
+    "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "@zendeskgarden/css-bedrock": "^7.0.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "cross-env": "^5.2.0",
+    "css-loader": "^0.28.11",
+    "mini-css-extract-plugin": "^0.4.0",
+    "npm": "^6.1.0",
+    "postcss-import": "^11.1.0",
+    "postcss-loader": "^2.1.5",
+    "postcss-preset-env": "^5.1.0",
+    "precss": "^3.1.2",
+    "regenerator-runtime": "^0.11.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.12.0"
   }
 }

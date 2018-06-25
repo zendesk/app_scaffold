@@ -1,0 +1,27 @@
+---
+title: "Example App"
+packages:
+  - default
+  - app_example_app
+
+parts:
+  - translation:
+      key: "txt.apps.example_app.app.name"
+      title: "Name for App: Example"
+      value: "example_app"
+  - translation:
+      key: "txt.apps.example_app.app.short_description"
+      title: "Description for App: Example app"
+      value: "Example"
+  - translation:
+      key: "txt.apps.example_app.app.long_description"
+      title: "Long Description for App: Example"
+      value: "This is an example app using the app scaffold, following the learnings from migrating official apps"
+  - translation:
+      key: "txt.apps.example_app.app.installation_instructions"
+      title: "Installation Instructions for App: Sidebar Search"
+      value: "The Example application has no specific settings and is ready to go."
+  - translation:
+      key: "txt.apps.example_app.app.title"
+      title: "Name of the App"
+      value: "Example"

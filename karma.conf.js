@@ -1,65 +1,36 @@
-const webpackConfig = require("./webpack.config");
-const externalAssets = require("./lib/javascripts/external_assets");
+// Karma configuration
+// Generated on Thu Mar 01 2018 11:31:45 GMT+1100 (AEDT)
+const webpackConfig = require('./webpack.config')()
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: "",
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ["jasmine"],
+    frameworks: ['mocha'],
 
     // list of files / patterns to load in the browser
-    files: externalAssets.js.concat([
-      "spec/helpers/**/*.js",
-      "spec/**/*_spec.js",
-      "node_modules/babel-polyfill/dist/polyfill.js"
-    ]),
+    files: [
+      'https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js',
+      'spec/before.js',
+      'spec/*_spec.js'
+    ],
 
-    // list of files to exclude
-    exclude: [],
+    // allow cors for zaf_sdk.js
+    crossOriginAttribute: false,
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      "spec/helpers/**/*.js": ["webpack"],
-      "spec/**/*_spec.js": ["webpack"]
+      'spec/**/*.js': 'webpack'
     },
 
-    webpack: {
-      // karma watches the test entry points
-      // (you don't need to specify the entry option)
-      // webpack watches dependencies
-
-      // webpack configuration
-      module: webpackConfig.module,
-      resolveLoader: webpackConfig.resolveLoader,
-      resolve: webpackConfig.resolve,
-      externals: webpackConfig.externals
-    },
-
-    webpackServer: {
-      noInfo: true // Suppress all webpack messages, except errors
-    },
-
-    webpackMiddleware: {
-      // webpack-dev-middleware configuration
-      // i. e.
-      stats: "errors-only"
-    },
-
-    plugins: [
-      require("karma-webpack"),
-      require("karma-jasmine"),
-      require("karma-phantomjs-launcher"),
-      require("karma-chrome-launcher")
-    ],
+    webpack: webpackConfig,
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ["dots"],
+    reporters: ['progress'],
 
     // web server port
     port: 9876,
@@ -72,19 +43,11 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    autoWatch: false,
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ["PhantomJS"],
-
-    customLaunchers: {
-      // CRUFT: needed to load zaf_sdk with crossorigin=anonymous
-      Chrome_without_security: {
-        base: "Chrome",
-        flags: ["--disable-web-security"]
-      }
-    },
+    browsers: ['ChromeHeadless'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
@@ -93,5 +56,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  });
-};
+  })
+}
