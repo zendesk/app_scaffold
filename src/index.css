@@ -1,9 +1,5 @@
-/* @import '@zendeskgarden/css-bedrock'; */
+@import '@zendeskgarden/css-bedrock';
 
 .main {
   border: 1px solid red;
-}
-
-.loader {
-  border: 1px solid green;
 }

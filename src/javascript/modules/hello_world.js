@@ -16,6 +16,10 @@ class HelloWorld {
     this._appData = appData
     this._config = config
 
+    this._states = {
+      title: MESSAGE
+
+    }
     // makes testing easier
     this._initializePromise = this._init()
   }
@@ -27,6 +31,8 @@ class HelloWorld {
     this._ticket = (await this._client.get('ticket')).ticket
 
     // render application markup
+    Object.assign(this._states, {title: `${MESSAGE}, Guillaume`})
+
     await this._render('.loader', getDefaultTemplate)
     this._appContainer = document.querySelector('.example-app')
   }
@@ -38,6 +44,7 @@ class HelloWorld {
    * @return {Promise} will resolved after resize
    */
   _render (replacedNodeSelector, getTemplate) {
+    console.log('in Render')
     const fragment = document.createRange().createContextualFragment(getTemplate(this._states))
     const replacedNode = document.querySelector(replacedNodeSelector)
     replacedNode.parentNode.replaceChild(fragment, replacedNode)
