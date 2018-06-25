@@ -19,6 +19,7 @@
   "dependencies": {
     "@zendeskgarden/css-bedrock": "^7.0.1",
     "babel-core": "^6.26.3",
+    "babel-jest": "^23.0.1",
     "babel-loader": "^7.1.4",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -26,6 +27,7 @@
     "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
+    "jest": "^23.1.0",
     "mini-css-extract-plugin": "^0.4.0",
     "npm": "^6.1.0",
     "postcss-import": "^11.1.0",
