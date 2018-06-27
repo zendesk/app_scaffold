@@ -6,5 +6,8 @@ module.exports = {
       init: () => {}
     }
   },
-  roots: ['./spec']
+  roots: ['./spec'],
+  moduleNameMapper: {
+    "\\.(css|less)$": "<rootDir>/spec/mocks/styleMock.js"
+  }
 }

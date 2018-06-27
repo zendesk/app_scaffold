@@ -4,7 +4,8 @@ import {escapeSpecialChars as escape} from '../lib/helpers.js'
 export default function (args) {
   return `<div class="example-app">
     <div class="loader">
-      <h1>${escape(args.title)}</h1>
+      <h1>${escape(args.welcomeMessage)}</h1>
+      <p>${escape(args.lastTicketDescription)}</p>
     </div>
   </div>`
 }
