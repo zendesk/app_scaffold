@@ -1,4 +1,4 @@
-import manifest from '../manifest.json'
+import manifest from '../../manifest.json'
 
 const defaultLocale = manifest.defaultLocale || 'en'
 
@@ -26,7 +26,7 @@ function curlyFormat (str, context) {
 const I18n = {
   tryRequire: function (locale) {
     try {
-      return require(`../translations/${locale}.json`)
+      return require(`../../translations/${locale}.json`)
     } catch (e) {
       return null
     }

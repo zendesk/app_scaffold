@@ -24,6 +24,8 @@ module.exports = {
         test: /\.js$/,
         use: { loader: 'babel-loader' }
       },
+      // TODO: Update Webpack translation loader and plugin for Webpack 4
+      // 
       // {
       //   test: /\.json$/,
       //   exclude: path.resolve(__dirname, './src/translations'),
@@ -37,21 +39,11 @@ module.exports = {
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader'
         ]
       }
-      // },
-      // {
-      //   test: /\.css$/,
-      //   use: ['style-loader', 'css-loader', 'postcss-loader']
-      // }
-      // },
-      // {
-      //   test: /\.(gif|jpe?g|png|svg|woff2?|ttf|eot)$/,
-      //   use: { loader: 'url-loader', options: { limit: 10000 } }
-      // }
     ]
   },
 

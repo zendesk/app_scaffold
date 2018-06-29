@@ -2,7 +2,7 @@
 import DefaultModule from '../src/javascript/modules/default_module'
 import {  CLIENT, CONFIG, APPDATA_WITH_CF, createRangePolyfill } from './mocks/mock'
 
-jest.mock('../src/lib/i18n', () => {
+jest.mock('../src/javascript/lib/i18n', () => {
   return {
     loadTranslations: () => {},
     t: () => 'translation...'

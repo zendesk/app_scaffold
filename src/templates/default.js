@@ -1,11 +1,15 @@
-import I18n from '../lib/i18n.js'
-import {escapeSpecialChars as escape} from '../lib/helpers.js'
+import I18n from '../javascript/lib/i18n.js'
+import {templatingLoop as loop, escapeSpecialChars as escape} from '../javascript/lib/helpers.js'
+
+function organizationMarkup (organization) {
+  return `<li>${escape(organization.name)}</li>`
+}
 
 export default function (args) {
   return `<div class="example-app">
-    <div class="loader">
-      <h1>${escape(args.welcomeMessage)}</h1>
-      <p>${escape(args.lastTicketDescription)}</p>
+    <div>
+      <h1>Hi ${escape(args.currentUserName)}, this is a sample app</h1>
+      <ul>${loop(args.organizations, organizationMarkup)}</ul>
     </div>
   </div>`
 }
