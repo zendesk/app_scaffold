@@ -3,9 +3,8 @@
  **/
 
 import I18n from '../../javascript/lib/i18n'
-import { resizeContainer } from '../../javascript/lib/helpers'
+import { resizeContainer, render } from '../../javascript/lib/helpers'
 import getDefaultTemplate from '../../templates/default'
-import '../../index.css'
 
 const MAX_HEIGHT = 1000
 const API_ENDPOINTS = {
@@ -23,14 +22,17 @@ class DefaultModule {
     this._initializePromise = this._init()
   }
 
+  /**
+   * Initialize module, render main template
+   */
   async _init () {
-    this._currentUser = (await this._client.get('currentUser')).currentUser
-    this._states.currentUserName = this._currentUser.name
+    const currentUser = (await this._client.get('currentUser')).currentUser
+    this._states.currentUserName = currentUser.name
 
     // TODO: Do something useful with translations once Webpack loader / plugin are fixed
-    // I18n.loadTranslations(this._currentUser.locale)
+    // I18n.loadTranslations(currentUser.locale)
 
-    let organizations = await this._client
+    const organizations = await this._client
       .request(API_ENDPOINTS.organizations)
       .catch(this._handleError.bind(this))
 
@@ -38,24 +40,15 @@ class DefaultModule {
       this._states.organizations = organizations.organizations
 
       // render application markup
-      await this._render('.loader', getDefaultTemplate)
-      this._appContainer = document.querySelector('.example-app')
+      render('.loader', getDefaultTemplate(this._states))
+      return resizeContainer(this._client, MAX_HEIGHT)
     }
   }
 
   /**
-   * Render template
-   * @param {String} replacedNodeSelector selector of the node to be replaced
-   * @param {Function} getTemplate function to generate the new Node
-   * @return {Promise} will resolved after resize
+   * Handle error
+   * @param {Object} error error object
    */
-  _render (replacedNodeSelector, getTemplate) {
-    const fragment = document.createRange().createContextualFragment(getTemplate(this._states))
-    const replacedNode = document.querySelector(replacedNodeSelector)
-    replacedNode.parentNode.replaceChild(fragment, replacedNode)
-    return resizeContainer(this._client, MAX_HEIGHT)
-  }
-
   _handleError (error) {
     console.error('There was an error: ', error.responseJSON)
   }

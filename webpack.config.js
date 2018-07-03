@@ -9,11 +9,13 @@ module.exports = {
   entry: {
     app: [
       'babel-polyfill',
-      './src/javascript/index.js'
+      './src/javascript/index.js',
+      './src/index.css'
     ]
   },
+  mode: process.env.NODE_ENV,
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist/assets')
   },
 
@@ -24,18 +26,12 @@ module.exports = {
         test: /\.js$/,
         use: { loader: 'babel-loader' }
       },
-      // TODO: Update Webpack translation loader and plugin for Webpack 4
-      // 
-      // {
-      //   test: /\.json$/,
-      //   exclude: path.resolve(__dirname, './src/translations'),
-      //   use: 'json-loader'
-      // },
-      // {
-      //   test: /\.json$/,
-      //   include: path.resolve(__dirname, './src/translations'),
-      //   use: './webpack/translations-loader'
-      // },
+      {
+        type: 'javascript/auto',
+        test: /\.json$/,
+        include: path.resolve(__dirname, './src/translations'),
+        use: './webpack/translations-loader'
+      },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
@@ -54,15 +50,13 @@ module.exports = {
     // Copy over some files
     new CopyWebpackPlugin([
       { from: 'src/manifest.json', to: '../', flatten: true },
-      { from: 'src/images/dot.gif', to: '.', flatten: true },
-      { from: 'src/images/logo.png', to: '.', flatten: true },
-      { from: 'src/images/logo-small.png', to: '.', flatten: true },
+      { from: 'src/images/!(screenshot)*', to: '.', flatten: true },
       { from: 'src/templates/iframe.html', to: '.', flatten: true }
     ]),
 
     new MiniCssExtractPlugin({
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+      // Need something(loader?) to add the [hash] to html 
+      filename: devMode ? '[name].css' : '[name].[hash].css'
     }),
 
     new TranslationsPlugin({

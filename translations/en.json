@@ -1,9 +1,0 @@
-{
-  "_warning": "AUTOMATICALLY GENERATED FROM ../translations/en.json - DO NOT MODIFY THIS FILE DIRECTLY",
-  "app": {
-    "name": "example_app",
-    "short_description": "Example",
-    "long_description": "This is an example app using the app scaffold, following the learnings from migrating official apps",
-    "installation_instructions": "The Example application has no specific settings and is ready to go."
-  }
-}

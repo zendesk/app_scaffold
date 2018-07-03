@@ -23,6 +23,17 @@ export function templatingLoop (set, getTemplate, initialValue = '') {
 }
 
 /**
+ * Render template
+ * @param {String} replacedNodeSelector selector of the node to be replaced
+ * @param {String} htmlString new html string to be rendered
+ */
+export function render (replacedNodeSelector, htmlString) {
+  const fragment = document.createRange().createContextualFragment(htmlString)
+  const replacedNode = document.querySelector(replacedNodeSelector)
+  replacedNode.parentNode.replaceChild(fragment, replacedNode)
+}
+
+/**
  * Helper to escape unsafe characters in HTML, including &, <, >, ", ', `, =
  * @param {String} str String to be escaped
  * @return {String} escaped string

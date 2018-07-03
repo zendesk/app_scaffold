@@ -1,4 +1,3 @@
-import I18n from '../javascript/lib/i18n.js'
 import {templatingLoop as loop, escapeSpecialChars as escape} from '../javascript/lib/helpers.js'
 
 function organizationMarkup (organization) {
