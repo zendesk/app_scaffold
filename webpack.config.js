@@ -1,7 +1,7 @@
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TranslationsPlugin = require('./webpack/translations-plugin')
 const devMode = process.env.NODE_ENV !== 'production'
 
@@ -55,7 +55,7 @@ module.exports = {
     ]),
 
     new MiniCssExtractPlugin({
-      // Need something(loader?) to add the [hash] to html 
+      // Need something(loader?) to add the [hash] to html
       filename: devMode ? '[name].css' : '[name].[hash].css'
     }),
 

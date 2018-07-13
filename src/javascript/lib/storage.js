@@ -1,3 +1,4 @@
+/* eslint-env browser */
 class Storage {
   constructor (namespace) {
     this.namespace = namespace

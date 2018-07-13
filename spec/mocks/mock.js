@@ -1,3 +1,4 @@
+/* eslint-env jest */
 export const CLIENT = {
   _origin: 'zendesk.com',
   get: (prop) => {

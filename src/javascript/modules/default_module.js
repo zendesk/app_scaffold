@@ -2,7 +2,8 @@
  *  Example module
  **/
 
-import I18n from '../../javascript/lib/i18n'
+// TODO: Do something useful with translations once Webpack loader / plugin are fixed
+// import I18n from '../../javascript/lib/i18n'
 import { resizeContainer, render } from '../../javascript/lib/helpers'
 import getDefaultTemplate from '../../templates/default'
 
