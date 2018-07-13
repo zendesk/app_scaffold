@@ -13,26 +13,27 @@
     "lint": "standard"
   },
   "devDependencies": {
-    "jest": "^23.1.0",
+    "jest": "^23.4.0",
     "standard": "^11.0.1"
   },
   "dependencies": {
-    "@zendeskgarden/css-bedrock": "^7.0.1",
+    "@zendeskgarden/css-bedrock": "^7.0.2",
     "babel-core": "^6.26.3",
-    "babel-jest": "^23.0.1",
-    "babel-loader": "^7.1.4",
+    "babel-jest": "^23.4.0",
+    "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^0.1.19",
-    "copy-webpack-plugin": "^4.5.1",
+    "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
-    "css-loader": "^0.28.11",
-    "mini-css-extract-plugin": "^0.4.0",
+    "css-loader": "^1.0.0",
+    "mini-css-extract-plugin": "^0.4.1",
+    "npm": "^6.1.0",
     "postcss-import": "^11.1.0",
-    "postcss-loader": "^2.1.5",
-    "postcss-preset-env": "^5.1.0",
+    "postcss-loader": "^2.1.6",
+    "postcss-preset-env": "^5.2.1",
     "precss": "^3.1.2",
-    "webpack": "^4.12.0",
+    "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8"
   }
 }
