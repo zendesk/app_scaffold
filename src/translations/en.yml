@@ -5,6 +5,7 @@ packages:
   - app_example_app
 
 parts:
+  #Marketplace translations
   - translation:
       key: "txt.apps.example_app.app.name"
       title: "Name for App: Example"
@@ -25,3 +26,8 @@ parts:
       key: "txt.apps.example_app.app.title"
       title: "Name of the App"
       value: "Example"
+  #App-specific translations
+  - translation:
+      key: "txt.apps.example_app.default.example_string"
+      title: "a default string to demonstrate the i18n pipeline in official apps"
+      value: "This is a sample translation"

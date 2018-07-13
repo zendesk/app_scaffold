@@ -2,8 +2,7 @@
  *  Example module
  **/
 
-// TODO: Do something useful with translations once Webpack loader / plugin are fixed
-// import I18n from '../../javascript/lib/i18n'
+import I18n from '../../javascript/lib/i18n'
 import { resizeContainer, render } from '../../javascript/lib/helpers'
 import getDefaultTemplate from '../../templates/default'
 
@@ -30,8 +29,7 @@ class DefaultModule {
     const currentUser = (await this._client.get('currentUser')).currentUser
     this._states.currentUserName = currentUser.name
 
-    // TODO: Do something useful with translations once Webpack loader / plugin are fixed
-    // I18n.loadTranslations(currentUser.locale)
+    I18n.loadTranslations(currentUser.locale)
 
     const organizations = await this._client
       .request(API_ENDPOINTS.organizations)
