@@ -1,5 +1,5 @@
 /* eslint-env jest, browser */
-import DefaultModule from '../src/javascript/modules/default_module'
+import TicketSidebar from '../src/javascript/locations/ticket_sidebar'
 import { CLIENT, CONFIG, APPDATA_WITH_CF, createRangePolyfill } from './mocks/mock'
 
 jest.mock('../src/javascript/lib/i18n', () => {
@@ -13,7 +13,7 @@ if (!document.createRange) {
   createRangePolyfill()
 }
 
-describe('Default App', () => {
+describe('Ticket Sidebar App', () => {
   describe('Initialization Failure', () => {
     let errorSpy
     let app
@@ -24,7 +24,7 @@ describe('Default App', () => {
           status: 404,
           responseJSON: {'description': 'a fake error'}
         })))
-      app = new DefaultModule(CLIENT, APPDATA_WITH_CF, CONFIG)
+      app = new TicketSidebar(CLIENT, APPDATA_WITH_CF, CONFIG)
       errorSpy = jest.spyOn(app, '_handleError')
     })
 
