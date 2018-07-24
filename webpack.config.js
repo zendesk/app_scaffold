@@ -3,7 +3,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TranslationsPlugin = require('./webpack/translations-plugin')
-const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: {
@@ -19,7 +18,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist/assets')
   },
 
-  // list of which loaders to use for which files
   module: {
     rules: [
       {
@@ -47,7 +45,7 @@ module.exports = {
     // Empties the dist folder
     new CleanWebpackPlugin(['dist/*']),
 
-    // Copy over some files
+    // Copy over static assets
     new CopyWebpackPlugin([
       { from: 'src/manifest.json', to: '../', flatten: true },
       { from: 'src/images/!(screenshot)*', to: '.', flatten: true },
@@ -55,8 +53,7 @@ module.exports = {
     ]),
 
     new MiniCssExtractPlugin({
-      // Need something(loader?) to add the [hash] to html
-      filename: devMode ? '[name].css' : '[name].[hash].css'
+      filename: '[name].css'
     }),
 
     new TranslationsPlugin({

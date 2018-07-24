@@ -49,7 +49,7 @@ class TicketSidebar {
    * @param {Object} error error object
    */
   _handleError (error) {
-    console.error('There was an error: ', error.responseJSON)
+    console.log('An error is handled here: ', error.message)
   }
 }
 

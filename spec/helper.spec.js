@@ -1,5 +1,10 @@
 /* eslint-env jest */
-import {resizeContainer, templatingLoop, escapeSpecialChars as escape} from '../src/javascript/lib/helpers'
+import {resizeContainer, templatingLoop, render, escapeSpecialChars as escape} from '../src/javascript/lib/helpers'
+import createRangePolyfill from './polyfills/createRange'
+
+if (!document.createRange) {
+  createRangePolyfill()
+}
 
 const client = {
   invoke: jest.fn()
@@ -21,6 +26,16 @@ describe('templatingLoop', () => {
 
   it('return empty string if data set and initial value is empty', () => {
     expect(templatingLoop([], getTemplate)).toBe('')
+  })
+})
+
+describe('render', () => {
+  it('should replace ', () => {
+    document.body.innerHTML = '<div id="placeholder"></div>'
+    expect(document.querySelectorAll('#placeholder').length).toBe(1)
+    render('#placeholder', '<div id="app"></div>')
+    expect(document.querySelectorAll('#placeholder').length).toBe(0)
+    expect(document.querySelectorAll('#app').length).toBe(1)
   })
 })
 
