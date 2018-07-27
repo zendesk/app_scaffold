@@ -12,7 +12,9 @@ const zendeskGardenJsDelivrUrl = (function() {
   const pkg = Object.keys(devDependencies).filter(item => item.includes('@zendeskgarden/css'));
 
   return pkg.reduce((url, pkg) => {
-    const version = dependencies[pkg].replace(/^[\^~]/g,'');
+    const version = devDependencies[pkg]
+      .replace(/^[\^~]/g,'')
+      .replace(/\.\d$/,'');
     return url = `${url}npm/${pkg}@${version},`
   }, "https://cdn.jsdelivr.net/combine/").slice(0, -1);
 }());
