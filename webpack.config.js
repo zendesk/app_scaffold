@@ -1,19 +1,33 @@
 /* eslint-env node */
-var path = require('path');
-var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var extractStyles = new ExtractTextPlugin('main.css');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractStyles = new ExtractTextPlugin('main.css');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const devDependencies = require('./package.json').devDependencies;
 
-var externalAssets = {
+// this function reads Zendesk Garden npm dependencies from package.json and
+// creates a jsDelivr url
+const zendeskGardenJsDelivrUrl = (function() {
+  const pkg = Object.keys(devDependencies).filter(item => item.includes('@zendeskgarden/css'));
+
+  return pkg.reduce((url, pkg) => {
+    const version = devDependencies[pkg]
+      .replace(/^[\^~]/g,'')
+      .replace(/\.\d$/,'');
+    return url = `${url}npm/${pkg}@${version},`
+  }, "https://cdn.jsdelivr.net/combine/").slice(0, -1);
+}());
+
+const externalAssets = {
   css: [
-    'https://assets.zendesk.com/apps/sdk-assets/css/2/zendesk_garden.css'
+    zendeskGardenJsDelivrUrl
   ],
   js: [
     'https://cdn.jsdelivr.net/g/lodash@4.14.0,handlebarsjs@4.0.5,jquery@3.1.0',
     'https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js'
   ]
-}
+};
 
 module.exports = {
   progress: true,

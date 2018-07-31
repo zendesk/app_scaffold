@@ -2,6 +2,106 @@
 # yarn lockfile v1
 
 
+"@zendeskgarden/css-arrows@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-arrows/-/css-arrows-3.1.1.tgz#dce2103b8e30c289df99894721713726853010fd"
+
+"@zendeskgarden/css-avatars@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-avatars/-/css-avatars-3.0.3.tgz#b89d716bb5d7eade7878250839ed179879a2f229"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-bedrock@^7.0.3":
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-bedrock/-/css-bedrock-7.0.3.tgz#fd6ccdefbb0c27abc999b7995b08d441ddb243b5"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+    normalize.css "^8.0.0"
+
+"@zendeskgarden/css-buttons@^6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-buttons/-/css-buttons-6.0.3.tgz#6302e6e9c9f06698224af18f593b97073ac5d15a"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-callouts@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-callouts/-/css-callouts-3.0.3.tgz#9fe8fd139656460232ff9ffee35161e1a6972db2"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-chrome@^3.0.4":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-chrome/-/css-chrome-3.0.4.tgz#cf80f11aa78e9a6bf2b0de479cd9837cb1b252c1"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-forms@^6.0.5":
+  version "6.0.5"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-forms/-/css-forms-6.0.5.tgz#1edcfe93dce250664456d27ac79157cbaa46a6c1"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-grid@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-grid/-/css-grid-0.1.6.tgz#13f7cc6a8ce06a9fce779f6594424caa00b32261"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+    bootstrap "^4.1.2"
+
+"@zendeskgarden/css-menus@^7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-menus/-/css-menus-7.0.4.tgz#6b3d58503fa3f8b61731d6873dec4af88038661b"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-modals@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-modals/-/css-modals-6.1.2.tgz#acc04c6324ad0b0ed16a195b3aee224452d4a12d"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-pagination@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-pagination/-/css-pagination-3.0.3.tgz#3860e8acf05f76f8fbf6004d3993e03d32802bc4"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-tables@^3.0.5":
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-tables/-/css-tables-3.0.5.tgz#1b341a8988a43977dcd3852dd00c69e11267243f"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-tabs@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-tabs/-/css-tabs-5.0.3.tgz#ee0d045053a612086d52620d9086cd6e25f9fd9e"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-tags@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-tags/-/css-tags-4.0.4.tgz#0ede22c851200c21fd36fef96f056de71227ce6b"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-tooltips@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-tooltips/-/css-tooltips-4.0.4.tgz#f2842039373c36d6dd25dfae3b9087c042d2ed5c"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-utilities@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-utilities/-/css-utilities-3.0.1.tgz#34009e7092dee88f28c294e57a4053f2618a79e4"
+  dependencies:
+    "@zendeskgarden/css-variables" "^5.0.1"
+
+"@zendeskgarden/css-variables@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-5.0.1.tgz#fb42ecb4529e8d33282b4bef8e63ab7738c344e5"
+
 Base64@~0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/Base64/-/Base64-0.2.1.tgz#ba3a4230708e186705065e66babdd4c35cf60028"
@@ -551,6 +651,14 @@ babel-plugin-transform-strict-mode@^6.18.0:
     babel-runtime "^6.0.0"
     babel-types "^6.18.0"
 
+babel-polyfill@^6.23.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
+  dependencies:
+    babel-runtime "^6.26.0"
+    core-js "^2.5.0"
+    regenerator-runtime "^0.10.5"
+
 babel-preset-es2015@^6.5.0:
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/babel-preset-es2015/-/babel-preset-es2015-6.18.0.tgz#b8c70df84ec948c43dcf2bf770e988eb7da88312"
@@ -598,6 +706,13 @@ babel-runtime@^6.0.0, babel-runtime@^6.11.6, babel-runtime@^6.9.0, babel-runtime
   dependencies:
     core-js "^2.4.0"
     regenerator-runtime "^0.9.5"
+
+babel-runtime@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
 
 babel-template@^6.14.0, babel-template@^6.15.0, babel-template@^6.16.0, babel-template@^6.8.0:
   version "6.16.0"
@@ -728,6 +843,10 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+bootstrap@^4.1.2:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.3.tgz#0eb371af2c8448e8c210411d0cb824a6409a12be"
 
 brace-expansion@^1.0.0:
   version "1.1.6"
@@ -1087,6 +1206,10 @@ convert-source-map@^1.1.0:
 core-js@^2.2.0, core-js@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.4.1.tgz#4de911e667b0eae9124e34254b53aea6fc618d3e"
+
+core-js@^2.5.0:
+  version "2.5.7"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.5.7.tgz#f972608ff0cead68b841a16a932d0b183791814e"
 
 core-util-is@~1.0.0:
   version "1.0.2"
@@ -1949,22 +2072,24 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-handlebars-loader@^1.3.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/handlebars-loader/-/handlebars-loader-1.4.0.tgz#142b2c29bcb8e407554fbc8846feef9f90da3317"
+handlebars-loader@^1.4.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/handlebars-loader/-/handlebars-loader-1.7.0.tgz#4f750bc62c350fb922e52d8564d667887e909723"
   dependencies:
     async "~0.2.10"
     fastparse "^1.0.0"
-    loader-utils "0.2.x"
+    loader-utils "1.0.x"
     object-assign "^4.1.0"
 
-handlebars@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-1.3.0.tgz#9e9b130a93e389491322d975cf3ec1818c37ce34"
+handlebars@^4.0.5:
+  version "4.0.11"
+  resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.11.tgz#630a35dfe0294bc281edae6ffc5d329fc7982dcc"
   dependencies:
-    optimist "~0.3"
+    async "^1.4.0"
+    optimist "^0.6.1"
+    source-map "^0.4.4"
   optionalDependencies:
-    uglify-js "~2.3"
+    uglify-js "^2.6"
 
 har-validator@~2.0.6:
   version "2.0.6"
@@ -2589,6 +2714,14 @@ loader-utils@0.2.x, loader-utils@^0.2.11, loader-utils@^0.2.15, loader-utils@^0.
     json5 "^0.5.0"
     object-assign "^4.0.1"
 
+loader-utils@1.0.x:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.0.4.tgz#13f56197f1523a305891248b4c7244540848426c"
+  dependencies:
+    big.js "^3.1.3"
+    emojis-list "^2.0.0"
+    json5 "^0.5.0"
+
 lodash._baseassign@^3.0.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/lodash._baseassign/-/lodash._baseassign-3.2.0.tgz#8c38a099500f215ad09e59f1722fd0c52bfe0a4e"
@@ -3043,6 +3176,10 @@ normalize-url@^1.4.0:
     query-string "^4.1.0"
     sort-keys "^1.0.0"
 
+normalize.css@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.0.tgz#14ac5e461612538a4ce9be90a7da23f86e718493"
+
 "npmlog@0 || 1 || 2 || 3":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/npmlog/-/npmlog-3.1.2.tgz#2d46fa874337af9498a2f12bb43d8d0be4a36873"
@@ -3129,12 +3266,6 @@ optimist@^0.6.1, optimist@~0.6.0:
   resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.6.1.tgz#da3ea74686fa21a19a111c326e90eb15a0196686"
   dependencies:
     minimist "~0.0.1"
-    wordwrap "~0.0.2"
-
-optimist@~0.3, optimist@~0.3.5:
-  version "0.3.7"
-  resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.3.7.tgz#c90941ad59e4273328923074d2cf2e7cbc6ec0d9"
-  dependencies:
     wordwrap "~0.0.2"
 
 optionator@^0.8.1:
@@ -3756,6 +3887,14 @@ regenerate@^1.2.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/regenerate/-/regenerate-1.3.1.tgz#0300203a5d2fdcf89116dce84275d011f5903f33"
 
+regenerator-runtime@^0.10.5:
+  version "0.10.5"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.10.5.tgz#336c3efc1220adcedda2c9fab67b5a7955a33658"
+
+regenerator-runtime@^0.11.0:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+
 regenerator-runtime@^0.9.5:
   version "0.9.5"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.9.5.tgz#403d6d40a4bdff9c330dd9392dcbb2d9a8bba1fc"
@@ -4091,13 +4230,13 @@ source-map-support@^0.4.2:
   dependencies:
     source-map "^0.5.3"
 
-source-map@0.4.x, source-map@~0.4.1:
+source-map@0.4.x, source-map@^0.4.4, source-map@~0.4.1:
   version "0.4.4"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.4.4.tgz#eba4f5da9c0dc999de68032d8b4f76173652036b"
   dependencies:
     amdefine ">=0.0.4"
 
-source-map@^0.1.41, source-map@~0.1.7:
+source-map@^0.1.41:
   version "0.1.43"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.1.43.tgz#c24bc146ca517c1471f5dacbe2571b2b7f9e3346"
   dependencies:
@@ -4366,13 +4505,14 @@ uglify-js@2.7.x, uglify-js@~2.7.3:
     uglify-to-browserify "~1.0.0"
     yargs "~3.10.0"
 
-uglify-js@~2.3:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.3.6.tgz#fa0984770b428b7a9b2a8058f46355d14fef211a"
+uglify-js@^2.6:
+  version "2.8.29"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.29.tgz#29c5733148057bb4e1f75df35b7a9cb72e6a59dd"
   dependencies:
-    async "~0.2.6"
-    optimist "~0.3.5"
-    source-map "~0.1.7"
+    source-map "~0.5.1"
+    yargs "~3.10.0"
+  optionalDependencies:
+    uglify-to-browserify "~1.0.0"
 
 uglify-to-browserify@~1.0.0:
   version "1.0.2"
