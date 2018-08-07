@@ -1,5 +1,5 @@
 {
-  "name": "Zendesk App Scaffold",
+  "name": "scaffold",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -14,10 +14,24 @@
   },
   "devDependencies": {
     "jest": "^23.4.0",
-    "standard": "^11.0.1"
+    "standard": "^11.0.1",
+    "@zendeskgarden/css-arrows": "^3.1.1",
+    "@zendeskgarden/css-avatars": "^3.0.3",
+    "@zendeskgarden/css-bedrock": "^7.0.3",
+    "@zendeskgarden/css-buttons": "^6.0.3",
+    "@zendeskgarden/css-callouts": "^3.0.3",
+    "@zendeskgarden/css-forms": "^6.0.5",
+    "@zendeskgarden/css-grid": "^0.1.6",
+    "@zendeskgarden/css-menus": "^7.0.4",
+    "@zendeskgarden/css-modals": "^6.1.2",
+    "@zendeskgarden/css-pagination": "^3.0.3",
+    "@zendeskgarden/css-tables": "^3.0.5",
+    "@zendeskgarden/css-tabs": "^5.0.3",
+    "@zendeskgarden/css-tags": "^4.0.4",
+    "@zendeskgarden/css-tooltips": "^4.0.4",
+    "@zendeskgarden/css-utilities": "^3.0.1"
   },
   "dependencies": {
-    "@zendeskgarden/css-bedrock": "^7.0.2",
     "babel-core": "^6.26.3",
     "babel-jest": "^23.4.0",
     "babel-loader": "^7.1.5",
@@ -27,6 +41,7 @@
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.1",
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.6",
