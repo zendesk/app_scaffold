@@ -1,5 +1,5 @@
 {
-  "name": "development",
+  "name": "Zendesk App Scaffold",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
@@ -28,7 +28,6 @@
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "mini-css-extract-plugin": "^0.4.1",
-    "npm": "^6.1.0",
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.6",
     "postcss-preset-env": "^5.2.1",

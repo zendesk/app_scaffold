@@ -48,7 +48,7 @@ module.exports = {
     // Copy over static assets
     new CopyWebpackPlugin([
       { from: 'src/manifest.json', to: '../', flatten: true },
-      { from: 'src/images/!(screenshot)*', to: '.', flatten: true },
+      { from: 'src/images/*', to: '.', flatten: true },
       { from: 'src/templates/iframe.html', to: '.', flatten: true }
     ]),
 
