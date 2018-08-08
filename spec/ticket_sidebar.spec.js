@@ -1,11 +1,11 @@
 /* eslint-env jest, browser */
 import TicketSidebar from '../src/javascript/locations/ticket_sidebar'
-import { CLIENT, ORGANIZATIONS, CONFIG, APPDATA } from './mocks/mock'
+import { CLIENT, ORGANIZATIONS } from './mocks/mock'
 import createRangePolyfill from './polyfills/createRange'
 
 jest.mock('../src/javascript/lib/i18n', () => {
   return {
-    loadTranslations: () => {},
+    loadTranslations: jest.fn(),
     t: str => str
   }
 })
@@ -18,19 +18,19 @@ describe('Ticket Sidebar App', () => {
   let errorSpy
   let app
   describe('Initialization Failure', () => {
-    beforeEach(() => {
+    beforeEach((done) => {
       document.body.innerHTML = '<section data-main><img class="loader" src="dot.gif"/></section>'
       CLIENT.request = jest.fn()
         .mockReturnValueOnce(Promise.reject(new Error('a fake error')))
-      app = new TicketSidebar(CLIENT, APPDATA, CONFIG)
+      app = new TicketSidebar(CLIENT, {}, {})
       errorSpy = jest.spyOn(app, '_handleError')
-    })
-
-    it('should display an error message in the console', (done) => {
       app._initializePromise.then(() => {
-        expect(errorSpy).toBeCalled()
         done()
       })
+    })
+
+    it('should display an error message in the console', () => {
+      expect(errorSpy).toBeCalled()
     })
   })
   describe('Initialization Success', () => {
@@ -48,11 +48,14 @@ describe('Ticket Sidebar App', () => {
     it('should render main stage with data', () => {
       expect(document.querySelector('.example-app')).not.toBe(null)
       expect(document.querySelector('h1').textContent).toBe('Hi Sample User, this is a sample app')
-      expect(document.querySelector('h2').textContent).toBe('default.example_string')
+      expect(document.querySelector('h2').textContent).toBe('default.organizations:')
     })
 
     it('should retrieve the organizations data', () => {
-      expect(app._states.organizations).toEqual([{ name: 'z3n' }])
+      expect(app._states.organizations).toEqual([
+        { name: 'Organization A' },
+        { name: 'Organization B' }
+      ])
     })
   })
 })

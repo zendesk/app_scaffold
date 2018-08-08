@@ -1,7 +1,7 @@
 {
-  "name": "App Scaffold",
+  "name": "Example App",
   "author": {
-    "name": "Zendesk",
+    "name": "John Doe",
     "email": "support@zendesk.com",
     "url": "https://www.zendesk.com"
   },
@@ -10,9 +10,6 @@
   "location": {
     "support": {
       "ticket_sidebar": "assets/iframe.html"
-    },
-    "new_ticket_sidebar": {
-      "url": "assets/iframe.html"
     }
   },
   "version": "1.0",

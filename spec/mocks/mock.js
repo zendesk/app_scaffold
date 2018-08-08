@@ -14,20 +14,10 @@ export const CLIENT = {
 
 export const ORGANIZATIONS = {
   organizations: [
-    { name: 'z3n' }
+    { name: 'Organization A' },
+    { name: 'Organization B' }
   ],
   next_page: null,
   previous_page: null,
   count: 1
 }
-
-export const APPDATA = {
-  metadata: {
-    settings: {
-      setting_1: '1 2 3',
-      setting_2: true
-    }
-  }
-}
-
-export const CONFIG = {}
