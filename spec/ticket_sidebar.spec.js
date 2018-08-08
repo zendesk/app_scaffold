@@ -6,7 +6,7 @@ import createRangePolyfill from './polyfills/createRange'
 jest.mock('../src/javascript/lib/i18n', () => {
   return {
     loadTranslations: () => {},
-    t: () => 'translation...'
+    t: str => str
   }
 })
 
@@ -48,7 +48,7 @@ describe('Ticket Sidebar App', () => {
     it('should render main stage with data', () => {
       expect(document.querySelector('.example-app')).not.toBe(null)
       expect(document.querySelector('h1').textContent).toBe('Hi Sample User, this is a sample app')
-      expect(document.querySelector('h2').textContent).toBe('translation...')
+      expect(document.querySelector('h2').textContent).toBe('default.example_string')
     })
 
     it('should retrieve the organizations data', () => {

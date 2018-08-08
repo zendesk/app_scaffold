@@ -2,5 +2,3 @@ tmp/
 dist/
 node_modules/
 coverage/
-src/translations/*
-!src/translations/en.yml

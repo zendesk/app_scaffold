@@ -1,0 +1,12 @@
+{
+  "app": {
+    "name": "Exemple d’application",
+    "short_description": "Brève description",
+    "long_description": "Longue description",
+    "installation_instructions": "Configurez les paramètres de l’application suivants, puis cliquez sur **Installer** :...",
+    "title": "Exemple d’application"
+  },
+  "default": {
+    "organizations": "organizations"
+  }
+}
