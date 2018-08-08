@@ -1,10 +1,17 @@
 {
   "name": "scaffold",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "description": "A scaffold for developers to build ZAF v2 apps",
+  "keywords": [
+    "zendesk",
+    "app",
+    "framework"
+  ],
+  "author": "Zendesk",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=8.9.4"
+  },
   "scripts": {
     "test": "jest",
     "watch": "cross-env NODE_ENV='development' webpack --watch --mode=development",
@@ -46,7 +53,7 @@
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.6",
     "postcss-preset-env": "^5.2.1",
-    "precss": "^3.1.2",
+    "precss": "^3.1.2", 
     "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8"
   }
