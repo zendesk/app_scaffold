@@ -1,0 +1,12 @@
+{
+  "app": {
+    "name": "示例应用",
+    "short_description": "简短介绍",
+    "long_description": "详细介绍",
+    "installation_instructions": "配置以下应用设置，然后单击“安装”：...",
+    "title": "示例应用"
+  },
+  "default": {
+    "organizations": "组织"
+  }
+}

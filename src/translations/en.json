@@ -1,21 +1,12 @@
 {
   "app": {
-    "short_description": "add your app short description here. max 80 characters",
-    "name": "add your app name here",
-    "long_description": "add your app long description here. max 3000 characters",
-    "installation_instructions": "add your app installation instructions here. max 3000 characters" 
+    "name": "Example App",
+    "short_description": "Short Description",
+    "long_description": "Long Description",
+    "installation_instructions": "Configure the following app settings, then click Install:...",
+    "title": "Example App"
   },
-
-  "hello": "Hello {{name}}!",
-
-  "save": {
-    "button": "Bookmark ticket #{{id}}",
-    "success": "Bookmarked ticket #{{id}}",
-    "error": "Sorry, something went wrong."
-  },
-
-  "learn_more": {
-    "message": "To learn more, {{link}}",
-    "link_text": "see the Zendesk forums"
+  "default": {
+    "organizations": "organizations"
   }
 }

@@ -1,102 +1,95 @@
-/* eslint-env node */
-const path = require("path");
-const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const extractStyles = new ExtractTextPlugin("main.css");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const externalAssets = require("./lib/javascripts/external_assets");
+const path = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const devDependencies = require('./package.json').devDependencies
+const TranslationsPlugin = require('./webpack/translations-plugin')
+
+// this function reads Zendesk Garden npm dependencies from package.json and
+// creates a jsDelivr url
+const zendeskGardenJsDelivrUrl = (function () {
+  const pkg = Object.keys(devDependencies).filter(item => item.includes('@zendeskgarden/css'))
+
+  return pkg.reduce((url, pkg) => {
+    const version = devDependencies[pkg]
+      .replace(/^[\^~]/g, '')
+      .replace(/\.\d$/, '')
+    url = `${url}npm/${pkg}@${version},`
+    return url
+  }, 'https://cdn.jsdelivr.net/combine/').slice(0, -1)
+}())
+
+const externalAssets = {
+  css: [
+    zendeskGardenJsDelivrUrl
+  ],
+  js: [
+    'https://assets.zendesk.com/apps/sdk/2.0/zaf_sdk.js'
+  ]
+}
 
 module.exports = {
   entry: {
     app: [
-      "babel-polyfill",
-      "./src/javascripts/index.js",
-      "./src/stylesheets/app.scss"
+      'babel-polyfill',
+      './src/javascripts/index.js',
+      './src/index.css'
     ]
   },
+  mode: process.env.NODE_ENV,
   output: {
-    path: path.resolve(__dirname, "./dist/assets"),
-    filename: "main.js",
-    sourceMapFilename: "[file].map"
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist/assets')
   },
+
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        enforce: "pre",
-        loader: "eslint-loader"
+        use: { loader: 'babel-loader' }
       },
       {
-        test: /\.(gif|jpe?g|png|svg|woff2?|ttf|eot)$/,
-        loader: "url-loader?limit=10000&name=[name].[ext]"
-      },
-      {
-        test: /\.scss$/,
-        use: extractStyles.extract({
-          fallback: "style-loader",
-          use: [
-            "css-loader?sourceMap&root=" +
-              path.resolve(__dirname, "./dist/assets"),
-            "sass-loader?sourceMap"
-          ]
-        })
-      },
-      {
+        type: 'javascript/auto',
         test: /\.json$/,
-        include: path.resolve(__dirname, "./src/translations"),
-        loader: "translations-loader",
-        options: {
-          runtime: "handlebars"
-        }
+        include: path.resolve(__dirname, './src/translations'),
+        use: './webpack/translations-loader'
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
-      },
-      {
-        test: /\.(handlebars|hd?bs)$/,
-        loader: "handlebars-loader",
-        options: {
-          extensions: [".handlebars", ".hdbs", ".hbs"],
-          runtime: "handlebars",
-          inlineRequires: "/images/"
-        }
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {loader: 'css-loader', options: {url: false}},
+          'postcss-loader'
+        ]
       }
     ]
   },
-  resolveLoader: {
-    modules: ["node_modules", path.resolve(__dirname, "./lib/loaders")]
-  },
-  resolve: {
-    modules: ["node_modules", path.resolve(__dirname, "./lib/javascripts")],
-    alias: {
-      app_manifest: path.resolve(__dirname, "./dist/manifest.json")
-    }
-  },
-  externals: {
-    handlebars: "Handlebars",
-    jquery: "jQuery",
-    lodash: "_",
-    moment: "moment",
-    zendesk_app_framework_sdk: "ZAFClient"
-  },
-  devtool: "#eval",
+
   plugins: [
-    extractStyles,
+    // Empties the dist folder
+    new CleanWebpackPlugin(['dist/*']),
+
+    // Copy over static assets
+    new CopyWebpackPlugin([
+      { from: 'src/manifest.json', to: '../', flatten: true },
+      { from: 'src/images/*', to: '.', flatten: true }
+    ]),
+
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
+
+    new TranslationsPlugin({
+      path: path.resolve(__dirname, './src/translations')
+    }),
+
     new HtmlWebpackPlugin({
-      warning:
-        "AUTOMATICALLY GENERATED FROM ./lib/templates/layout.hdbs - DO NOT MODIFY THIS FILE DIRECTLY",
+      warning: 'AUTOMATICALLY GENERATED FROM ./src/templates/iframe.html - DO NOT MODIFY THIS FILE DIRECTLY',
       vendorCss: externalAssets.css,
       vendorJs: externalAssets.js,
-      template: "!!handlebars-loader!./lib/templates/layout.hdbs"
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        drop_debugger: false,
-        warnings: false
-      }
+      template: './src/templates/iframe.html',
+      filename: 'iframe.html'
     })
   ]
-};
+}
