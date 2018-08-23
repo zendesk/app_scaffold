@@ -18,7 +18,8 @@ class TicketSidebar {
     this._config = config
 
     this._states = {}
-
+    // this._initializePromise is used to indicate app initilization(including all async operations) is complete,
+    // only used in integration testing
     this._initializePromise = this._init()
   }
 
