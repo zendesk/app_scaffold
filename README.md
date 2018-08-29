@@ -40,7 +40,7 @@ Collection of user interface components for Zendesk products. You’ll find comp
 
 - [Webpack 4](https://webpack.github.io/) module bundler
 
-Webpack compiles web browser applications. It allows splitting your source code into modules and re-use them with require and import statements. It also allows splitting your compiled project into separate files that are loaded on demand.
+Webpack is a module bundler, we use it to bundle up javascript modules for use as web applications, also to perform tasks like transforming and transpiling, etc.
 
 - [PostCSS](https://postcss.org//) stylesheets
 
