@@ -48,11 +48,11 @@ PostCSS transforms stylesheets with JS plugins. These plugins can lint your CSS,
 
 - [standardJS](https://standardjs.com/) JS linting
 
-standardJS is a javascript style guide, it helps catching style issues or code errors, and automatically format code for you.
+standardJS is a javascript style guide, it helps catching style issues or code errors, and automatically formats code for you.
 
 - [Jest](https://jestjs.io/) Javascript testing framework
 
-Jest is bundled with JSDom and built on top of Jasmine. It's more than just a ReactJS testing framework. At Zendesk Apps team, we use it for unit testing and integration testing on our official apps.
+Jest is bundled with JSDom and built on top of Jasmine. It's more than just a ReactJS testing framework. In the Zendesk Apps team, we use it for unit and integration testing of the Official Apps. It also includes a good test coverage toolset out of the box.
 
 ## Folder structure
 
@@ -73,7 +73,7 @@ The folder and file structure of the App Scaffold is as follows:
 | [`webpack.config.js`](#webpackconfigjs) | Configuration file that webpack uses to build your app                                       |
 
 #### dist
-The dist directory is created when you run the app building scripts, it is the folder you will need to package when submitting your app to the marketplace. It is also the folder you will have to serve when using [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools). It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
+The dist directory is created when you run the app building scripts. You will need to package this folder when submitting your app to the marketplace, It is also the folder you will have to serve when using [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools). It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
 
 #### spec
 The spec directory is where all your tests and test helpers live. Tests are not required to submit/upload your app to Zendesk and your test files are not included in your app's package, however it is good practice to write tests to document functionality and prevent bugs.
@@ -82,19 +82,22 @@ The spec directory is where all your tests and test helpers live. Tests are not 
 The src directory is where your raw source code lives. The App Scaffold includes different directories for JavaScript, stylesheets, templates, images and translations. Most of your additions will be in here (and spec, of course!).
 
 #### webpack
-In this directory, we have the translations-loader.js which is used by webpack to convert translation json files to javascript objects. We also have the translations-plugin.js to extract multilingual project meta data from translation json files for Zendesk Market.
+This directory contains custom tooling to process translations at build time:
+
+- translations-loader.js is used by Webpack to convert .json translation files to JavaScript objects, for the app itself.
+- translations-plugin.js is used to extract compulsory translation strings from the language json files that are used to display metadata about your app on the Zendesk Marketplace.
 
 #### .babelrc
 [.babelrc](https://babeljs.io/docs/en/babelrc.html) is the configuration file for babel compiler.
 
 #### .browserslistrc
-.browserslistrc is a configuration file to specify supported browsers of your application, some develop/build tools read info from this file if it exists in your project root. At present, our scaffolding doesn't reply on this file, [default browserslist query](https://github.com/browserslist/browserslist#queries) is used by [Babel](https://babeljs.io/docs/en/babel-preset-env/) and [PostCSS](https://github.com/csstools/postcss-preset-env#browsers)
+.browserslistrc is a configuration file to specify browsers supported by your application, some develop/build tools read info from this file if it exists in your project root. At present, our scaffolding doesn't reply on this file, [default browserslist query](https://github.com/browserslist/browserslist#queries) is used by [Babel](https://babeljs.io/docs/en/babel-preset-env/) and [PostCSS](https://github.com/csstools/postcss-preset-env#browsers)
 
 #### jest.config.js
 [jest.config.js](https://jestjs.io/docs/en/configuration.html) is the configuration file for Jest
 
 #### package.json
-package.json is the configuration file for [Yarn](https://yarnpkg.com/), which is a package managers for JavaScript. This file includes information about your project and its dependencies. For more information on how to configure this file, see [Yarn package.json](https://yarnpkg.com/en/docs/package-json).
+package.json is the configuration file for [Yarn](https://yarnpkg.com/), which is a package manager for JavaScript. This file includes information about your project and its dependencies. For more information on how to configure this file, see [Yarn package.json](https://yarnpkg.com/en/docs/package-json).
 
 #### postcss.config.js
 postcss.config.js is the configuration file for [PostCSS](https://postcss.org/)
@@ -172,10 +175,10 @@ taking note of the created filename.
 For more information on the Zendesk Apps Tools please see the [documentation](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools).
 
 ## External Dependencies
-External dependencies are defined in [webpack.config.js](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js#L22). This ensures these dependencies are included on your app's `index.html`.
+External dependencies are defined in [webpack.config.js](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js#L22). This ensures these dependencies are included in your app's `index.html`.
 
 ## Zendesk Garden CSS Components
-Included [Zendesk Garden CSS Components](https://garden.zendesk.com/css-components/) are listed in [package.json](https://github.com/zendesk/app_scaffold/blob/master/package.json#L25) as dev dependencies. Instead of importing them into the app css bundle, we are building a [jsDelivr CDN](https://www.jsdelivr.com/) link from the dependencies list and inject the link into `index.html` as another `<style>` tag. Feel free to add/remove the Garden components as need, webpack will generate and insert the updated link during the build process.
+Included [Zendesk Garden CSS Components](https://garden.zendesk.com/css-components/) are listed in [package.json](https://github.com/zendesk/app_scaffold/blob/master/package.json#L25) as dev dependencies. Instead of importing them into the app css bundle, we are building a [jsDelivr CDN](https://www.jsdelivr.com/) link from the dependencies list and inject the link into `index.html` as another `<style>` tag. Feel free to add/remove the Garden components as needed, webpack will generate and insert the updated link during the build process.
 
 ## Contribute
 * Put up a PR into the master branch.

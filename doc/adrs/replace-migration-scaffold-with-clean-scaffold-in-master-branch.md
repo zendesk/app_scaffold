@@ -8,21 +8,21 @@ status: "Accepted"
 # ADR: Replace migration Scaffold with clean Scaffold in Master Branch
 
 ## Context
-At the moment, the master branch has the scaffold specifically build for helping developers to migrate v1 apps to v2. From monitor, the majority usage comes from [App Migrator](https://github.com/zendesk/zendesk_app_migrator) and [ZAT](https://github.com/zendesk/zendesk_apps_tools) which use the master branch as the download source.
-It should be more helpful to show a *clean*(from scratch) scaffold to the developers directly come to this repo for a starting point to build apps
+At the moment, the master branch has the scaffold specifically build to help developers migrate v1 apps to v2. From monitor, the majority usage comes from [App Migrator](https://github.com/zendesk/zendesk_app_migrator) and [ZAT](https://github.com/zendesk/zendesk_apps_tools) which use the master branch as the download source.
+It is more helpful to show developers coming directly to this repo a clean (from scratch) scaffold, one usable as a starting point to build new apps respecting our current conventions out of the box.
 
 ## Decision
 
 ### New app scaffold
-A new *clean* app scaffold has been build on branch [offapps-migration](https://github.com/zendesk/app_scaffold/tree/offapps-migration) based on branch [from-scratch](https://github.com/zendesk/app_scaffold/tree/from-scratch)
+A new *clean* app scaffold has been built on branch [offapps-migration](https://github.com/zendesk/app_scaffold/tree/offapps-migration) based on branch [from-scratch](https://github.com/zendesk/app_scaffold/tree/from-scratch)
 
 ### Move migration scaffold into App Migrator repository
-Migration scaffold in master branch will be moved into [App Migrator](https://github.com/zendesk/zendesk_app_migrator), used and maintained as *built-in* template resource
+Migration scaffold in master branch will be moved into [App Migrator](https://github.com/zendesk/zendesk_app_migrator), used and maintained as a *built-in* template resource
 
 ### Move new app scaffold to master branch
 
 ### Add support in [ZAT](https://github.com/zendesk/zendesk_apps_tools) to create new app with the new scaffold
-* New command option `zat new scaffold` will create a v2 app using the new app scaffold.
+* New command option `zat new --scaffold` will create a v2 app using the new app scaffold.
 
 ## Status
 
