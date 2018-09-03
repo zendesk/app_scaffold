@@ -20,10 +20,10 @@ To run your app locally in Zendesk, you need the latest [Zendesk Apps Tools (ZAT
 
 ### Running locally
 
-To serve the app to your zendesk instance with `?zat=true`, run
+To serve the app to your Zendesk instance with `?zat=true`, run
 
 ```
-yarn run build:dev
+yarn run watch
 zat server -p dist
 ```
 
@@ -40,15 +40,15 @@ Collection of user interface components for Zendesk products. You’ll find comp
 
 - [Webpack 4](https://webpack.github.io/) module bundler
 
-Webpack is a module bundler, we use it to bundle up javascript modules for use as web applications, also to perform tasks like transforming and transpiling, etc.
+Webpack is a module bundler, we use it to bundle up Javascript modules for use as web applications, also to perform tasks like transforming and transpiling, etc.
 
 - [PostCSS](https://postcss.org//) stylesheets
 
 PostCSS transforms stylesheets with JS plugins. These plugins can lint your CSS, support variables and mixins, transpile future CSS syntax, inline images, and more.
 
-- [standardJS](https://standardjs.com/) JS linting
+- [StandardJS](https://standardjs.com/) JS linting
 
-standardJS is a javascript style guide, it helps catching style issues or code errors, and automatically formats code for you.
+StandardJS is a Javascript style guide, it helps catching style issues or code errors, and automatically formats code for you.
 
 - [Jest](https://jestjs.io/) Javascript testing framework
 
@@ -73,7 +73,7 @@ The folder and file structure of the App Scaffold is as follows:
 | [`webpack.config.js`](#webpackconfigjs) | Configuration file that webpack uses to build your app                                       |
 
 #### dist
-The dist directory is created when you run the app building scripts. You will need to package this folder when submitting your app to the marketplace, It is also the folder you will have to serve when using [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools). It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
+The dist directory is created when you run the app building scripts. You will need to package this folder when submitting your app to the Zendesk Apps Marketplace, It is also the folder you will have to serve when using [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools). It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
 
 #### spec
 The spec directory is where all your tests and test helpers live. Tests are not required to submit/upload your app to Zendesk and your test files are not included in your app's package, however it is good practice to write tests to document functionality and prevent bugs.
@@ -85,7 +85,7 @@ The src directory is where your raw source code lives. The App Scaffold includes
 This directory contains custom tooling to process translations at build time:
 
 - translations-loader.js is used by Webpack to convert .json translation files to JavaScript objects, for the app itself.
-- translations-plugin.js is used to extract compulsory translation strings from the language json files that are used to display metadata about your app on the Zendesk Marketplace.
+- translations-plugin.js is used to extract compulsory translation strings from the language json files that are used to display metadata about your app on the Zendesk Apps Marketplace.
 
 #### .babelrc
 [.babelrc](https://babeljs.io/docs/en/babelrc.html) is the configuration file for babel compiler.
