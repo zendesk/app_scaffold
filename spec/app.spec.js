@@ -1,12 +1,12 @@
 /* eslint-env jest, browser */
-import TicketSidebar from '../src/javascripts/locations/ticket_sidebar'
+import App from '../src/javascripts/modules/app'
 import { CLIENT, ORGANIZATIONS } from './mocks/mock'
 import createRangePolyfill from './polyfills/createRange'
 
 jest.mock('../src/javascripts/lib/i18n', () => {
   return {
     loadTranslations: jest.fn(),
-    t: str => str
+    t: key => key
   }
 })
 
@@ -14,17 +14,19 @@ if (!document.createRange) {
   createRangePolyfill()
 }
 
-describe('Ticket Sidebar App', () => {
+describe('Example App', () => {
   let errorSpy
   let app
+
   describe('Initialization Failure', () => {
     beforeEach((done) => {
       document.body.innerHTML = '<section data-main><img class="loader" src="dot.gif"/></section>'
-      CLIENT.request = jest.fn()
-        .mockReturnValueOnce(Promise.reject(new Error('a fake error')))
-      app = new TicketSidebar(CLIENT, {}, {})
+      CLIENT.request = jest.fn().mockReturnValueOnce(Promise.reject(new Error('a fake error')))
+
+      app = new App(CLIENT, {})
       errorSpy = jest.spyOn(app, '_handleError')
-      app._initializePromise.then(() => {
+
+      app.initializePromise.then(() => {
         done()
       })
     })
@@ -33,14 +35,16 @@ describe('Ticket Sidebar App', () => {
       expect(errorSpy).toBeCalled()
     })
   })
+
   describe('Initialization Success', () => {
     beforeEach((done) => {
       document.body.innerHTML = '<section data-main><img class="loader" src="dot.gif"/></section>'
-      CLIENT.request = jest.fn()
-        .mockReturnValueOnce(Promise.resolve(ORGANIZATIONS))
+      CLIENT.request = jest.fn().mockReturnValueOnce(Promise.resolve(ORGANIZATIONS))
       CLIENT.invoke = jest.fn().mockReturnValue(Promise.resolve({}))
-      app = new TicketSidebar(CLIENT, {}, {})
-      app._initializePromise.then(() => {
+
+      app = new App(CLIENT, {})
+
+      app.initializePromise.then(() => {
         done()
       })
     })
@@ -52,7 +56,7 @@ describe('Ticket Sidebar App', () => {
     })
 
     it('should retrieve the organizations data', () => {
-      expect(app._states.organizations).toEqual([
+      expect(app.states.organizations).toEqual([
         { name: 'Organization A' },
         { name: 'Organization B' }
       ])
