@@ -1,4 +1,4 @@
-import {templatingLoop as loop, escapeSpecialChars as escape} from '../javascripts/lib/helpers.js'
+import { templatingLoop as loop, escapeSpecialChars as escape } from '../javascripts/lib/helpers.js'
 import I18n from '../javascripts/lib/i18n.js'
 
 function organizationMarkup (organization) {

@@ -30,6 +30,7 @@ export function templatingLoop (set, getTemplate, initialValue = '') {
 export function render (replacedNodeSelector, htmlString) {
   const fragment = document.createRange().createContextualFragment(htmlString)
   const replacedNode = document.querySelector(replacedNodeSelector)
+
   replacedNode.parentNode.replaceChild(fragment, replacedNode)
 }
 
@@ -40,6 +41,7 @@ export function render (replacedNodeSelector, htmlString) {
  */
 export function escapeSpecialChars (str) {
   if (typeof str !== 'string') throw new TypeError('escapeSpecialChars function expects input in type String')
+
   const escape = {
     '&': '&amp;',
     '<': '&lt;',
@@ -49,5 +51,6 @@ export function escapeSpecialChars (str) {
     '`': '&#x60;',
     '=': '&#x3D;'
   }
+
   return str.replace(/[&<>"'`=]/g, function (m) { return escape[m] })
 }

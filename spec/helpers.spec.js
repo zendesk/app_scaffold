@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import {resizeContainer, templatingLoop, render, escapeSpecialChars as escape} from '../src/javascripts/lib/helpers'
+import { resizeContainer, templatingLoop, render, escapeSpecialChars as escape } from '../src/javascripts/lib/helpers'
 import createRangePolyfill from './polyfills/createRange'
 
 if (!document.createRange) {
@@ -13,8 +13,8 @@ const dataSet = [1, 2, 3]
 const getTemplate = item => `${item}-`
 
 describe('resizeContainer', () => {
-  resizeContainer(client)
   it('client.invoke has been called', () => {
+    resizeContainer(client)
     expect(client.invoke).toHaveBeenCalled()
   })
 })
@@ -30,9 +30,10 @@ describe('templatingLoop', () => {
 })
 
 describe('render', () => {
-  it('should replace ', () => {
+  it('should replace target dom node with the given HTML string', () => {
     document.body.innerHTML = '<div id="placeholder"></div>'
     expect(document.querySelectorAll('#placeholder').length).toBe(1)
+
     render('#placeholder', '<div id="app"></div>')
     expect(document.querySelectorAll('#placeholder').length).toBe(0)
     expect(document.querySelectorAll('#app').length).toBe(1)
@@ -45,18 +46,23 @@ describe('escapeSpecialChars', () => {
       escape(1)
     }).toThrow()
   })
+
   it('should escape open/close html tags', () => {
     expect(escape('<script></script>')).toBe('&lt;script&gt;&lt;/script&gt;')
   })
+
   it('should escape ampersand', () => {
     expect(escape('a && b')).toBe('a &amp;&amp; b')
   })
+
   it('should escape quotes and back tick', () => {
     expect(escape('"string" \'string\' `string`')).toBe('&quot;string&quot; &#x27;string&#x27; &#x60;string&#x60;')
   })
+
   it('should escape equal sign', () => {
     expect(escape('a = b')).toBe('a &#x3D; b')
   })
+
   it('should escape unsafe tags and characters', () => {
     expect(escape('Test Ticket for Text App</a><script>javascript:alret(1);</script>')).toBe('Test Ticket for Text App&lt;/a&gt;&lt;script&gt;javascript:alret(1);&lt;/script&gt;')
   })

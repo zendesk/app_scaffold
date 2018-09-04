@@ -11,13 +11,16 @@ const TranslationsPlugin = require('./webpack/translations-plugin')
 const zendeskGardenJsDelivrUrl = (function () {
   const pkg = Object.keys(devDependencies).filter(item => item.includes('@zendeskgarden/css'))
 
-  return pkg.reduce((url, pkg) => {
-    const version = devDependencies[pkg]
-      .replace(/^[\^~]/g, '')
-      .replace(/\.\d$/, '')
-    url = `${url}npm/${pkg}@${version},`
-    return url
-  }, 'https://cdn.jsdelivr.net/combine/').slice(0, -1)
+  return pkg.reduce(
+    (url, pkg) => {
+      const version = devDependencies[pkg]
+        .replace(/^[\^~]/g, '')
+        .replace(/\.\d$/, '')
+      url = `${url}npm/${pkg}@${version},`
+      return url
+    },
+    'https://cdn.jsdelivr.net/combine/'
+  ).slice(0, -1)
 }())
 
 const externalAssets = {
@@ -42,7 +45,6 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist/assets')
   },
-
   module: {
     rules: [
       {
@@ -59,7 +61,7 @@ module.exports = {
         test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
-          {loader: 'css-loader', options: {url: false}},
+          {loader: 'css-loader', options: { url: false }},
           'postcss-loader'
         ]
       }
