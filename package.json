@@ -1,5 +1,5 @@
 {
-  "name": "scaffold",
+  "name": "app_scaffold",
   "version": "1.0.0",
   "description": "A scaffold for developers to build ZAF v2 apps",
   "keywords": [
@@ -36,13 +36,10 @@
     "@zendeskgarden/css-tabs": "^5.0.3",
     "@zendeskgarden/css-tags": "^4.0.4",
     "@zendeskgarden/css-tooltips": "^4.0.4",
-    "@zendeskgarden/css-utilities": "^3.0.1"
-  },
-  "dependencies": {
+    "@zendeskgarden/css-utilities": "^3.0.1",
     "babel-core": "^6.26.3",
     "babel-jest": "^23.4.0",
     "babel-loader": "^7.1.5",
-    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.2",
@@ -53,8 +50,11 @@
     "postcss-import": "^11.1.0",
     "postcss-loader": "^2.1.6",
     "postcss-preset-env": "^5.2.1",
-    "precss": "^3.1.2", 
+    "precss": "^3.1.2",
     "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
   }
 }

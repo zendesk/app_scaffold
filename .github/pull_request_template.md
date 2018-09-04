@@ -15,8 +15,15 @@ I don't always use this section, but I do when I find there's something particul
 [Invision design](https://google.com.au)
 
 ## Screenshots (if needed)
-### Screenshot title
-However many images needed
+<details>
+<summary>Screen shot 1</summary>
+<img src="1.png">
+</details>
+
+<details>
+<summary>Screen shot 2</summary>
+<img src="2.png">
+</details>
 
 ## CCs
 Anyone specific?
