@@ -22,7 +22,7 @@ class TranslationsPlugin {
   // Defines `apply` method in it's prototype.
   apply (compiler) {
     // Specifies webpack's event hook to attach itself.
-    compiler.plugin('emit', (compilation, callback) => {
+    compiler.hooks.emit.tapAsync('TranslationsPlugin', (compilation, callback) => {
       fs.readdir(this.options.path, (err, items) => {
         if (err) throw err
 
