@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "6.3.0"
+cache: yarn
+branches:
+  only: [master]
+script: yarn test
+dist: trusty
