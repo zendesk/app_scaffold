@@ -1,14 +1,12 @@
-const flatten = require('lodash/flatten')
-
 /**
  * {
- *   name: 'test app'
+ *   name: 'test app',
  *   author: {
  *     title: 'the author',
  *     value: 'mr programmer'
  *   },
  *   app: {
- *     instructions: 'install'
+ *     instructions: 'install',
  *     steps: {
  *       click: 'this button'
  *     }
@@ -24,27 +22,44 @@ const flatten = require('lodash/flatten')
  *   app.steps.click: 'this button'
  * }
  */
-function translationFlatten (object, flattened = {}, currentKeys = []) {
-  Object.keys(object).map(function (key) {
-    const value = object[key]
-    if (typeof value === 'object') {
-      if (value.title && value.value) {
-        flattened[flatten([currentKeys, key]).join('.')] = value.value
+function translationFlatten (object, currentKeys = []) {
+  const res = {}
+
+  Object.keys(object).map(
+    key => {
+      const value = object[key]
+
+      if (typeof value === 'object') {
+        if (value.title && value.value) {
+          const flattenedKey = [...currentKeys, key].join('.')
+          res[flattenedKey] = value.value
+        } else {
+          Object.assign(
+            res,
+            translationFlatten(value, [...currentKeys, key])
+          )
+        }
       } else {
-        translationFlatten(value, flattened, flatten([currentKeys, key]))
+        const flattenedKey = [...currentKeys, key].join('.')
+        res[flattenedKey] = value
       }
-    } else {
-      flattened[flatten([currentKeys, key]).join('.')] = value
     }
-  })
-  return flattened
+  )
+
+  return res
 }
 
-// It compiles the Handlebars templates for the translation file to be used within the app's i18n shim
 function TranslationsLoader (content) {
-  this.cacheable && this.cacheable()
-  const translationsInput = JSON.parse(content)
+  let translationsInput
+  try {
+    translationsInput = JSON.parse(content)
+  } catch (error) {
+    console.error(error)
+    process.exit(1)
+  }
+
   const compiledTranslations = translationFlatten(translationsInput)
+
   return `module.exports = ${JSON.stringify(compiledTranslations)}`
 }
 
