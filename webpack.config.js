@@ -4,7 +4,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const devDependencies = require('./package.json').devDependencies
-const TranslationsPlugin = require('./webpack/translations-plugin')
 
 // this function reads Zendesk Garden npm dependencies from package.json and
 // creates a jsDelivr url
@@ -80,10 +79,6 @@ module.exports = {
 
     new MiniCssExtractPlugin({
       filename: '[name].css'
-    }),
-
-    new TranslationsPlugin({
-      path: path.resolve(__dirname, './src/translations')
     }),
 
     new HtmlWebpackPlugin({
