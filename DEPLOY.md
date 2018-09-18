@@ -9,8 +9,8 @@ Compile the app for DEV
 
 Compile the app for PROD
 ===============
-1) `yarn install --production`
-2) `yarn run build:prod`
+1) `yarn install`
+2) `yarn run build`
 
 To run the tests
 ===============

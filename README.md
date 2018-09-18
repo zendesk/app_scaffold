@@ -8,13 +8,15 @@ This repo contains a scaffold to help developers build [apps for Zendesk product
 ## Getting Started
 
 ### Dependencies
-- [Node.js](https://nodejs.org/en/) >=8.9.4
+- [Node.js](https://nodejs.org/en/) >= 6.3.x
 - [Ruby](https://www.ruby-lang.org/) >= 2.0.x
 
 ### Setup
 1. Clone or fork this repo
 2. Change (`cd`) into the `app_scaffold` directory
 3. Run `yarn install`
+
+You can use either `yarn` or `npm` as package manager and run the scripts with the corresponding commands.
 
 To run your app locally in Zendesk, you need the latest [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools).
 
