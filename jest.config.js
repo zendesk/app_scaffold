@@ -7,5 +7,8 @@ module.exports = {
       init: () => {}
     }
   },
+  coveragePathIgnorePatterns: [
+    '<rootDir>/spec'
+  ],
   roots: ['./spec']
 }
