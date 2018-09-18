@@ -27,7 +27,7 @@ function parsePlaceholders (str, context) {
 }
 
 class I18n {
-  constructor (locale = 'en') {
+  constructor (locale) {
     this.loadTranslations(locale)
   }
 
@@ -47,8 +47,6 @@ class I18n {
    * @return {String} tranlated string
    */
   t (key, context) {
-    if (!translations) throw new Error('Translations must be initialized with i18n.loadTranslations before calling `t`.')
-
     const keyType = typeof key
     if (keyType !== 'string') throw new Error(`Translation key must be a string, got: ${keyType}`)
 
@@ -59,9 +57,11 @@ class I18n {
     return parsePlaceholders(template, context)
   }
 
-  loadTranslations (locale) {
-    const newTranslations = this.tryRequire(locale) || this.tryRequire(locale.replace(/-.+$/, ''))
-    if (newTranslations) translations = newTranslations
+  loadTranslations (locale = 'en') {
+    translations = this.tryRequire(locale) ||
+                  this.tryRequire(locale.replace(/-.+$/, '')) ||
+                  translations ||
+                  this.tryRequire('en')
   }
 }
 
