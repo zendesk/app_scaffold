@@ -17,7 +17,8 @@
     "watch": "cross-env NODE_ENV='development' webpack --watch --mode=development",
     "build:dev": "cross-env NODE_ENV='development' webpack",
     "build": "cross-env NODE_ENV='production' webpack -p",
-    "lint": "standard"
+    "lint": "standard",
+    "server": "zat server -p ./dist --unattended"
   },
   "devDependencies": {
     "jest": "^23.4.0",
