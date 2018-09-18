@@ -66,7 +66,7 @@ The folder and file structure of the App Scaffold is as follows:
 | [`dist/`](#dist)                        | The folder in which webpack packages the built version of your app                           |
 | [`spec/`](#spec)                        | The folder in which all of your test files live                                              |
 | [`src/`](#src)                          | The folder in which all of your source JavaScript, CSS, templates and translation files live |
-| [`webpack/`](#src)                      | translations-loader and translations-plugin to support i18n in the application               |
+| [`webpack/`](#src)                      | Include translations-loader to support i18n in the application               |
 | [`.babelrc`](#packagejson)              | Configuration file for Babel.js                                                              |
 | [`.browserslistrc`](#packagejson)       | Configuration file for browserslist                                                           |
 | [`jest.config.js`](#packagejson)        | Configuration file for Jest                                                                  |
@@ -87,7 +87,6 @@ The src directory is where your raw source code lives. The App Scaffold includes
 This directory contains custom tooling to process translations at build time:
 
 - translations-loader.js is used by Webpack to convert .json translation files to JavaScript objects, for the app itself.
-- translations-plugin.js is used to extract compulsory translation strings from the language json files that are used to display metadata about your app on the Zendesk Apps Marketplace.
 
 #### .babelrc
 [.babelrc](https://babeljs.io/docs/en/babelrc.html) is the configuration file for babel compiler.
