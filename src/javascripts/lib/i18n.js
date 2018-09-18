@@ -1,7 +1,5 @@
 import manifest from '../../manifest.json'
 
-const defaultLocale = manifest.defaultLocale || 'en'
-
 // map to store the key/translation pairs of the loaded language
 let translations
 
@@ -21,25 +19,25 @@ function parsePlaceholders (str, context) {
     if (match) matches.push(match)
   } while (match)
 
-  return matches.reduce(
-    (str, match) => {
-      const newRegex = new RegExp(match[0], 'g')
-      str = str.replace(newRegex, context[match[1]])
-
-      return str
-    },
-    str
-  )
+  return matches.reduce((str, match) => {
+    const newRegex = new RegExp(match[0], 'g')
+    str = str.replace(newRegex, context[match[1]])
+    return str
+  }, str)
 }
 
-const I18n = {
-  tryRequire: function (locale) {
+class I18n {
+  constructor (locale = 'en') {
+    this.loadTranslations(locale)
+  }
+
+  tryRequire (locale) {
     try {
       return require(`../../translations/${locale}.json`)
     } catch (e) {
       return null
     }
-  },
+  }
 
   /**
    * Translate key with currently loaded translations,
@@ -48,8 +46,8 @@ const I18n = {
    * @param {Object} context object contains placeholder/value pairs
    * @return {String} tranlated string
    */
-  t: function (key, context) {
-    if (!translations) throw new Error('Translations must be initialized with I18n.loadTranslations before calling `t`.')
+  t (key, context) {
+    if (!translations) throw new Error('Translations must be initialized with i18n.loadTranslations before calling `t`.')
 
     const keyType = typeof key
     if (keyType !== 'string') throw new Error(`Translation key must be a string, got: ${keyType}`)
@@ -59,16 +57,12 @@ const I18n = {
     if (typeof template !== 'string') throw new Error(`Invalid translation for key: ${key}`)
 
     return parsePlaceholders(template, context)
-  },
+  }
 
-  loadTranslations: function (locale) {
-    translations = I18n.tryRequire(locale) ||
-      I18n.tryRequire(locale.replace(/-.+$/, '')) || // e.g. fallback `en-US` to `en`
-      I18n.tryRequire(defaultLocale) ||
-      {}
-
-    return translations
+  loadTranslations (locale) {
+    const newTranslations = this.tryRequire(locale) || this.tryRequire(locale.replace(/-.+$/, ''))
+    if (newTranslations) translations = newTranslations
   }
 }
 
-export default I18n
+export default new I18n(manifest.defaultLocale)
