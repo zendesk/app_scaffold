@@ -14,36 +14,20 @@ This repo contains a scaffold to help developers build [apps for Zendesk product
 ### Setup
 1. Clone or fork this repo
 2. Change (`cd`) into the `app_scaffold` directory
-3. Run `npm install`
+3. Run `yarn install`
 
-To run your app locally in Zendesk, you need the [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools).
+You can use either `yarn` or `npm` as package manager and run the scripts with the corresponding commands.
 
-You'll also need to run a couple of command-line Node.js-based tools that are installed using `npm`. For a node module to be available from the command-line, it must be installed globally.
-
-To setup these and other dependencies, run these commands:
-
-```
-gem install zendesk_apps_tools
-npm install --global webpack foreman karma-cli
-```
-
-Note: Foreman was originally created as a Ruby tool. If you prefer, you can install it by `gem install foreman` instead.
+To run your app locally in Zendesk, you need the latest [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools).
 
 ### Running locally
 
-_Note: The App Scaffold currently depends on zat v1.35.12 or greater._
-
-Foreman allows you to easily run multiple processes in one tab. One process is `zat server --path=./dist`, which serves the app in a way that can be run in a supported Zendesk product. The second is `webpack --watch` to rebuild the project whenever you save changes to a source file.
-
-To run these processes, run
+To serve the app to your Zendesk instance with `?zat=true`, run
 
 ```
-nf start
+yarn run watch
+zat server -p dist
 ```
-
-or run the individual commands from the Procfile in separate terminals.
-
-Note: If you installed the Ruby version of foreman, you'll need to use `foreman start`.
 
 ## But why?
 The App Scaffold includes many features to help you maintain and scale your app. Some of the features provided by the App Scaffold are listed below. However, you don't need prior experience in any of these to be able to use the scaffold successfully.
@@ -52,25 +36,25 @@ The App Scaffold includes many features to help you maintain and scale your app.
 
 ECMAScript 6, also known as ECMAScript 2015, is the latest version of the ECMAScript standard. The App Scaffold includes the [Babel compiler](https://babeljs.io/) to transpile your code to ES5. This allows you to use ES6 features, such as classes, arrow functions and template strings even in browsers that haven't fully implemented these features.
 
-- [Handlebars](http://handlebarsjs.com/) templates
+- [Zendesk Garden](https://garden.zendesk.com/css-components/) UI components
 
-Handlebars is a powerful templating library that lets you build semantic templates for your app with minimal logic.
+Collection of user interface components for Zendesk products. You’ll find components built to respond to a range of user input devices, tuned to handle right-to-left layouts, and finessed with just the right touch of subtle animation.
 
-- [SASS](http://sass-lang.com/) stylesheets
+- [Webpack 4](https://webpack.github.io/) module bundler
 
-Sass is an extension of CSS that adds power and elegance to the basic language. It allows you to use variables, nested rules, mixins, inline imports, and more.
+Webpack is a module bundler, we use it to bundle up Javascript modules for use as web applications, also to perform tasks like transforming and transpiling, etc.
 
-- [Webpack](https://webpack.github.io/) module bundler
+- [PostCSS](https://postcss.org//) stylesheets
 
-Webpack compiles web browser applications. It allows splitting your source code into modules and re-use them with require and import statements. It also allows splitting your compiled project into separate files that are loaded on demand.
+PostCSS transforms stylesheets with JS plugins. These plugins can lint your CSS, support variables and mixins, transpile future CSS syntax, inline images, and more.
 
-- [Karma](http://karma-runner.github.io/) test runner
+- [StandardJS](https://standardjs.com/) JS linting
 
-The main goal for Karma is to bring a productive testing environment to developers with minimal configuration.
+StandardJS is a Javascript style guide, it helps catching style issues or code errors, and automatically formats code for you.
 
-- [Jasmine](https://jasmine.github.io/) testing framework
+- [Jest](https://jestjs.io/) Javascript testing framework
 
-Jasmine is a behavior-driven development framework for testing JavaScript code with a clean syntax.
+Jest is bundled with JSDom and built on top of Jasmine. It's more than just a ReactJS testing framework. In the Zendesk Apps team, we use it for unit and integration testing of the Official Apps. It also includes a good test coverage toolset out of the box.
 
 ## Folder structure
 
@@ -78,73 +62,57 @@ The folder and file structure of the App Scaffold is as follows:
 
 | Name                                    | Description                                                                                  |
 |:----------------------------------------|:---------------------------------------------------------------------------------------------|
+| [`.github/`](#.github)                  | The folder to store PULL_REQUEST_TEMPLATE.md, ISSUE_TEMPLATE.md and CONTRIBUTING.md, etc     |
 | [`dist/`](#dist)                        | The folder in which webpack packages the built version of your app                           |
-| [`lib/`](#lib)                          | The folder in which the shims and files that make the scaffold work live                     |
 | [`spec/`](#spec)                        | The folder in which all of your test files live                                              |
 | [`src/`](#src)                          | The folder in which all of your source JavaScript, CSS, templates and translation files live |
-| [`.eslintrc`](#eslintrc)                | Configuration file for JavaScript linting                                                    |
-| [`karma.conf.js`](#karmaconfjs)         | Configuration file for the test runner                                                       |
-| [`package.json`](#packagejson)          | Configuration file for build dependencies                                                    |
+| [`webpack/`](#src)                      | Include translations-loader to support i18n in the application               |
+| [`.babelrc`](#packagejson)              | Configuration file for Babel.js                                                              |
+| [`.browserslistrc`](#packagejson)       | Configuration file for browserslist                                                           |
+| [`jest.config.js`](#packagejson)        | Configuration file for Jest                                                                  |
+| [`package.json`](#packagejson)          | Configuration file for Project metadata, dependencies and build scripts                      |
+| [`postcss.config.js`](#packagejson)     | Configuration file for PostCSS                                                               |
 | [`webpack.config.js`](#webpackconfigjs) | Configuration file that webpack uses to build your app                                       |
 
 #### dist
-The dist directory is the folder you will need to package when submitting your app to the marketplace. It is also the folder you will have to serve when using [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools). It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
-
-#### lib
-The lib directory is where the source code for the app shims and compatibility methods live. While you may modify or remove this code as required for your app, doing so is not recommended for beginners.
+The dist directory is created when you run the app building scripts. You will need to package this folder when submitting your app to the Zendesk Apps Marketplace, It is also the folder you will have to serve when using [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools). It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
 
 #### spec
 The spec directory is where all your tests and test helpers live. Tests are not required to submit/upload your app to Zendesk and your test files are not included in your app's package, however it is good practice to write tests to document functionality and prevent bugs.
 
 #### src
-The src directory is where your raw source code lives. The App Scaffold includes different directories for JavaScript, stylesheets, templates and translations. Most of your additions will be in here (and spec, of course!).
+The src directory is where your raw source code lives. The App Scaffold includes different directories for JavaScript, stylesheets, templates, images and translations. Most of your additions will be in here (and spec, of course!).
 
-#### .eslintrc
-.eslintrc is a configuration file for [ESLint](http://eslint.org). ESLint is a linting utility for JavaScript. For more information on how to configure ESLint, see [Configuring ESLint](http://eslint.org/docs/user-guide/configuring).
+#### webpack
+This directory contains custom tooling to process translations at build time:
 
-#### karma.conf.js
-karma.conf.js is a configuration file for [Karma](http://karma-runner.github.io). Karma is a JavaScript test runner. This file defines where your source and test files live. For more information on how to use this file, see [Karma - Configuration File](http://karma-runner.github.io/1.0/config/configuration-file.html).
+- translations-loader.js is used by Webpack to convert .json translation files to JavaScript objects, for the app itself.
+
+#### .babelrc
+[.babelrc](https://babeljs.io/docs/en/babelrc.html) is the configuration file for babel compiler.
+
+#### .browserslistrc
+.browserslistrc is a configuration file to specify browsers supported by your application, some develop/build tools read info from this file if it exists in your project root. At present, our scaffolding doesn't reply on this file, [default browserslist query](https://github.com/browserslist/browserslist#queries) is used by [Babel](https://babeljs.io/docs/en/babel-preset-env/) and [PostCSS](https://github.com/csstools/postcss-preset-env#browsers)
+
+#### jest.config.js
+[jest.config.js](https://jestjs.io/docs/en/configuration.html) is the configuration file for Jest
 
 #### package.json
-package.json is a configuration file for [NPM](https://www.npmjs.com). NPM is a package manager for JavaScript. This file includes information about your project and its dependencies. For more information on how to configure this file, see [package.json](https://docs.npmjs.com/files/package.json).
+package.json is the configuration file for [Yarn](https://yarnpkg.com/), which is a package manager for JavaScript. This file includes information about your project and its dependencies. For more information on how to configure this file, see [Yarn package.json](https://yarnpkg.com/en/docs/package-json).
+
+#### postcss.config.js
+postcss.config.js is the configuration file for [PostCSS](https://postcss.org/)
 
 #### webpack.config.js
 webpack.config.js is a configuration file for [webpack](https://webpack.github.io/). Webpack is a JavaScript module bundler. For more information about webpack and how to configure it, see [What is webpack](http://webpack.github.io/docs/what-is-webpack.html).
 
-## Initialization
-The App Scaffold's initialization code lives in [`src/index.js`](https://github.com/zendesk/app_scaffold/blob/master/src/javascripts/index.js). For more information, see [inline documentation](https://github.com/zendesk/app_scaffold/blob/master/src/javascripts/index.js).
-
-## API Reference
-The App Scaffold provides some classes under `/lib` to help building apps.
+## Helpers
+The App Scaffold provides some helper functions in `/src/javascripts/lib/helpers.js` to help building apps.
 
 ### I18n
-The I18n (internationalization) module provides a `t` method and Handlebars helper to look up translations based on a key. For more information, see [Using the I18n module](https://github.com/zendesk/app_scaffold/blob/master/doc/i18n.md).
-
-### Storage
-The Storage module provides helper methods to interact with `localStorage`. For more information, see [Using the Storage module](https://github.com/zendesk/app_scaffold/blob/master/doc/storage.md).
-
-### View
-The View module provides methods to simplify rendering Handlebars templates located under the templates folder. For more information, see [Using the View module](https://github.com/zendesk/app_scaffold/blob/master/doc/view.md).
-
-## Migrating from v1
-The master branch of this repo contains modules and sample code to help you migrate from a v1 app. For detailed documentation on how to migrate from a v1 app, see our [Migrating to v2](https://developer.zendesk.com/apps/docs/apps-v2/migrating) guide on the Zendesk Developer Portal.
-
-## Starting from scratch
-If you're starting a v2 app from scratch you will need to check out the [from-scratch](https://github.com/zendesk/app_scaffold/tree/from-scratch) branch:
-
-```
-git checkout from-scratch
-npm install
-```
-
-The from-scratch branch uses up-to-date versions of the libraries included with the App Scaffold and also removes the shims needed when migrating from v1. It also includes sample code to help you get started on v2.
-
-Another addition present only in the from-scratch branch, is the [Zendesk Garden](http://garden.zendesk.com/) stylesheet. Zendesk Garden is designed to be a common baseline of styles and components between all Zendesk products. For more information, see [Using the Zendesk Garden styles](https://developer.zendesk.com/apps/docs/apps-v2/setup#using-the-zendesk-garden-styles) in the Zendesk Developer Portal.
-
-If you want to see the exact differences between the master and from-scratch branches click [here](https://github.com/zendesk/app_scaffold/compare/from-scratch).
+The I18n (internationalization) module in `/src/javascripts/lib/i18n.js` provides a `t` method to look up translations based on a key. For more information, see [Using the I18n module](https://github.com/zendesk/app_scaffold/blob/master/doc/i18n.md).
 
 ## Parameters and Settings
-
 If you need to test your app with a `parameters` section in `dist/manifest.json`, foreman might crash with a message like:
 
 > Would have prompted for a value interactively, but zat is not listening to keyboard input.
@@ -167,24 +135,22 @@ create a `settings.yml` containing:
 myParameter: 'some value!'
 ```
 
-If you prefer to manually input settings every time you run foreman, edit the Procfile to remove the `--unattended` option from the server command.
-
 ## Testing
 
-The App Scaffold is currently setup for testing with [Jasmine](http://jasmine.github.io/) (testing framework) and [Karma](https://karma-runner.github.io) (test runner). To run specs, run
+The App Scaffold is currently setup for testing with [Jest](https://jestjs.io/). To run specs, run
 
 ```
-karma start
+yarn test
 ```
 
-Specs live under the `spec` directory and can be configured by editing the `karma.conf.js` file.
+Specs live under the `spec` directory.
 
 ## Deploying
 
 To check that your app will pass the server-side validation check, run
 
 ```
-zat validate --path=./dist
+zat validate --path=dist
 ```
 
 If validation is successful, you can upload the app into your Zendesk account by running
@@ -210,7 +176,10 @@ taking note of the created filename.
 For more information on the Zendesk Apps Tools please see the [documentation](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools).
 
 ## External Dependencies
-External dependencies are defined in a module, [`lib/external_assets.js`](https://github.com/zendesk/app_scaffold/blob/master/lib/external_assets.js). The export of the module is imported into [`webpack.config.js`](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js) at build-time. This ensures these dependencies are included on your app's `index.html` as well as in the test suite.
+External dependencies are defined in [webpack.config.js](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js#L22). This ensures these dependencies are included in your app's `index.html`.
+
+## Zendesk Garden CSS Components
+Included [Zendesk Garden CSS Components](https://garden.zendesk.com/css-components/) are listed in [package.json](https://github.com/zendesk/app_scaffold/blob/master/package.json#L25) as dev dependencies. Instead of importing them into the app css bundle, we are building a [jsDelivr CDN](https://www.jsdelivr.com/) link from the dependencies list and inject the link into `index.html` as another `<style>` tag. Feel free to add/remove the Garden components as needed, webpack will generate and insert the updated link during the build process.
 
 ## Contribute
 * Put up a PR into the master branch.
@@ -226,7 +195,7 @@ Links to maintaining team, confluence pages, Datadog dashboard, Kibana logs, etc
 - https://webpack.github.io
 
 ## Copyright and license
-Copyright 2016 Zendesk
+Copyright 2018 Zendesk
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
 
