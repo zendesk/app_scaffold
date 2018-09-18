@@ -21,7 +21,7 @@ function parsePlaceholders (str, context) {
 
   return matches.reduce((str, match) => {
     const newRegex = new RegExp(match[0], 'g')
-    str = str.replace(newRegex, context[match[1]])
+    str = str.replace(newRegex, context[match[1]] || '')
     return str
   }, str)
 }
