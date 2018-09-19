@@ -40,7 +40,6 @@ module.exports = {
       './src/index.css'
     ]
   },
-  mode: process.env.NODE_ENV,
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist/assets')
