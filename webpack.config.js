@@ -11,7 +11,7 @@ const devDependencies = require('./package.json').devDependencies
 const zendeskGardenJsDelivrUrl = (function () {
   const pkg = Object.keys(devDependencies).filter(item => item.includes('@zendeskgarden/css'))
 
-  return pkg.reduce(
+  return pkg.length && pkg.reduce(
     (url, pkg) => {
       const version = devDependencies[pkg]
         .replace(/^[\^~]/g, '')
@@ -87,7 +87,7 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       warning: 'AUTOMATICALLY GENERATED FROM ./src/templates/iframe.html - DO NOT MODIFY THIS FILE DIRECTLY',
-      vendorCss: externalAssets.css,
+      vendorCss: externalAssets.css.filter(path => !!path),
       vendorJs: externalAssets.js,
       template: './src/templates/iframe.html',
       filename: 'iframe.html'
