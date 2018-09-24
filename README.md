@@ -8,7 +8,7 @@ This repo contains a scaffold to help developers build [apps for Zendesk product
 ## Getting Started
 
 ### Dependencies
-- [Node.js](https://nodejs.org/en/) >= 6.3.x
+- [Node.js](https://nodejs.org/en/) >= 6.11.5
 - [Ruby](https://www.ruby-lang.org/) >= 2.0.x
 
 ### Setup

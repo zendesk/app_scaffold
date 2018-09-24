@@ -10,7 +10,7 @@
   "author": "Zendesk",
   "license": "Apache-2.0",
   "engines": {
-    "node": ">=6.3.0"
+    "node": ">=6.11.5"
   },
   "scripts": {
     "test": "jest",
