@@ -1,7 +1,6 @@
 const path = require('path')
 const fs = require('fs')
 const JS_INDENT = 2
-const FILENAME = 'en'
 
 const marketplaceKeys = [
   'name',

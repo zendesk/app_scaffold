@@ -10,15 +10,15 @@ const devDependencies = require('./package.json').devDependencies
 // creates a jsDelivr url
 const zendeskGardenJsDelivrUrl = (function () {
   const pkg = Object.keys(devDependencies).filter(item => item.includes('@zendeskgarden/css'))
-
+  const getPkgName = (url, pkg) => {
+    const version = devDependencies[pkg]
+      .replace(/^[\^~]/g, '')
+      .replace(/\.\d$/, '')
+    url = `${url}npm/${pkg}@${version},`
+    return url
+  }
   return pkg.length && pkg.reduce(
-    (url, pkg) => {
-      const version = devDependencies[pkg]
-        .replace(/^[\^~]/g, '')
-        .replace(/\.\d$/, '')
-      url = `${url}npm/${pkg}@${version},`
-      return url
-    },
+    getPkgName,
     'https://cdn.jsdelivr.net/combine/'
   ).slice(0, -1)
 }())

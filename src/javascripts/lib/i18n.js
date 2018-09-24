@@ -21,8 +21,7 @@ function parsePlaceholders (str, context) {
 
   return matches.reduce((str, match) => {
     const newRegex = new RegExp(match[0], 'g')
-    str = str.replace(newRegex, context[match[1]] || '')
-    return str
+    return str.replace(newRegex, context[match[1]] || '')
   }, str)
 }
 
@@ -59,9 +58,9 @@ class I18n {
 
   loadTranslations (locale = 'en') {
     translations = this.tryRequire(locale) ||
-                  this.tryRequire(locale.replace(/-.+$/, '')) ||
-                  translations ||
-                  this.tryRequire('en')
+                   this.tryRequire(locale.replace(/-.+$/, '')) ||
+                   translations ||
+                   this.tryRequire('en')
   }
 }
 
