@@ -1,9 +1,5 @@
-node_modules
-bower_components
-dist/assets/index.html
-dist/assets/main.css
-dist/assets/main.css.map
-dist/assets/main.js
-dist/assets/main.js.map
-dist/translations/
-dist/tmp/
+tmp/
+dist/
+node_modules/
+coverage/
+npm-debug.log
