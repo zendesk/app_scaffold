@@ -1,0 +1,21 @@
+{
+  "name": "zendesk-app-scripts",
+  "version": "1.0.0",
+  "description": "This package includes scripts and configuration used by Zendesk's App Scaffold. Please refer to its documentation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "zendesk",
+    "official-apps",
+    "scripts"
+  ],
+  "author": "Zendesk",
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=6.11.5"
+  },
+  "dependencies": {
+  }
+}
