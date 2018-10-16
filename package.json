@@ -17,6 +17,7 @@
     "build": "zendesk-app-scripts build"
   },
   "devDependencies": {
+    "@zendeskgarden/css-bedrock": "^7.0.3",
     "zendesk-app-scripts": "0.0.1"
   }
 }
