@@ -1,6 +1,6 @@
 {
   "name": "zendesk-app-scripts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Zendesk",
   "description": "This package includes scripts and configuration used by Zendesk's App Scaffold. Please refer to its documentation.",
   "keywords": [
@@ -25,7 +25,7 @@
     "zendesk-app-scripts": "./bin/zendesk-app-scripts.js"
   },
   "main": "./scripts/exports",
-  "devDependencies": {
+  "dependencies": {
     "babel-core": "^6.26.3",
     "babel-jest": "^23.4.0",
     "babel-loader": "^7.1.5",
