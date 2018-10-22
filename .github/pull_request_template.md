@@ -11,17 +11,18 @@ Develop what, but also why this PR exists. The "Why" is as much, if not more imp
 I don't always use this section, but I do when I find there's something particularly tricky end/or nifty in the code.
 
 ## References
-[JIRA ticket](https://zendesk.atlassian.net/browse/OFFAPPS-XXX)
-[Invision design](https://google.com.au)
+[Support ticket](https://subdomain.zendesk.com/xxxx)
+[Jira story](https://subdomain.atlassian.net/browse/BUG-1)
+[Invision design](https://google.com)
 
 ## Screenshots (if needed)
 <details>
-<summary>Screen shot 1</summary>
+<summary>Screenshot 1</summary>
 <img src="1.png">
 </details>
 
 <details>
-<summary>Screen shot 2</summary>
+<summary>Screenshot 2</summary>
 <img src="2.png">
 </details>
 
