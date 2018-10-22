@@ -20,7 +20,7 @@ describe('Example App', () => {
 
   describe('Initialization Failure', () => {
     beforeEach((done) => {
-      document.body.innerHTML = '<section data-main><img class="loader" src="dot.gif"/></section>'
+      document.body.innerHTML = '<section data-main><img class="loader" src="spinner.gif"/></section>'
       CLIENT.request = jest.fn().mockReturnValueOnce(Promise.reject(new Error('a fake error')))
 
       app = new App(CLIENT, {})
@@ -38,7 +38,7 @@ describe('Example App', () => {
 
   describe('Initialization Success', () => {
     beforeEach((done) => {
-      document.body.innerHTML = '<section data-main><img class="loader" src="dot.gif"/></section>'
+      document.body.innerHTML = '<section data-main><img class="loader" src="spinner.gif"/></section>'
       CLIENT.request = jest.fn().mockReturnValueOnce(Promise.resolve(ORGANIZATIONS))
       CLIENT.invoke = jest.fn().mockReturnValue(Promise.resolve({}))
 
