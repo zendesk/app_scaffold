@@ -1,6 +1,6 @@
 {
   "name": "app_scaffold",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A scaffold for developers to build ZAF v2 apps",
   "keywords": [
     "zendesk",
