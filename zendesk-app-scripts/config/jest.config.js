@@ -7,8 +7,5 @@ module.exports = {
       init: () => {}
     }
   },
-  coveragePathIgnorePatterns: [
-    '<rootDir>/spec'
-  ],
-  roots: ['./spec']
+  rootDir: `${process.cwd()}`
 }

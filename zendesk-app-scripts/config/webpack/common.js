@@ -1,13 +1,24 @@
 const path = require('path')
+const chalk = require('chalk')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TranslationsPlugin = require('./translations-plugin')
 
+const customBabelOptions = require(`${process.cwd()}/package.json`).babel || {}
+babelOptions = Object.assign(
+  {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  customBabelOptions
+)
+if (Object.keys(customBabelOptions).length)
+  console.log(chalk.green(`log: custom babel configurations from package.json is merged`))
+
 module.exports = {
   externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
     'ZAFClient': 'ZAFClient'
   },
   output: {
@@ -20,9 +31,7 @@ module.exports = {
         test: /\.js$/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['env']
-          }
+          options: babelOptions
         }
       },
       {
@@ -39,6 +48,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
+              ident: 'postcss',
               plugins: () => [
                 require('postcss-preset-env')(),
                 require('postcss-import')(),
@@ -58,7 +68,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(
       [`${process.cwd()}/dist/*`],
-      { root: process.cwd() }
+      { root: process.cwd(), verbose: false }
     ),
 
     new CopyWebpackPlugin([
