@@ -4,36 +4,37 @@
 
 const meow = require('meow')
 const chalk = require('chalk')
-const spawn = require('cross-spawn')
+
+process.on('unhandledRejection', e => {
+  console.error(e)
+  process.exit(1)
+});
 
 const cli = meow(`
     Usage
       $ zendesk-app-scripts
 
     Options
-      build,                Run production build
-      build --dev,          Run development build
-      test,                 Run tests
-      start,                Start local ZAT server
+      start,                      Start local ZAT server
+      test [--watch|--watchAll],  Run tests
+      build [--dev],              Run build in production/development mode
 `)
 
 const { input: [option], flags } = cli
 
 switch (option) {
-  case 'start': {
-    const result = spawn.sync('zat', ['server', '-p', './dist'], { stdio: 'inherit' })
-    process.exit(result.status)
-    break
-  }
+  case 'start':
   case 'build':
   case 'test': {
     const scriptPath = require.resolve('../scripts/' + option)
     const task = require(scriptPath)
-    task.call(null, flags)
+    new Promise(task.bind(null, flags)).then((msg) => {
+      console.log(msg)
+    })
     break
   }
   default:
-    console.log(`${chalk.yellow('warning')} Option "${chalk.bold(option)}" not found.`)
+    console.log(`${chalk.yellow('warning:')} Option "${chalk.bold(option)}" not found.`)
     cli.showHelp()
     break
 }

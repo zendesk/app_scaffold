@@ -5,17 +5,36 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TranslationsPlugin = require('./translations-plugin')
 
-const customBabelOptions = require(`${process.cwd()}/package.json`).babel || {}
-babelOptions = Object.assign(
-  {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
+let customBabelOptions = require(`${process.cwd()}/package.json`).babel
+let postCssOptions = require(`${process.cwd()}/package.json`).postcss
+
+if (typeof customBabelOptions === 'object') {
+  console.log(`${chalk.green('log:')} Custom babel configurations from package.json is merged`)
+}
+else {
+  customBabelOptions = {}
+}
+
+const mergedBabelOptions = Object.assign(
+  {"presets": ["@babel/preset-env"]},
   customBabelOptions
 )
-if (Object.keys(customBabelOptions).length)
-  console.log(chalk.green(`log: custom babel configurations from package.json is merged`))
+
+if (typeof postCssOptions === 'object') {
+  console.log(`${chalk.green('log:')} Custom PostCss configurations from package.json is used instead of default`)
+  postCssOptions = {}
+}
+else {
+  postCssOptions = {
+    ident: 'postcss',
+    plugins: () => [
+      require('postcss-preset-env')(),
+      require('postcss-import')(),
+      require('precss')()
+    ]
+  }
+}
+
 
 module.exports = {
   externals: {
@@ -31,7 +50,7 @@ module.exports = {
         test: /\.js$/,
         use: {
           loader: 'babel-loader',
-          options: babelOptions
+          options: mergedBabelOptions
         }
       },
       {
@@ -47,14 +66,7 @@ module.exports = {
           {loader: 'css-loader', options: { url: false }},
           {
             loader: 'postcss-loader',
-            options: {
-              ident: 'postcss',
-              plugins: () => [
-                require('postcss-preset-env')(),
-                require('postcss-import')(),
-                require('precss')()
-              ]
-            }
+            options: postCssOptions
           }
         ]
       },

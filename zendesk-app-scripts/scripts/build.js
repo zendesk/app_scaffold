@@ -2,36 +2,29 @@
 const chalk = require('chalk')
 const webpack = require('webpack')
 
-module.exports = ({dev, config}) => {
+module.exports = ({dev, config}, resolve, reject) => {
+  const logs = []
   const env = dev ? 'dev' : 'prod'
 
-  try {
-    const configObject = require(config || `../config/webpack/config.${env}`)
-    if (config) console.log(chalk.green(`log: ${config} is used instead of default webpack config`))
+  const configObject = require(config || `../config/webpack/config.${env}`)
+  if (config) logs.push(`${chalk.green('log:')} ${config} is used instead of default webpack config`)
 
-    webpack(configObject, (err, stats) => {
-      if (err) {
-        console.error(err.stack || err);
-        if (err.details) {
-          console.error(err.details);
-        }
-        process.exit(1)
-      }
+  webpack(configObject, (err, stats) => {
+    if (err) {
+      reject(new Error(err.stack || err || err.details))
+    }
 
-      const info = stats.toJson();
+    const info = stats.toJson();
 
-      if (stats.hasErrors()) {
-        console.error(`${chalk.red('error:')} ${info.errors.join('\n')}`)
-        process.exit(1)
-      }
+    if (stats.hasErrors()) {
+      reject(new Error(info.errors.join('\n')))
+    }
 
-      if (stats.hasWarnings()) {
-        console.error(`${chalk.yellow('error:')} ${info.warnings.join('\n')}`)
-        process.exit(1)
-      }
-    })
-  } catch (e) {
-    console.error(e)
-    process.exit(1)
-  }
+    if (stats.hasWarnings()) {
+      logs.push(chalk.yellow('warning: ') + info.warnings.join('\n'))
+    }
+
+    logs.push(`${chalk.green('log:')} Build Complete`)
+    resolve(logs.join('\n'))
+  })
 }

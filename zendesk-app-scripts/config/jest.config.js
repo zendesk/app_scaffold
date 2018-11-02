@@ -6,6 +6,5 @@ module.exports = {
     ZAFClient: {
       init: () => {}
     }
-  },
-  rootDir: `${process.cwd()}`
+  }
 }
