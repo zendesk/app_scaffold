@@ -1,3 +1,7 @@
+/**
+ * Helper function to generate webpack entries, html-webpack-plugin instances based on bundles.js in the app project root
+ * Consolidate config objects
+ */
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const common = require('./common')

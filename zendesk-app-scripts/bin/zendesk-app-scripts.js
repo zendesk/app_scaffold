@@ -5,6 +5,7 @@
 const meow = require('meow')
 const chalk = require('chalk')
 
+// Unhandled promise rejections will fallback to here
 process.on('unhandledRejection', e => {
   console.error(e)
   process.exit(1)
@@ -28,12 +29,16 @@ switch (option) {
   case 'test': {
     const scriptPath = require.resolve('../scripts/' + option)
     const task = require(scriptPath)
-    new Promise(task.bind(null, flags)).then((msg) => {
-      console.log(msg)
+    // Task scripts are called as Promise executor
+    // Resolved with logs
+    // Rejections with error will be handled in unhandledRejection event handler
+    new Promise(task.bind(null, flags)).then((logs) => {
+      console.log(logs)
     })
     break
   }
   default:
+    // Options not supported yet
     console.log(`${chalk.yellow('warning:')} Option "${chalk.bold(option)}" not found.`)
     cli.showHelp()
     break

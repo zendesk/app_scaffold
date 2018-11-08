@@ -1,30 +1,39 @@
+/**
+ * Exectutor for "zendesk-app-scripts test" command
+ * Resolve with logs when test complete(either fail or pass)
+ * NOTE: Jest config options(https://jestjs.io/docs/en/configuration) VS Jest CLI options(https://jestjs.io/docs/en/cli)
+ *
+ */
+
 'use strict'
 
 const path = require('path')
 const chalk = require('chalk')
-const jest = require('jest')
+const jestFn = require('jest')
 
-module.exports = (flags, resolve, reject) => {
+module.exports = (flags = {}, resolve, reject) => {
+  // Ignore config file path, we only check custom jest config options in project package.json
   delete flags.config
   delete flags.c
 
   const logs = []
   const options = []
 
-  const baseConfigPath = path.resolve(__dirname, '../config/jest.config.js')
-  const baseConfig = require(baseConfigPath)
-
-  let customConfig = require(`${process.cwd()}/package.json`).jest
-  if (typeof customConfig === 'object') {
+  // Get custom config options from package.json in the app project
+  // If exists, merge with default config options
+  let customJestConfig = require(`${process.cwd()}/package.json`).jest
+  let jestConfig = require(path.resolve(__dirname, '../config/jest.config.js'))
+  if (typeof customJestConfig === 'object') {
     logs.push(`${chalk.green('log:')} Custom jest configurations from package.json is merged`)
-  }
-  else {
-    customConfig = {}
+    Object.assign(jestConfig, customJestConfig)
   }
 
-  const mergedConfig = Object.assign({}, baseConfig, customConfig)
-  options.push(`--config`, JSON.stringify(mergedConfig))
+  // Convert config options to JSON string, add to options object
+  options.push(`--config`, JSON.stringify(jestConfig))
 
+  // Add CLI options to options object
+  // {'watch': true} => ['--watch'], true is ignored
+  // {'outputFile': 'results'} => ['--outputFile', 'results'], both key/value is preserved
   Object.keys(flags).forEach((key) => {
     options.push(`--${key}`)
     if(typeof flags[key] === 'string') {
@@ -33,5 +42,6 @@ module.exports = (flags, resolve, reject) => {
   })
 
   logs.push(`${chalk.green('log:')} Test Complete`)
-  resolve(jest.run(options).then(() => logs.join('\n')))
+
+  resolve(jestFn.run(options).then(() => logs.join('\n')))
 }

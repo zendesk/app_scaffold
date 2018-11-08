@@ -25,6 +25,14 @@
     "zendesk-app-scripts": "./bin/zendesk-app-scripts.js"
   },
   "main": "./scripts/exports",
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "testRegex": "(/specs/.*)\\.js?$"
+  },
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.0.0",
