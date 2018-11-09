@@ -1,6 +1,6 @@
-const getZendeskGardenJsDelivrUrl = require('zendesk-app-scripts')
+const { getGardenLink } = require('@zendesk/zendesk-app-scripts')
 const devDependencies = require('./package.json').devDependencies
-const zendeskGardenJsDelivrUrl = getZendeskGardenJsDelivrUrl(devDependencies)
+const zendeskGardenJsDelivrUrl = getGardenLink(devDependencies)
 
 const locations = [
   {

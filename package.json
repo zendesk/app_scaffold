@@ -14,10 +14,31 @@
   },
   "scripts": {
     "start": "zendesk-app-scripts start",
-    "build": "zendesk-app-scripts build"
+    "build": "zendesk-app-scripts build",
+    "test": "zendesk-app-scripts test"
   },
   "devDependencies": {
     "@zendeskgarden/css-bedrock": "^7.0.3",
-    "zendesk-app-scripts": "0.0.2"
+    "@zendesk/zendesk-app-scripts": "^0.0.3"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverage": true
+  },
+  "browserslist": [
+    "last 2 version",
+    "IE 11"
+  ],
+  "postcss": {
+    "plugins": {
+      "postcss-preset-env": {},
+      "postcss-import": {},
+      "precss": {}
+    }
   }
 }
