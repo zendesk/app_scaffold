@@ -1,5 +1,5 @@
 {
-  "name": "zendesk-app-scripts",
+  "name": "@zendesk/zendesk-app-scripts",
   "version": "0.0.2",
   "author": "Zendesk",
   "description": "This package includes scripts and configuration used by Zendesk's App Scaffold. Please refer to its documentation.",
