@@ -31,7 +31,7 @@ Anyone specific?
 Unless there's a good reason not to:
 @zendesk/apps-migration
 If translation-related:
-@zendesk/i18n
+@zendesk/localization
 
 ## Risks
 * [HIGH | medium | low] Does it work across browsers (including IE!)?
