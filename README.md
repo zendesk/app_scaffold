@@ -18,15 +18,15 @@ This repo contains a scaffold to help developers build [apps for Zendesk product
 
 You can use either `yarn` or `npm` as package manager and run the scripts with the corresponding commands.
 
-To run your app locally in Zendesk, you need the latest [Zendesk Apps Tools (ZAT)](https://github.com/zendesk/zendesk_apps_tools).
+To run your app locally in Zendesk, you need the latest [Zendesk Command Line Interface (ZCLI)](https://github.com/zendesk/zcli).
 
 ### Running locally
 
-To serve the app to your Zendesk instance with `?zat=true`, run
+To serve the app to your Zendesk instance with `?zcli_apps=true`, run
 
 ```
 yarn run watch
-zat server -p dist
+zcli apps:server dist
 ```
 
 ## But why?
@@ -75,7 +75,7 @@ The folder and file structure of the App Scaffold is as follows:
 | [`webpack.config.js`](#webpackconfigjs) | Configuration file that webpack uses to build your app                                       |
 
 #### dist
-The dist directory is created when you run the app building scripts. You will need to package this folder when submitting your app to the Zendesk Apps Marketplace, It is also the folder you will have to serve when using [ZAT](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools). It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
+The dist directory is created when you run the app building scripts. You will need to package this folder when submitting your app to the Zendesk Apps Marketplace, It is also the folder you will have to serve when using [ZCLI](https://developer.zendesk.com/documentation/apps/app-developer-guide/zcli/). It includes your app's manifest.json file, an assets folder with all your compiled JavaScript and CSS as well as HTML and images.
 
 #### spec
 The spec directory is where all your tests and test helpers live. Tests are not required to submit/upload your app to Zendesk and your test files are not included in your app's package, however it is good practice to write tests to document functionality and prevent bugs.
@@ -117,7 +117,7 @@ The I18n (internationalization) module in `/src/javascripts/lib/i18n.js` provide
 ## Parameters and Settings
 If you need to test your app with a `parameters` section in `dist/manifest.json`, foreman might crash with a message like:
 
-> Would have prompted for a value interactively, but zat is not listening to keyboard input.
+> Would have prompted for a value interactively, but zcli is not listening to keyboard input.
 
 To resolve this problem, set default values for parameters or create a `settings.yml` file in the root directory of your app scaffold-based project, and populate it with your parameter names and test values. For example, using a parameters section like:
 
@@ -152,25 +152,25 @@ Specs live under the `spec` directory.
 To check that your app will pass the server-side validation check, run
 
 ```
-zat validate --path=dist
+zcli apps:validate --path=dist
 ```
 
 If validation is successful, you can upload the app into your Zendesk account by running
 
 ```
-zat create --path=dist
+zcli apps:create --path=dist
 ```
 
 To update your app after it has been created in your account, run
 
 ```
-zat update --path=dist
+zcli apps:update --path=dist
 ```
 
 Or, to create a zip archive for manual upload, run
 
 ```
-zat package --path=dist
+zcli apps:package --path=dist
 ```
 
 taking note of the created filename.
