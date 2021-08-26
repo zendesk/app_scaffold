@@ -10,7 +10,8 @@
   "location": {
     "support": {
       "ticket_sidebar": {
-        "url": "assets/iframe.html"
+        "url": "assets/iframe.html",
+        "flexible": true
       }
     }
   },
