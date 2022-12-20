@@ -1,65 +1,84 @@
 /* eslint-env jest, browser */
 import App from '../src/javascripts/modules/app'
+import i18n from '../src/javascripts/lib/i18n'
 import { CLIENT, ORGANIZATIONS } from './mocks/mock'
-import createRangePolyfill from './polyfills/createRange'
+import { unmountComponentAtNode } from 'react-dom'
+import { act } from 'react-dom/test-utils'
+import { configure } from '@testing-library/react'
+import { screen } from '@testing-library/dom'
 
-jest.mock('../src/javascripts/lib/i18n', () => {
-  return {
-    loadTranslations: jest.fn(),
-    t: key => key
-  }
-})
-
-if (!document.createRange) {
-  createRangePolyfill()
+const mockEN = {
+  'app.name': 'Example App',
+  'app.title': 'Example App',
+  'default.organizations': 'organizations'
 }
 
 describe('Example App', () => {
-  let errorSpy
-  let app
+  beforeAll(() => {
+    configure({ testIdAttribute: 'data-test-id' })
 
-  describe('Initialization Failure', () => {
-    beforeEach((done) => {
-      document.body.innerHTML = '<section data-main><img class="loader" src="spinner.gif"/></section>'
-      CLIENT.request = jest.fn().mockReturnValueOnce(Promise.reject(new Error('a fake error')))
+    i18n.loadTranslations('en')
 
-      app = new App(CLIENT, {})
-      errorSpy = jest.spyOn(app, '_handleError')
-
-      app.initializePromise.then(() => {
-        done()
-      })
-    })
-
-    it('should display an error message in the console', () => {
-      expect(errorSpy).toBeCalled()
+    jest.mock('../src/translations/en', () => {
+      return mockEN
     })
   })
 
-  describe('Initialization Success', () => {
-    beforeEach((done) => {
-      document.body.innerHTML = '<section data-main><img class="loader" src="spinner.gif"/></section>'
-      CLIENT.request = jest.fn().mockReturnValueOnce(Promise.resolve(ORGANIZATIONS))
-      CLIENT.invoke = jest.fn().mockReturnValue(Promise.resolve({}))
+  describe('Rendering', () => {
+    let appContainer = null
 
-      app = new App(CLIENT, {})
+    beforeEach(() => {
+      appContainer = document.createElement('section')
+      appContainer.classList.add('main')
+      document.body.appendChild(appContainer)
+    })
 
-      app.initializePromise.then(() => {
-        done()
+    afterEach(() => {
+      unmountComponentAtNode(appContainer)
+      appContainer.remove()
+      appContainer = null
+    })
+
+    it('render with current username and organizations successfully', (done) => {
+      act(() => {
+        CLIENT.request = jest.fn().mockReturnValueOnce(Promise.resolve(ORGANIZATIONS))
+        CLIENT.invoke = jest.fn().mockReturnValue(Promise.resolve({}))
+
+        const app = new App(CLIENT, {})
+        app.initializePromise.then(() => {
+          const descriptionElement = screen.getByTestId('sample-app-description')
+          expect(descriptionElement.textContent).toBe('Hi Sample User, this is a sample app')
+
+          const organizations = screen.getByTestId('organizations')
+          expect(organizations.childElementCount).toBe(2)
+
+          const organizationA = screen.getByTestId('organization-1')
+          expect(organizationA.textContent).toBe('Organization A')
+          const organizationB = screen.getByTestId('organization-2')
+          expect(organizationB.textContent).toBe('Organization B')
+          done()
+        })
       })
     })
 
-    it('should render main stage with data', () => {
-      expect(document.querySelector('.example-app')).not.toBe(null)
-      expect(document.querySelector('h1').textContent).toBe('Hi Sample User, this is a sample app')
-      expect(document.querySelector('h2').textContent).toBe('default.organizations:')
-    })
+    it('render with current username but no organizations since api errors', (done) => {
+      act(() => {
+        CLIENT.request = jest.fn().mockReturnValueOnce(Promise.reject(new Error('a fake error')))
+        const app = new App(CLIENT, {})
+        const errorSpy = jest.spyOn(app, '_handleError')
 
-    it('should retrieve the organizations data', () => {
-      expect(app.states.organizations).toEqual([
-        { name: 'Organization A' },
-        { name: 'Organization B' }
-      ])
+        app.initializePromise.then(() => {
+          const descriptionElement = screen.getByTestId('sample-app-description')
+          expect(descriptionElement.textContent).toBe('Hi Sample User, this is a sample app')
+
+          const organizations = screen.getByTestId('organizations')
+          expect(organizations.childElementCount).toBe(0)
+
+          expect(errorSpy).toBeCalled()
+
+          done()
+        })
+      })
     })
   })
 })

@@ -2,30 +2,38 @@
 import i18n from '../src/javascripts/lib/i18n'
 
 const mockEN = {
-  'one': 'the first translation',
+  one: 'the first translation',
   'two.one': 'the second translation for: {{fname}}',
   'two.two': 'the second translation for: {{fname}}-{{lname}}',
   'three.one.one': 'the third translation from {{name}} for {{name}} should be {{name}}',
-  'four': {}
+  four: {}
 }
-
-jest.mock('../src/translations/en', () => {
-  return mockEN
-})
-
-jest.mock('../src/translations/fr', () => {
-  throw new Error('no such file')
-})
 
 describe('i18n', () => {
   beforeAll(() => {
     i18n.loadTranslations('en')
+
+    jest.mock('../src/translations/en', () => {
+      return mockEN
+    })
+
+    jest.mock('../src/translations/fr', () => {
+      throw new Error('no such file')
+    })
+  })
+
+  describe('#loadTranslations', () => {
+    it('return undefined for fr and fallback to en', () => {
+      i18n.loadTranslations('fr')
+      const result = i18n.t('one')
+      expect(result).toBe('the first translation')
+    })
   })
 
   describe('#tryRequire', () => {
     it('returns a json if the file exists', () => {
       const result = i18n.tryRequire('en')
-      expect(result).toBe(mockEN)
+      expect(result).toEqual(mockEN)
     })
 
     it('returns null if the file doesn\'t exist', () => {

@@ -1,10 +1,13 @@
 /**
  *  Example app
  **/
-
+import React from 'react'
+import { render } from 'react-dom'
+import { ThemeProvider, DEFAULT_THEME } from '@zendeskgarden/react-theming'
+import { Grid, Row, Col } from '@zendeskgarden/react-grid'
+import { UnorderedList } from '@zendeskgarden/react-typography'
 import I18n from '../../javascripts/lib/i18n'
-import { resizeContainer, render } from '../../javascripts/lib/helpers'
-import getDefaultTemplate from '../../templates/default'
+import { resizeContainer, escapeSpecialChars as escape } from '../../javascripts/lib/helpers'
 
 const MAX_HEIGHT = 1000
 const API_ENDPOINTS = {
@@ -12,11 +15,8 @@ const API_ENDPOINTS = {
 }
 
 class App {
-  constructor (client, appData) {
+  constructor (client, _appData) {
     this._client = client
-    this._appData = appData
-
-    this.states = {}
 
     // this.initializePromise is only used in testing
     // indicate app initilization(including all async operations) is complete
@@ -28,22 +28,42 @@ class App {
    */
   async init () {
     const currentUser = (await this._client.get('currentUser')).currentUser
-    this.states.currentUserName = currentUser.name
 
     I18n.loadTranslations(currentUser.locale)
 
-    const organizations = await this._client
+    const organizationsResponse = await this._client
       .request(API_ENDPOINTS.organizations)
       .catch(this._handleError.bind(this))
 
-    if (organizations) {
-      this.states.organizations = organizations.organizations
+    const organizations = organizationsResponse ? organizationsResponse.organizations : []
 
-      // render application markup
-      render('.loader', getDefaultTemplate(this.states))
+    const appContainer = document.querySelector('.main')
 
-      return resizeContainer(this._client, MAX_HEIGHT)
-    }
+    render(
+      <ThemeProvider theme={{ ...DEFAULT_THEME }}>
+        <Grid>
+          <Row>
+            <Col data-test-id='sample-app-description'>
+              Hi {escape(currentUser.name)}, this is a sample app
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <span>{I18n.t('default.organizations')}:</span>
+              <UnorderedList data-test-id='organizations'>
+                {organizations.map(organization => (
+                  <UnorderedList.Item key={`organization-${organization.id}`} data-test-id={`organization-${organization.id}`}>
+                    {escape(organization.name)}
+                  </UnorderedList.Item>
+                ))}
+              </UnorderedList>
+            </Col>
+          </Row>
+        </Grid>
+      </ThemeProvider>,
+      appContainer
+    )
+    return resizeContainer(this._client, MAX_HEIGHT)
   }
 
   /**

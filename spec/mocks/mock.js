@@ -17,8 +17,8 @@ export const CLIENT = {
 
 export const ORGANIZATIONS = {
   organizations: [
-    { name: 'Organization A' },
-    { name: 'Organization B' }
+    { id: 1, name: 'Organization A' },
+    { id: 2, name: 'Organization B' }
   ],
   next_page: null,
   previous_page: null,
