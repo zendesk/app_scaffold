@@ -22,6 +22,7 @@
  *   app.steps.click: 'this button'
  * }
  */
+/* eslint-disable array-callback-return */
 function translationFlatten (object, currentKeys = []) {
   const res = {}
 
@@ -48,6 +49,7 @@ function translationFlatten (object, currentKeys = []) {
 
   return res
 }
+/* eslint-enable array-callback-return */
 
 function TranslationsLoader (content) {
   let translationsInput

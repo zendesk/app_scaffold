@@ -25,7 +25,8 @@ jobs:
         rm -f ui/node_modules/.bin/which
         npm set config progress false
         npm set config color false
-    - name: run_tests
+    - name: lint_and_tests
       run: |
         yarn install
+        yarn lint
         yarn test
