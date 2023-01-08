@@ -43,7 +43,7 @@ class I18n {
    * optional context to replace the placeholders in the translation
    * @param {String} key
    * @param {Object} context object contains placeholder/value pairs
-   * @return {String} tranlated string
+   * @return {String} translated string
    */
   t (key, context) {
     const keyType = typeof key

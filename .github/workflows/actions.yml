@@ -1,0 +1,32 @@
+name: repo-checks
+
+on:
+  pull_request:
+  push:
+    branches:
+    - master
+
+jobs:
+  main:
+    name: nodejs
+    runs-on: ubuntu-latest
+    env:
+      NPM_CONFIG_PROGRESS: "false"
+      DISABLE_SPRING: 1
+    steps:
+    - uses: zendesk/checkout@v2
+    - uses: zendesk/setup-node@v3
+      with:
+        node-version: 18.12.1
+    - name: before_install
+      run: |
+        # clear out node binstubs before rvm fetches ruby
+        # c.f. https://github.com/travis-ci/travis-ci/issues/5092
+        rm -f ui/node_modules/.bin/which
+        npm set config progress false
+        npm set config color false
+    - name: lint_and_tests
+      run: |
+        yarn install
+        yarn lint
+        yarn test

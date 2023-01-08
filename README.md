@@ -8,8 +8,8 @@ This repo contains a scaffold to help developers build [apps for Zendesk product
 ## Getting Started
 
 ### Dependencies
-- [Node.js](https://nodejs.org/en/) >= 6.11.5
-- [Ruby](https://www.ruby-lang.org/) >= 2.0.x
+- [Node.js](https://nodejs.org/en/) >= 18.12.1
+- [Ruby](https://www.ruby-lang.org/) = 2.6.x
 
 ### Setup
 1. Clone or fork this repo
@@ -36,11 +36,11 @@ The App Scaffold includes many features to help you maintain and scale your app.
 
 ECMAScript 6, also known as ECMAScript 2015, is the latest version of the ECMAScript standard. The App Scaffold includes the [Babel compiler](https://babeljs.io/) to transpile your code to ES5. This allows you to use ES6 features, such as classes, arrow functions and template strings even in browsers that haven't fully implemented these features.
 
-- [Zendesk Garden](https://garden.zendesk.com/css-components/) UI components
+- [Zendesk Garden](https://garden.zendesk.com/) React UI components
 
-Collection of user interface components for Zendesk products. You’ll find components built to respond to a range of user input devices, tuned to handle right-to-left layouts, and finessed with just the right touch of subtle animation.
+Collection of React components for Zendesk products. You’ll find components built to respond to a range of user input devices, tuned to handle right-to-left layouts, and finessed with just the right touch of subtle animation.
 
-- [Webpack 4](https://webpack.github.io/) module bundler
+- [Webpack 5](https://webpack.github.io/) module bundler
 
 Webpack is a module bundler, we use it to bundle up Javascript modules for use as web applications, also to perform tasks like transforming and transpiling, etc.
 
@@ -178,10 +178,7 @@ taking note of the created filename.
 For more information on the Zendesk Apps Tools please see the [documentation](https://developer.zendesk.com/apps/docs/apps-v2/getting_started#zendesk-app-tools).
 
 ## External Dependencies
-External dependencies are defined in [webpack.config.js](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js#L22). This ensures these dependencies are included in your app's `index.html`.
-
-## Zendesk Garden CSS Components
-Included [Zendesk Garden CSS Components](https://garden.zendesk.com/css-components/) are listed in [package.json](https://github.com/zendesk/app_scaffold/blob/master/package.json#L25) as dev dependencies. Instead of importing them into the app css bundle, we are building a [jsDelivr CDN](https://www.jsdelivr.com/) link from the dependencies list and inject the link into `index.html` as another `<style>` tag. Feel free to add/remove the Garden components as needed, webpack will generate and insert the updated link during the build process.
+External dependencies are defined in [webpack.config.js](https://github.com/zendesk/app_scaffold/blob/master/webpack.config.js). This ensures these dependencies are included in your app's `index.html`.
 
 ## Contribute
 * Put up a PR into the master branch.
@@ -195,6 +192,7 @@ Links to maintaining team, confluence pages, Datadog dashboard, Kibana logs, etc
 - https://developer.zendesk.com/
 - https://github.com/zendesk/zendesk_apps_tools
 - https://webpack.github.io
+- https://developer.zendesk.com/documentation/apps/build-an-app/using-react-in-a-support-app/
 
 ## Copyright and license
 Copyright 2018 Zendesk
