@@ -2076,10 +2076,10 @@
     prop-types "^15.5.7"
     react-merge-refs "^1.1.0"
 
-"@zendeskgarden/react-avatars@^8.62.0":
-  version "8.62.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-8.62.0.tgz#adfb2cad30a119552763dd5aacf44895990dd650"
-  integrity sha512-HOOhinvB6FJMhHGjQ/x8Zdyy2vtwN/F9oKjk+MHq2LLa83oVxPG/kVrCuVT10vsRYbjFAO2ATbOYULtOqGg16A==
+"@zendeskgarden/react-avatars@^8.63.2":
+  version "8.63.2"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-8.63.2.tgz#141153ed506ebca5910e98ad95d91c706fe88227"
+  integrity sha512-AIoBz57Loih5i5AoYTePNqcuHg4Mzuo9EHQVrCE94Zd2pZZ0+03B6CX9HmAk3baMwnn0dFSojimp77wJrXg+pQ==
   dependencies:
     polished "^4.0.0"
     prop-types "^15.5.7"
