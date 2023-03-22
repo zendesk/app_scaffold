@@ -2064,13 +2064,13 @@
   resolved "https://registry.yarnpkg.com/@zendeskgarden/css-variables/-/css-variables-6.4.5.tgz#b51a50046f42a11b8d1bfec46e100b02fd6fc1d9"
   integrity sha512-vX7vDJVQoyYFUshYXXX5QE2fL9M6K2bnxTeB2IVyEIaGRYEi20xjoY6cuO1uAQ7RaIRGCSyZFKgWW+/IrlQMKg==
 
-"@zendeskgarden/react-accordions@^8.62.0":
-  version "8.62.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-accordions/-/react-accordions-8.62.0.tgz#a0e1d7c2893468e8f79c83158855153dfea63ec4"
-  integrity sha512-40dWL6FwIHxRxUAppLyYt0eBSsSk1p2TbtExd1BzmfzPO3fwNl4wLGYZEfYTLVHUeUctlvCOiiouJEDX0euVGg==
+"@zendeskgarden/react-accordions@^8.63.2":
+  version "8.63.2"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-accordions/-/react-accordions-8.63.2.tgz#8fdbb067c702f12d7b19c69b6ab7a7feaeacd863"
+  integrity sha512-RkVqiRLwcgsyYGA0G3R9/4GORsgPbz1jcUKTdrCkCiTyyx3cfWW8vmP/8G8MPwAIsiyVU8h/roWp4ZGqHsnKnA==
   dependencies:
     "@zendeskgarden/container-accordion" "^2.0.0"
-    "@zendeskgarden/container-utilities" "^0.7.0"
+    "@zendeskgarden/container-utilities" "^1.0.0"
     lodash.debounce "^4.0.8"
     polished "^4.0.0"
     prop-types "^15.5.7"
