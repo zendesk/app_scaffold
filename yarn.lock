@@ -2103,6 +2103,16 @@
     polished "^4.0.0"
     prop-types "^15.5.7"
 
+"@zendeskgarden/react-buttons@^8.63.2":
+  version "8.63.2"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-buttons/-/react-buttons-8.63.2.tgz#ed88887df78d6f8b6de14abdeda54778d902c76e"
+  integrity sha512-XS1ngrHv95F5lwxvvhRIitVo/Pr4kdezVj5eTSPbXND1NrzrOttC0GApqmGP3Ybu9lMUpf5qE5gb/DwzjFSdfA==
+  dependencies:
+    "@zendeskgarden/container-buttongroup" "^1.0.0"
+    "@zendeskgarden/container-keyboardfocus" "^1.0.0"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
+
 "@zendeskgarden/react-chrome@^8.62.0":
   version "8.62.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-chrome/-/react-chrome-8.62.0.tgz#bdb54c0ba763b26efc3c36456ee8dfd35f356066"
