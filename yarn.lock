@@ -2047,10 +2047,10 @@
     polished "^4.0.0"
     prop-types "^15.5.7"
 
-"@zendeskgarden/react-breadcrumbs@^8.62.0":
-  version "8.62.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-breadcrumbs/-/react-breadcrumbs-8.62.0.tgz#86ad5fd430f1d37c9c20779c1e470a81983db2b9"
-  integrity sha512-wX8BGnmo/Jxra9kT1m1Tnj49V6mqUtZ3nTuS/QEXZN/57P9DBahGeX+yXcWYVvrPjkkAFAsvGeQazQsM3LiWNQ==
+"@zendeskgarden/react-breadcrumbs@^8.63.2":
+  version "8.63.2"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-breadcrumbs/-/react-breadcrumbs-8.63.2.tgz#6012d32293fa1692b4aa2ee7665599efe7171c62"
+  integrity sha512-DHV7qAZRxyIGQoi58lBxJ+tK3vsIyMr1+MS07lMu0ljXDZPxc1kjKYPFa/m6o36tkfbNcJ546SzkRn/RpEkG3g==
   dependencies:
     "@zendeskgarden/container-breadcrumb" "^1.0.0"
     polished "^4.0.0"
