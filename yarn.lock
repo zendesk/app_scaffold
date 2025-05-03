@@ -2066,13 +2066,13 @@
     polished "^4.0.0"
     prop-types "^15.5.7"
 
-"@zendeskgarden/react-chrome@^8.62.0":
-  version "8.62.0"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-chrome/-/react-chrome-8.62.0.tgz#bdb54c0ba763b26efc3c36456ee8dfd35f356066"
-  integrity sha512-G8/Cgflbymhaym1JqZ9WtZ00c3OI7MAoFPlEunpNJPS73NBgHHkP/EGRoPG/BC22sz3sKfQFhS8WLuuTB+3zZA==
+"@zendeskgarden/react-chrome@^8.63.2":
+  version "8.63.2"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-chrome/-/react-chrome-8.63.2.tgz#262ce66053b5c6f5be8e8b4a54b7268239edcbb8"
+  integrity sha512-6Covr0VLLxDVguO1vJKMSTriiAu2JCAjElHYCv0Ru7XtpLU4/2+2AEW73BY/+LkO3yFJDzjcdDpaA7h4KZMKww==
   dependencies:
     "@zendeskgarden/container-accordion" "^2.0.0"
-    "@zendeskgarden/container-utilities" "^0.7.0"
+    "@zendeskgarden/container-utilities" "^1.0.0"
     dom-helpers "^5.2.1"
     polished "^4.0.0"
     prop-types "^15.5.7"
