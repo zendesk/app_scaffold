@@ -1,6 +1,9 @@
+
 *Use of this software is subject to important terms and conditions as set forth in the License file*
 
-# App Scaffold
+# 🚩 DEPRECATED 🚩 App Scaffold. 
+
+This Scaffold is no longer supported.  Instead see [zendesk/app_scaffolds](https://github.com/zendesk/app_scaffolds)
 
 ## Description
 This repo contains a scaffold to help developers build [apps for Zendesk products](https://developer.zendesk.com/apps/docs/apps-v2/getting_started).
